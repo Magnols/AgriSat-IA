@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriSat IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" aria-label="Protótipo web do aplicativo AgriSat IA">
+    <div class="phone-shell">
+      <span class="phone-button phone-button-left top"></span>
+      <span class="phone-button phone-button-left mid"></span>
+      <span class="phone-button phone-button-right"></span>
+
+      <div class="phone-screen" id="app">
+        <div class="dynamic-island" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <div class="status-bar" aria-hidden="true">
+          <strong>9:41</strong>
+          <div class="status-icons">
+            <span class="signal"><i></i><i></i><i></i><i></i></span>
+            <span class="wifi"></span>
+            <span class="battery"></span>
+          </div>
+        </div>
+
+        <!-- Tela de login -->
+        <section class="screen login-screen is-active" data-screen="login" aria-labelledby="login-title">
+          <div class="login-sky"></div>
+          <div class="login-content">
+            <img class="login-logo" src="logo.png" alt="AgriSat IA">
+            <p class="login-slogan">Dados do espaço, colheitas melhores.</p>
+            <h1 id="login-title">Inteligência espacial para uma agricultura mais sustentável e lucrativa.</h1>
+
+            <form class="login-form">
+              <label class="field">
+                <span class="field-icon">♙</span>
+                <input type="text" placeholder="E-mail ou CPF" autocomplete="username">
+              </label>
+
+              <label class="field">
+                <span class="field-icon">▣</span>
+                <input id="password" type="password" placeholder="Senha" autocomplete="current-password">
+                <button class="ghost-icon password-toggle" type="button" aria-label="Mostrar ou ocultar senha">◉</button>
+              </label>
+
+              <a class="forgot-link" href="#" aria-label="Esqueci minha senha">Esqueci minha senha</a>
+              <button class="primary-action" type="submit" data-target="dashboard">Entrar</button>
+            </form>
+
+            <div class="divider"><span>ou</span></div>
+
+            <button class="google-action" type="button" data-target="dashboard">
+              <span class="google-mark">G</span>
+              Entrar com Google
+            </button>
+
+            <p class="signup">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
+
+            <button class="offline-card" type="button">
+              <span class="offline-icon">⌁</span>
+              <span>
+                <strong>Modo offline</strong>
+                <small>Acesse recomendações e alertas mesmo sem internet.</small>
+              </span>
+              <b>›</b>
+            </button>
+          </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="screen app-screen" data-screen="dashboard" aria-labelledby="dashboard-title">
+          <div class="screen-scroll">
+            <header class="app-header dashboard-header">
+              <button class="menu-button" type="button" aria-label="Abrir menu">☰</button>
+              <div class="header-copy">
+                <h2 id="dashboard-title">Olá, João! <span>🌱</span></h2>
+                <p>Aqui está o resumo da sua propriedade hoje.</p>
+              </div>
+              <div class="brand-compact" aria-label="AgriSat IA">
+                <span class="brand-seal">✦</span>
+                <strong>AgriSat<span>IA</span></strong>
+              </div>
+              <button class="bell-button" type="button" data-target="alerts" aria-label="Abrir alertas">🔔</button>
+            </header>
+
+            <article class="weather-card">
+              <div class="weather-main">
+                <div class="weather-art" aria-hidden="true">
+                  <span class="sun"></span>
+                  <span class="cloud"></span>
+                </div>
+                <div>
+                  <strong>28°C</strong>
+                  <span>Parcialmente nublado</span>
+                  <small>⌖ Montes Claros - MG</small>
+                </div>
+              </div>
+              <div class="weather-data">
+                <div>
+                  <small>♧ Umidade do ar</small>
+                  <strong>65%</strong>
+                  <span>Boa</span>
+                </div>
+                <div>
+                  <small>≋ Vento</small>
+                  <strong>12 km/h</strong>
+                  <span>Moderado</span>
+                </div>
+              </div>
+              <p>🛰 Atualizado há 30 min via satélite</p>
+            </article>
+
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span class="metric-icon blue">💧</span>
+                <p>Umidade do solo</p>
+                <strong>68%</strong>
+                <small>Ideal</small>
+                <i style="--bar: 68%;"></i>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon green">🍃</span>
+                <p>Índice de vegetação</p>
+                <strong>0.72</strong>
+                <small>Bom</small>
+                <i style="--bar: 72%;"></i>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon orange">🌡</span>
+                <p>Temperatura</p>
+                <strong class="hot">28°C</strong>
+                <small class="hot">Alta</small>
+                <i class="hotbar" style="--bar: 64%;"></i>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon yellow">☀</span>
+                <p>Risco de seca</p>
+                <strong>Baixo</strong>
+                <small>Favorável</small>
+                <i style="--bar: 46%;"></i>
+              </article>
+            </div>
+
+            <article class="content-card map-summary">
+              <div class="section-title">
+                <h3>🌱 Mapa de umidade do solo</h3>
+                <button type="button" data-target="map">Ver mapa completo ›</button>
+              </div>
+              <div class="map-summary-grid">
+                <div class="mini-satellite-map">
+                  <span class="mini-farm"></span>
+                </div>
+                <div class="map-legend">
+                  <p>Monitoramento por satélite da sua propriedade.</p>
+                  <span><i class="dot high"></i> Alta umidade</span>
+                  <span><i class="dot ideal"></i> Umidade ideal</span>
+                  <span><i class="dot attention"></i> Atenção</span>
+                  <span><i class="dot dry"></i> Solo seco</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="content-card forecast-card">
+              <div class="section-title">
+                <h3>▣ Previsão para os próximos 7 dias</h3>
+                <button type="button">Ver detalhes ›</button>
+              </div>
+              <div class="forecast-row" aria-label="Previsão para sete dias">
+                <div><b>Hoje</b><span>🌤</span><strong>28°</strong><small>16°</small></div>
+                <div><b>Qua</b><span>🌧</span><strong>27°</strong><small>17°</small></div>
+                <div><b>Qui</b><span>🌧</span><strong>26°</strong><small>16°</small></div>
+                <div><b>Sex</b><span>☀</span><strong>29°</strong><small>17°</small></div>
+                <div><b>Sáb</b><span>🌧</span><strong>28°</strong><small>18°</small></div>
+                <div><b>Dom</b><span>🌥</span><strong>30°</strong><small>18°</small></div>
+                <div><b>Seg</b><span>☀</span><strong>31°</strong><small>19°</small></div>
+              </div>
+            </article>
+
+            <div class="dashboard-bottom">
+              <article class="content-card compact-card">
+                <div class="section-title">
+                  <h3>🔔 Alertas inteligentes</h3>
+                  <button type="button" data-target="alerts">Ver todos</button>
+                </div>
+                <div class="soft-alert green-alert"><span>💧</span><b>Chance de chuva em 48h</b><small>Probabilidade de 70% de chuva na sua região.</small></div>
+                <div class="soft-alert amber-alert"><span>🔥</span><b>Evite irrigação hoje</b><small>Solo com umidade ideal para sua cultura.</small></div>
+              </article>
+
+              <article class="content-card compact-card assistant-card">
+                <h3>🤖 Assistente Rural IA</h3>
+                <p>Olá, João! Como posso ajudar na sua produção hoje?</p>
+                <button class="primary-action small" type="button" data-target="recommendations">Fazer uma pergunta</button>
+                <button class="text-action" type="button">Ver conversas ›</button>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mapa da Propriedade -->
+        <section class="screen app-screen" data-screen="map" aria-labelledby="map-title">
+          <div class="screen-scroll map-scroll">
+            <header class="app-header simple-header">
+              <button class="back-button" type="button" data-target="dashboard" aria-label="Voltar">‹</button>
+              <h2 id="map-title">Mapa da Propriedade</h2>
+              <button class="filter-button" type="button">▽ Filtros</button>
+            </header>
+
+            <div class="map-toolbar">
+              <button class="farm-select" type="button">🍃 Fazenda Boa Esperança <span>⌄</span></button>
+              <button class="date-select" type="button">▣ Hoje</button>
+            </div>
+
+            <div class="map-tabs" role="tablist" aria-label="Camadas do mapa">
+              <button class="is-selected" type="button">💧 Umidade do solo</button>
+              <button type="button">🍃 Índice de vegetação</button>
+              <button type="button">🌡 Temperatura</button>
+              <button type="button">☀ Risco de seca</button>
+            </div>
+
+            <article class="property-map">
+              <div class="satellite-canvas">
+                <span class="property-polygon"></span>
+                <span class="update-badge">🛰 <b>Última atualização</b><strong>Hoje, 08:30</strong></span>
+                <div class="humidity-legend">
+                  <h3>Umidade do solo</h3>
+                  <span><i class="high"></i>Alta</span>
+                  <span><i class="ideal"></i>Ideal</span>
+                  <span><i class="attention"></i>Atenção</span>
+                  <span><i class="low"></i>Baixa</span>
+                  <span><i class="very-low"></i>Muito baixa</span>
+                </div>
+                <div class="map-controls" aria-hidden="true">
+                  <button type="button">⌾</button>
+                  <button type="button">+</button>
+                  <button type="button">−</button>
+                </div>
+                <span class="map-scale">200 m</span>
+              </div>
+
+              <div class="map-stats">
+                <div>
+                  <span>🌱</span>
+                  <small>Área monitorada</small>
+                  <strong>32,5 ha</strong>
+                  <em>Área total</em>
+                </div>
+                <div>
+                  <span>💧</span>
+                  <small>Umidade média</small>
+                  <strong>65%</strong>
+                  <em>Ideal</em>
+                </div>
+                <div>
+                  <span>↗</span>
+                  <small>Tendência</small>
+                  <strong>Estável</strong>
+                  <em>Últimos 7 dias</em>
+                </div>
+              </div>
+            </article>
+
+            <article class="content-card area-recommendation">
+              <div class="section-title">
+                <h3>🍃 Recomendações para esta área</h3>
+                <button type="button" data-target="recommendations">Ver detalhes ›</button>
+              </div>
+              <div class="recommendation-strip">
+                <span>💧</span>
+                <div>
+                  <strong>Irrigação recomendada</strong>
+                  <p>Próxima irrigação em 2 dias<br>Quantidade ideal: <b>18 mm</b></p>
+                </div>
+                <i>♒</i>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Alertas -->
+        <section class="screen app-screen" data-screen="alerts" aria-labelledby="alerts-title">
+          <div class="screen-scroll">
+            <header class="app-header text-logo-header">
+              <button class="menu-button" type="button" aria-label="Abrir menu">☰</button>
+              <div class="header-copy">
+                <h2 id="alerts-title">Alertas</h2>
+                <p>Fique por dentro do que acontece na sua propriedade.</p>
+              </div>
+              <div class="brand-compact" aria-label="AgriSat IA">
+                <span class="brand-seal">✦</span>
+                <strong>AgriSat<span>IA</span></strong>
+              </div>
+            </header>
+
+            <div class="chip-row alert-filter">
+              <button class="is-selected" type="button">🔔 Todos</button>
+              <button type="button">🌧 Clima</button>
+              <button type="button">💧 Irrigação</button>
+              <button type="button">🐞 Pragas</button>
+              <button type="button">⚙ Sistema</button>
+            </div>
+
+            <div class="list-heading">
+              <h3>Hoje</h3>
+              <p>Atualizado agora há pouco ⟳</p>
+            </div>
+
+            <div class="alert-list">
+              <article class="alert-card climate">
+                <span class="alert-icon">🌧</span>
+                <div>
+                  <h3>Chance de chuva em 48h</h3>
+                  <p>Há 70% de probabilidade de chuva na sua região entre sexta e sábado.</p>
+                  <small>Clima</small>
+                </div>
+                <time>08:30</time>
+                <b>›</b>
+              </article>
+
+              <article class="alert-card irrigation">
+                <span class="alert-icon">🔥</span>
+                <div>
+                  <h3>Evite irrigação hoje</h3>
+                  <p>A umidade do solo está ideal para sua cultura. Irrigar hoje pode desperdiçar água.</p>
+                  <small>Irrigação</small>
+                </div>
+                <time>07:15</time>
+                <b>›</b>
+              </article>
+
+              <article class="alert-card pests">
+                <span class="alert-icon">🐞</span>
+                <div>
+                  <h3>Risco de pragas aumentado</h3>
+                  <p>Condições climáticas favorecem o aparecimento de lagarta-do-cartucho.</p>
+                  <small>Pragas</small>
+                </div>
+                <time>06:45</time>
+                <b>›</b>
+              </article>
+
+              <article class="alert-card temperature">
+                <span class="alert-icon">🌡</span>
+                <div>
+                  <h3>Temperatura acima da média</h3>
+                  <p>Temperaturas elevadas podem impactar o desenvolvimento da cultura.</p>
+                  <small>Clima</small>
+                </div>
+                <time>06:20</time>
+                <b>›</b>
+              </article>
+
+              <article class="alert-card system">
+                <span class="alert-icon">🛰</span>
+                <div>
+                  <h3>Imagem de satélite disponível</h3>
+                  <p>Nova imagem da sua propriedade disponível para análise.</p>
+                  <small>Sistema</small>
+                </div>
+                <time>05:50</time>
+                <b>›</b>
+              </article>
+            </div>
+
+            <button class="outline-row" type="button">▣ Ver histórico de alertas <span>›</span></button>
+
+            <div class="sms-card">
+              <span>🔔</span>
+              <div>
+                <strong>Receba alertas também por SMS</strong>
+                <p>Ative para receber avisos importantes mesmo sem internet.</p>
+              </div>
+              <button class="toggle is-on" type="button" aria-label="Ativar alertas por SMS"><i></i></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recomendações IA -->
+        <section class="screen app-screen" data-screen="recommendations" aria-labelledby="recommendations-title">
+          <div class="screen-scroll">
+            <header class="app-header text-logo-header recommendations-header">
+              <button class="menu-button" type="button" aria-label="Abrir menu">☰</button>
+              <div class="header-copy">
+                <h2 id="recommendations-title">Recomendações IA <span>🌱</span></h2>
+                <p>Sugestões personalizadas para sua propriedade com base em dados espaciais e inteligência artificial.</p>
+              </div>
+              <div class="brand-compact" aria-label="AgriSat IA">
+                <span class="brand-seal">✦</span>
+                <strong>AgriSat<span>IA</span></strong>
+              </div>
+            </header>
+
+            <article class="ai-banner">
+              <span>🤖</span>
+              <div>
+                <h3>Assistente AgriSat IA</h3>
+                <p>Analisamos os dados da sua propriedade e preparamos as melhores recomendações para você.</p>
+              </div>
+              <button class="primary-action small" type="button">Fazer pergunta</button>
+            </article>
+
+            <h3 class="question-title">O que você deseja saber hoje?</h3>
+            <div class="chip-row">
+              <button class="is-selected" type="button">🍃 Todas</button>
+              <button type="button">🌱 Plantio</button>
+              <button type="button">💧 Irrigação</button>
+              <button type="button">▣ Nutrição</button>
+              <button type="button">🚜 Manejo</button>
+            </div>
+
+            <div class="recommendation-list">
+              <article class="rec-card">
+                <span class="rec-icon plant">🌱</span>
+                <div class="rec-body">
+                  <h3>Melhor data para plantio</h3>
+                  <p>Com base na previsão do clima e umidade do solo, recomendamos o período ideal para plantio.</p>
+                  <div class="rec-data">
+                    <span><small>Período recomendado</small><strong>10 a 15 de Junho</strong></span>
+                    <span><small>Confiança da IA</small><strong>92%</strong></span>
+                    <i class="ring" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <b>›</b>
+              </article>
+
+              <article class="rec-card irrigation-rec">
+                <span class="rec-icon water">💧</span>
+                <div class="rec-body">
+                  <h3>Irrigação recomendada</h3>
+                  <p>A umidade do solo está ideal. Sugerimos o próximo ciclo de irrigação.</p>
+                  <div class="rec-data blue-panel">
+                    <span><small>Próxima irrigação</small><strong>Amanhã</strong><em>08 de Junho</em></span>
+                    <span><small>Quantidade ideal</small><strong>18 mm</strong><em>(aprox. 3h de irrigação)</em></span>
+                    <i class="sprinkler">♒</i>
+                  </div>
+                </div>
+                <b>›</b>
+              </article>
+
+              <article class="rec-card">
+                <span class="rec-icon nutrition">▣</span>
+                <div class="rec-body">
+                  <h3>Adubação sugerida</h3>
+                  <p>Análise dos dados indica necessidade moderada de nitrogênio para sua cultura.</p>
+                  <div class="rec-data">
+                    <span><small>Nutriente principal</small><strong>Nitrogênio (N)</strong></span>
+                    <span><small>Dose recomendada</small><strong>80 kg/ha</strong><em>nas próximas 2 semanas</em></span>
+                    <i>▣</i>
+                  </div>
+                </div>
+                <b>›</b>
+              </article>
+
+              <article class="rec-card pests-rec">
+                <span class="rec-icon shield">🛡</span>
+                <div class="rec-body">
+                  <h3>Risco de pragas e doenças</h3>
+                  <p>Baixo risco de pragas nas próximas semanas. Mantenha o monitoramento.</p>
+                  <div class="rec-data amber-panel">
+                    <span><small>Risco atual</small><strong>Baixo</strong><em>Lagarta-do-cartucho</em></span>
+                    <span><small>Próxima revisão</small><strong>12 de Junho</strong></span>
+                    <i>⌕</i>
+                  </div>
+                </div>
+                <b>›</b>
+              </article>
+            </div>
+
+            <button class="outline-row" type="button">▥ Ver análise completa da área <span>›</span></button>
+            <div class="tip-card">
+              <span>💡</span>
+              <div>
+                <strong>Dica AgriSat IA</strong>
+                <p>Manter a cobertura do solo ajuda a conservar a umidade e melhora a produtividade.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tela final com logo -->
+        <section class="screen app-screen final-screen" data-screen="profile" aria-labelledby="final-title">
+          <div class="screen-scroll final-scroll">
+            <div class="final-orbit" aria-hidden="true"></div>
+            <img class="final-logo" src="logo.png" alt="Logotipo AgriSat IA">
+            <h2 id="final-title">AgriSat IA</h2>
+            <p class="final-slogan">Dados do espaço, colheitas melhores.</p>
+            <p class="final-description">Inteligência espacial para uma agricultura mais sustentável e lucrativa.</p>
+            <div class="final-card">
+              <span>🌎</span>
+              <strong>Global Solution FIAP</strong>
+              <small>Protótipo web mobile com dados espaciais, alertas e recomendações por IA.</small>
+            </div>
+            <button class="primary-action" type="button" data-target="dashboard">Voltar ao início</button>
+          </div>
+        </section>
+
+        <nav class="bottom-nav" aria-label="Navegação inferior">
+          <button class="is-active" type="button" data-target="dashboard"><span>⌂</span>Início</button>
+          <button type="button" data-target="map"><span>▰</span>Mapa</button>
+          <button type="button" data-target="alerts"><span>🔔</span>Alertas</button>
+          <button type="button" data-target="recommendations"><span>♧</span>Recomendações</button>
+          <button type="button" data-target="profile"><span>○</span>Perfil</button>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
