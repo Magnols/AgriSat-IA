@@ -1,0 +1,112 @@
+frontend-1  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-1  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-1  | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+frontend-1  | 10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+frontend-1  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+frontend-1  | /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: using the "epoll" event method
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: nginx/1.30.5
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: OS: Linux 6.18.40.1-microsoft-standard-WSL2
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: start worker processes
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: start worker process 30
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: start worker process 31
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: start worker process 32
+frontend-1  | 2026/10/03 19:30:58 [notice] 1#1: start worker process 33
+frontend-1  | ::1 - - [03/Oct/2026:19:31:13 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:31:28 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:31:44 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:32:00 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:32:15 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:32:30 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:32:45 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:33:01 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:33:17 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | ::1 - - [03/Oct/2026:19:33:33 +0000] "GET / HTTP/1.1" 200 23629 "-" "Wget" "-"
+frontend-1  | 172.18.0.1 - - [03/Oct/2026:19:33:33 +0000] "GET / HTTP/1.1" 200 23629 "-" "Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; pt-BR) PowerShell/7.6.5" "-"
+oracle-db-1  | CONTAINER: starting up...
+oracle-db-1  | CONTAINER: database already initialized.
+oracle-db-1  | CONTAINER: starting up Oracle Database...
+oracle-db-1  | 
+oracle-db-1  | LSNRCTL for Linux: Version 23.26.3.0.0 - Production on 03-OCT-2026 19:33:28
+oracle-db-1  | 
+oracle-db-1  | Copyright (c) 1991, 2026, Oracle.  All rights reserved.
+oracle-db-1  | 
+oracle-db-1  | Starting /opt/oracle/product/26ai/dbhomeFree/bin/tnslsnr: please wait...
+oracle-db-1  | 
+api-1        | 
+api-1        |   .   ____          _            __ _ _
+api-1        |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+api-1        | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+api-1        |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+api-1        |   '  |____| .__|_| |_|_| |_\__, | / / / /
+api-1        |  =========|_|==============|___/=/_/_/_/
+api-1        | 
+api-1        |  :: Spring Boot ::               (v3.5.14)
+api-1        | 
+api-1        | 2026-10-03T19:30:13.299Z  INFO 1 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplication         : Starting EnergiaEsgApiApplication v0.0.1-SNAPSHOT using Java 21.0.12.1 with PID 1 (/app/app.jar started by agrisat in /app)
+api-1        | 2026-10-03T19:30:13.340Z  INFO 1 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplication         : No active profile set, falling back to 1 default profile: "default"
+api-1        | 2026-10-03T19:30:18.363Z  INFO 1 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+api-1        | 2026-10-03T19:30:18.991Z  INFO 1 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 599 ms. Found 5 JPA repository interfaces.
+api-1        | 2026-10-03T19:30:20.499Z  INFO 1 --- [energia-esg-api] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=95a0cdf2-806b-36fd-a60b-f36d2fd0b315
+api-1        | 2026-10-03T19:30:21.842Z  INFO 1 --- [energia-esg-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+api-1        | 2026-10-03T19:30:21.891Z  INFO 1 --- [energia-esg-api] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+api-1        | 2026-10-03T19:30:21.891Z  INFO 1 --- [energia-esg-api] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+api-1        | 2026-10-03T19:30:21.982Z  INFO 1 --- [energia-esg-api] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+api-1        | 2026-10-03T19:30:21.986Z  INFO 1 --- [energia-esg-api] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8427 ms
+api-1        | 2026-10-03T19:30:23.630Z  INFO 1 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+api-1        | 2026-10-03T19:30:25.466Z  INFO 1 --- [energia-esg-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@7434ee13
+api-1        | 2026-10-03T19:30:25.480Z  INFO 1 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+api-1        | 2026-10-03T19:30:25.572Z  INFO 1 --- [energia-esg-api] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1 (Oracle 23.26)
+api-1        | 2026-10-03T19:30:26.552Z  WARN 1 --- [energia-esg-api] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: Oracle 23.26 is newer than this version of Flyway and support has not been tested. The latest supported version of Oracle is 21.3.
+api-1        | 2026-10-03T19:30:26.789Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.167s)
+api-1        | 2026-10-03T19:30:26.845Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "AGRISAT_USER": 1
+api-1        | 2026-10-03T19:30:26.862Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbMigrate      : Schema "AGRISAT_USER" is up to date. No migration necessary.
+api-1        | 2026-10-03T19:30:27.293Z  INFO 1 --- [energia-esg-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+api-1        | 2026-10-03T19:30:27.566Z  INFO 1 --- [energia-esg-api] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+api-1        | 2026-10-03T19:30:27.730Z  INFO 1 --- [energia-esg-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+api-1        | 2026-10-03T19:30:29.301Z  INFO 1 --- [energia-esg-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+api-1        | 2026-10-03T19:30:29.766Z  INFO 1 --- [energia-esg-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+api-1        | 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+api-1        | 	Database driver: undefined/unknown
+api-1        | 	Database version: 23.26
+api-1        | 	Autocommit mode: undefined/unknown
+api-1        | 	Isolation level: undefined/unknown
+api-1        | 	Minimum pool size: undefined/unknown
+api-1        | 	Maximum pool size: undefined/unknown
+api-1        | 2026-10-03T19:30:37.809Z  INFO 1 --- [energia-esg-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+api-1        | 2026-10-03T19:30:40.302Z  INFO 1 --- [energia-esg-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+api-1        | 2026-10-03T19:30:43.959Z  WARN 1 --- [energia-esg-api] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+api-1        | 2026-10-03T19:30:44.349Z  INFO 1 --- [energia-esg-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+api-1        | 2026-10-03T19:30:46.792Z  INFO 1 --- [energia-esg-api] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+api-1        | 2026-10-03T19:30:48.966Z  INFO 1 --- [energia-esg-api] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+api-1        | 2026-10-03T19:30:49.267Z  WARN 1 --- [energia-esg-api] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+api-1        | 2026-10-03T19:30:50.024Z  INFO 1 --- [energia-esg-api] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+api-1        | 2026-10-03T19:30:50.105Z  INFO 1 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplication         : Started EnergiaEsgApiApplication in 38.776 seconds (process running for 45.681)
+api-1        | 2026-10-03T19:30:51.093Z  INFO 1 --- [energia-esg-api] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+api-1        | 2026-10-03T19:30:51.094Z  INFO 1 --- [energia-esg-api] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+api-1        | 2026-10-03T19:30:51.107Z  INFO 1 --- [energia-esg-api] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+api-1        | 2026-10-03T19:33:30.787Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@7434ee13 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.795Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@1ccf5bc0 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.796Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@75d5c1ec (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.797Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@242058fb (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.798Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@7fec4b2e (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.798Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2a157c87 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.799Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@10a60595 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.800Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2fd8b61d (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.801Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2786b5a7 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+api-1        | 2026-10-03T19:33:30.802Z  WARN 1 --- [energia-esg-api] [nio-8080-exec-2] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@42117d77 (ORA-17008: Closed connection
+api-1        | https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.

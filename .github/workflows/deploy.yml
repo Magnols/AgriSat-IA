@@ -1,0 +1,63 @@
+name: Deploy SSH
+on:
+  workflow_call:
+    inputs:
+      environment_name:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment_name }}
+      url: ${{ vars.DEPLOY_URL }}
+    concurrency:
+      group: deploy-${{ inputs.environment_name }}
+      cancel-in-progress: false
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+      DEPLOY_URL: ${{ vars.DEPLOY_URL }}
+      ENVIRONMENT_NAME: ${{ inputs.environment_name }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release
+      - name: Validar configuracao obrigatoria
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in DEPLOY_HOST DEPLOY_USER DEPLOY_SSH_KEY DEPLOY_KNOWN_HOSTS DEPLOY_URL; do
+            test -n "${!name}" || { echo "::error::Configure $name no GitHub Environment."; exit 1; }
+          done
+          [[ "$DEPLOY_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
+          [[ "$DEPLOY_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
+          [[ "$DEPLOY_URL" =~ ^https?:// ]]
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/deploy_key ~/.ssh/known_hosts
+      - name: Copiar e aplicar release
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote="$DEPLOY_USER@$DEPLOY_HOST"
+          release_dir="agrisat/$ENVIRONMENT_NAME/releases/$GITHUB_SHA"
+          ssh -i ~/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes "$remote" "mkdir -p '$release_dir'"
+          scp -i ~/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes release.tar.gz "$remote:$release_dir/release.tar.gz"
+          ssh -i ~/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes "$remote" \
+            "cd '$release_dir' && tar -xzf release.tar.gz && bash scripts/deploy.sh '$ENVIRONMENT_NAME' '$GITHUB_SHA'"
+      - name: Validar health publico
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 10 --retry-delay 10 --retry-all-errors \
+            "$DEPLOY_URL/actuator/health" | python3 -c 'import json,sys; assert json.load(sys.stdin)["status"] == "UP"'
+      - name: Remover chave temporaria
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

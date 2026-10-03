@@ -1,0 +1,3 @@
+.env
+target
+SEGURANCA: sem credenciais locais ou padrões de chave/token nos 73 arquivos candidatos ao Git. Inspeção heurística, não garantia absoluta.

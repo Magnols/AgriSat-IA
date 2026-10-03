@@ -1,266 +1,206 @@
-# 🌱 AgriSat IA
+# Projeto - Cidades ESG Inteligentes
 
-> Dados do espaço, colheitas melhores.
+## AgriSat IA
 
-O **AgriSat IA** é uma plataforma de agricultura inteligente desenvolvida para auxiliar produtores rurais na tomada de decisões estratégicas por meio da integração entre **dados de satélite**, **Inteligência Artificial** e **agricultura de precisão**.
+AgriSat IA é a aplicação ESG utilizada para implementar práticas DevOps nesta atividade da FIAP. O protótipo agrícola em HTML/CSS/JavaScript acompanha uma API Spring Boot de eficiência energética: áreas, equipamentos, leituras, alertas e relatórios. O frontend ainda é demonstrativo, com dados simulados, e não possui integração funcional com a API. O backend conserva o nome técnico `energia-esg-api`.
 
-O sistema permite monitorar propriedades agrícolas, acompanhar indicadores ambientais, receber alertas automáticos e obter recomendações personalizadas para aumentar a produtividade e reduzir desperdícios.
+**Situação verificável em 03/10/2026:** 7 testes aprovados; Maven package e Docker build aprovados. Compose com Oracle, API e Nginx saudáveis; Flyway V1 aplicada e health público UP. CI remoto e deploys ainda aguardam validação. Não há ZIP final.
 
----
+## Como executar localmente com Docker
 
-## 📸 Demonstração
+Pré-requisitos: Git e Docker Desktop com engine Linux operacional. Java 21 é necessário para comandos Maven fora de Docker. O Oracle requer memória disponível e pode levar vários minutos na primeira inicialização.
 
-### Tela de Login
-- Login com E-mail ou CPF
-- Login com Google
-- Recuperação de Senha
-- Modo Offline
+No PowerShell:
 
-### Dashboard Inteligente
-- Temperatura
-- Umidade do Solo
-- Índice de Vegetação (NDVI)
-- Previsão Climática
-- Alertas Inteligentes
-- Assistente IA
-
-### Mapa da Propriedade
-- Visualização da Fazenda
-- Mapa de Umidade do Solo
-- Identificação de Áreas Críticas
-- Recomendações por Região
-
-### Central de Alertas
-- Alertas de Chuva
-- Alertas de Seca
-- Risco de Pragas
-- Atualizações via Satélite
-- Notificações SMS
-
-### Recomendações IA
-- Melhor Data para Plantio
-- Irrigação Recomendada
-- Sugestões de Adubação
-- Controle Preventivo de Pragas
-- Dicas Personalizadas
-
----
-
-# 🎯 Problema
-
-Muitos produtores rurais enfrentam dificuldades para:
-
-- Monitorar grandes áreas agrícolas.
-- Antecipar eventos climáticos.
-- Otimizar irrigação.
-- Reduzir desperdício de água e fertilizantes.
-- Identificar riscos de pragas e doenças.
-- Interpretar dados técnicos complexos.
-
-Esses desafios impactam diretamente a produtividade e a sustentabilidade das propriedades.
-
----
-
-# 💡 Solução
-
-O AgriSat IA transforma dados de satélite e informações climáticas em recomendações práticas e acessíveis para qualquer produtor rural.
-
-Através de uma interface simples e intuitiva, o sistema apresenta:
-
-✅ Indicadores em tempo real
-
-✅ Mapas temáticos
-
-✅ Alertas automáticos
-
-✅ Recomendações baseadas em IA
-
-✅ Funcionamento offline
-
----
-
-# 🚀 Tecnologias Utilizadas
-
-## Front-end
-
-- HTML5
-- CSS3
-- JavaScript ES6
-
-## Design
-
-- Figma
-- UX/UI Design
-
-## Inteligência Artificial
-
-- Modelos de recomendação agrícola
-- Processamento de dados geoespaciais
-
-## Dados Espaciais
-
-- Imagens de Satélite
-- Sensoriamento Remoto
-- Índices de Vegetação
-
----
-
-# 📱 Estrutura das Telas
-
-```text
-Login
-│
-├── Dashboard
-│   ├── Clima
-│   ├── Umidade
-│   ├── NDVI
-│   ├── Alertas
-│   └── Assistente IA
-│
-├── Mapa da Propriedade
-│   ├── Umidade do Solo
-│   ├── Temperatura
-│   ├── Índice de Vegetação
-│   └── Recomendações
-│
-├── Alertas
-│   ├── Chuva
-│   ├── Seca
-│   ├── Pragas
-│   └── Atualizações Satelitais
-│
-└── Recomendações IA
-    ├── Plantio
-    ├── Irrigação
-    ├── Adubação
-    └── Controle de Pragas
+```powershell
+git clone https://github.com/Magnols/AgriSat-IA.git
+cd AgriSat-IA
+Copy-Item .env.example .env
+notepad .env
+# Substitua DB_PASSWORD e API_SECURITY_PASSWORD por senhas locais fortes e distintas.
+docker info
+docker compose config --quiet
+docker build -t agrisat-api:local .
+docker compose build
+docker compose up -d --wait --wait-timeout 900
+docker compose ps
+docker compose logs --tail=100
+curl.exe --fail http://localhost:8080/actuator/health
 ```
 
----
+Health deve retornar HTTP 200 e `{"status":"UP"}`. Frontend: `http://localhost:8081`. Porta do banco: 1521, vinculada somente a localhost. Para outra porta pública da API, altere SERVER_PORT no .env; a porta interna permanece 8080.
 
-# 🌎 Objetivos de Desenvolvimento Sustentável (ODS)
+Não compartilhe `docker compose config` sem redigir valores: o comando completo expande senhas. Use `--quiet` para validar.
 
-O projeto está alinhado aos seguintes ODS da ONU:
+Para validar a API sem alterar dados:
 
-### 🌾 ODS 2 – Fome Zero e Agricultura Sustentável
-
-Promover práticas agrícolas mais eficientes e sustentáveis.
-
-### 🌍 ODS 13 – Ação Contra a Mudança Global do Clima
-
-Auxiliar produtores na adaptação às mudanças climáticas.
-
-### 💧 ODS 6 – Água Potável e Saneamento
-
-Reduzir desperdícios e otimizar o uso dos recursos hídricos.
-
----
-
-# 📈 Benefícios Esperados
-
-- Aumento da produtividade agrícola.
-- Redução de desperdício de água.
-- Uso mais eficiente de fertilizantes.
-- Monitoramento remoto da propriedade.
-- Prevenção de perdas por clima e pragas.
-- Tomada de decisão baseada em dados.
-
----
-
-# 🖥️ Como Executar o Projeto
-
-### Clone o repositório
-
-```bash
-git clone https://github.com/seuusuario/agrisat-ia.git
+```powershell
+# Informe a senha quando o curl solicitar. Não coloque a senha no histórico.
+curl.exe --fail --user admin http://localhost:8080/areas
+curl.exe --fail --user admin http://localhost:8080/equipamentos
+curl.exe --fail --user admin http://localhost:8080/alertas
+curl.exe --fail --user admin http://localhost:8080/relatorios/consumo-diario
 ```
 
-### Acesse a pasta
+Sem autenticação, os endpoints de negócio retornam 401. As cinco consultas GET (/areas, /equipamentos, /alertas, /leituras e /relatorios/consumo-diario) responderam HTTP 200 no Oracle real. /areas sem autenticação respondeu 401. Registros EVIDENCIA-PERSISTENCIA são dados criados exclusivamente para validação local.
 
-```bash
-cd agrisat-ia
+### Testes e build fora do Docker
+
+```powershell
+.\mvnw.cmd clean test
+.\mvnw.cmd clean package
 ```
 
-### Execute
+JAR: `target/energia-esg-api-0.0.1-SNAPSHOT.jar` (92.311.659 bytes). Última execução após correção NUMERIC: 7 passaram, zero falhas/erros/ignorados. Maven clean test: 1min40s; clean package: 1min29s, também com os 7 testes. H2 em modo Oracle é exclusivo dos testes. A compatibilidade Oracle foi verificada separadamente no Compose.
 
-Basta abrir o arquivo:
+Para iniciar o JAR com um Oracle existente, exporte SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD, API_SECURITY_USER e API_SECURITY_PASSWORD no terminal. Copiar .env sozinho não exporta variáveis para Java.
 
-```bash
-index.html
+## Pipeline CI/CD
+
+Ferramenta: GitHub Actions. Configuração em `.github/workflows/ci-cd.yml` e workflow reutilizável `deploy.yml`.
+
+PUSH/PR em main ou workflow_dispatch executam:
+1. BUILD: Maven clean compile com Java 21 e cache Maven.
+2. TEST AND PACKAGE: Maven clean verify, testes ativos e relatório Surefire.
+3. DOCKER BUILD: build multi-stage com testes ativos e imagem identificada pelo SHA do commit.
+4. STAGING: transferência SSH da mesma imagem construída, Docker Compose e verificação pública de health.
+5. PRODUCTION: mesma operação após sucesso de staging, usando configuração isolada.
+
+PR executa CI e Docker, mas não deploy. Push/main ou execução manual pode executar deploy. Jobs falham se testes, health ou configuração obrigatória falharem. Não há bypass de testes nem deploy baseado apenas em echo.
+
+A imagem é transportada como artifact `release`, contendo `image.tar.gz`, Compose, frontend e scripts. Não exige registry externo. Relatórios ficam no artifact `test-reports`.
+
+**Execução no GitHub ainda pendente.** A presença de YAML não comprova pipeline aprovado. Environments e secrets não foram criados nesta sessão. Faltando configuração, staging falhará e production não será executado.
+
+## Containerização
+
+O Dockerfile usa dois estágios: Maven/Temurin Java 21 para executar Maven Wrapper clean package, e Temurin JRE 21 Alpine para executar o JAR. O usuário de runtime não é root. Porta interna: 8080. Healthcheck: actuator/health. Build aprovado com os 7 testes ativos. Conteúdo da imagem: aproximadamente 157 MB; Docker informa cerca de 461 MB de uso em disco incluindo camadas descompactadas.
+
+Trechos principais:
+
+```dockerfile
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+WORKDIR /workspace
+COPY pom.xml mvnw mvnw.cmd ./
+COPY .mvn .mvn
+COPY src src
+RUN chmod +x mvnw && ./mvnw -B -ntp clean package
+
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+RUN addgroup -S agrisat && adduser -S agrisat -G agrisat
+COPY --from=build --chown=agrisat:agrisat /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar app.jar
+USER agrisat
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
-ou utilizar a extensão:
+O arquivo completo inclui HEALTHCHECK. .dockerignore exclui Git, segredos locais, builds, IDEs e logs do contexto.
 
-```text
-Live Server (VS Code)
+## Docker Compose
+
+- Aplicação: API Spring Boot e frontend Nginx.
+- Banco: `gvenzl/oracle-free:23-slim`, service name `FREEPDB1`, usuário de aplicação `agrisat_user`.
+- Variáveis: DB_PASSWORD e API_SECURITY_PASSWORD obrigatórias, demais parâmetros em .env.example.
+- Volume: `agrisat-oracle-data` em `/opt/oracle/oradata`.
+- Rede: `agrisat-network`, driver bridge. JDBC usa o DNS interno `oracle-db`.
+- Inicialização: API aguarda health do Oracle. Frontend aguarda health da API.
+- Flyway: `V1__create_tables.sql`; Hibernate configurado para validar o schema.
+- Isolamento: nomes de containers gerenciados por projeto Compose, permitindo ambientes separados.
+
+A sintaxe, build e inicialização passaram. Os três serviços ficaram healthy. Flyway V1 aplicada com success=1, schema validado pelo Hibernate e comunicação API/Oracle comprovada por GETs e gravação/leitura de limiteConsumo=123.45. Os campos Double usam mapeamento JDBC NUMERIC com precisão 10 e escala 2, alinhado ao schema existente. A V1 aplicada foi preservada.
+
+A imagem Oracle baixada informa versão 23.26.3 (tag 23-slim). Flyway emite aviso de versão Oracle mais nova que a cobertura testada, mas validou/aplicou V1 e não bloqueou o startup. Esse aviso permanece documentado.
+
+### Persistência
+
+Depois de validar Oracle/Flyway, registre as mesmas linhas e o histórico Flyway antes/depois de reiniciar serviços:
+
+```powershell
+docker compose exec oracle-db sh -c 'printf "select \"version\", \"success\" from \"flyway_schema_history\";\nselect count(*) from AREA;\nexit;\n" | sqlplus -s "$APP_USER/$APP_USER_PASSWORD@//localhost/FREEPDB1"'
+docker compose restart oracle-db
+docker compose up -d --wait --wait-timeout 900
+# Repita a consulta e compare o resultado.
 ```
 
----
+Persistência comprovada em 03/10/2026: o container Oracle foi recriado sem remover volume; a área id=2, EVIDENCIA-PERSISTENCIA-20261003-163315, permaneceu acessível pela API. O valor NUMERIC 123.45 também foi gravado/lido. Reprodução: `./scripts/validar-local.ps1 -TestarPersistencia`. Esse comando cria registros de evidência locais. Não use `down -v`, pois remove dados.
 
-# 📂 Estrutura do Projeto
+## Prints do funcionamento
+
+Roteiro completo: [GUIA-EVIDENCIAS](documentacao/evidencias/GUIA-EVIDENCIAS.md). Salvar capturas reais em `documentacao/prints` e inserir links abaixo somente depois de existirem.
+
+- Testes/build: logs reais em `documentacao/evidencias/resultados`; prints 01 e 02 pendentes.
+- Docker/Compose: prints 03 a 07 pendentes.
+- GitHub Actions: prints 08 a 10 pendentes.
+- Staging: prints 11 e 12 pendentes.
+- Production: prints 13 e 14 pendentes.
+
+Logs e trechos transcritos são evidências textuais, não capturas de tela. Não há imagens inventadas.
+
+## Staging
+
+URL: pendente de deploy real. Ambiente GitHub previsto: `staging`.
+Preparação manual detalhada em [ACAO-MANUAL-DEPLOY](documentacao/ACAO-MANUAL-DEPLOY.md).
+Deploy só é aprovado se Compose estiver healthy, GET autenticado /areas responder e a URL pública de health indicar UP.
+
+## Produção
+
+URL: pendente de deploy real. Ambiente GitHub previsto: `production`.
+Production depende do sucesso de staging, com banco/volume, diretório e credenciais independentes. Servidores devem usar HTTPS antes de transmitir Basic Auth publicamente.
+
+## Tecnologias utilizadas
+
+Java 21, Spring Boot 3.5.14, Spring Web, JPA/Hibernate, Security, Validation, Actuator, Spring Cloud, Flyway, Oracle JDBC, Maven Wrapper 3.9.15, H2 para testes, JUnit, Mockito, Docker, Docker Compose, GitHub Actions, HTML, CSS, JavaScript e Nginx. Oracle e Nginx executados e saudáveis neste PC.
+
+## Estrutura do projeto
 
 ```text
 AgriSat-IA/
-│
-├── index.html
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── app.js
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── logo/
-│
+├── .github/workflows/  # CI/CD e deploy reutilizável
+├── .mvn/wrapper/
+├── src/main/           # Java, configurações e Flyway
+├── src/test/           # Serviços, health e autenticação
+├── frontend/           # Protótipo atual
+├── scripts/deploy.sh
+├── documentacao/       # Evidências e apresentação
+├── Dockerfile
+├── docker-compose.yml
+├── .env.example
+├── .dockerignore
+├── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
 └── README.md
 ```
 
----
+O frontend permanece também na raiz para preservar caminhos da publicação estática existente. Essas duas cópias devem ser mantidas sincronizadas até que a configuração de hospedagem permita consolidá-las.
 
-# 🔮 Futuras Implementações
+## Segurança
 
-- Integração com API meteorológica.
-- Integração com Google Maps.
-- Dados reais de satélite.
-- Aplicativo Android.
-- Aplicativo iOS.
-- Chat IA especializado em agronomia.
-- Dashboard administrativo.
-- Sistema multiusuário.
-- Exportação de relatórios PDF.
+.env.example contém placeholders. .env, chaves e builds são ignorados. Credenciais da API/banco ficam no .env local ou no servidor, com acesso restrito. Nunca publique sua saída completa de configuração ou inspeção de containers.
 
----
+Cada GitHub Environment utiliza quatro secrets: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY e DEPLOY_KNOWN_HOSTS. DEPLOY_URL é uma variável do Environment. Host keys devem ser verificadas por canal confiável. O workflow usa StrictHostKeyChecking, não expõe chaves nos logs e remove a chave temporária ao terminar.
 
-# 👨‍💻 Autor
+API exige Basic Auth e health é público. Use HTTPS para acesso autenticado em ambientes públicos. Não haverá deploy enquanto faltar a infraestrutura. A validação Docker local passou; acompanhe publicação e CI em documentacao/GIT-ACTIONS-RETOMADA.md. Resultados atuais em documentacao/RELATORIO-RETOMADA.md. O PDF existente é uma versão parcial histórica e precisa atualizar resultados/prints antes da entrega.
 
-### Magno Pereira da Silva
+## Integrante
 
-Projeto desenvolvido para a **Global Solution 2026 - FIAP ON**
+Magno Pereira da Silva
+RM 565548
+Análise e Desenvolvimento de Sistemas
+FIAP
 
-RM: **565548**
+## Checklist da entrega
 
-Turma: **2TDSOC**
+Marcar somente após execução/evidência. Dockerfile e Compose passaram na execução local; os requisitos de CI/deploy e documentação final permanecem pendentes.
 
----
-
-# 🏆 Projeto Acadêmico
-
-Este projeto foi desenvolvido com fins educacionais para demonstrar a aplicação de tecnologias emergentes na agricultura sustentável, unindo:
-
-🌱 Agricultura de Precisão
-
-📡 Sensoriamento Remoto
-
-🤖 Inteligência Artificial
-
-🌎 Sustentabilidade
-
----
-
-## 📄 Licença
-
-Este projeto é de uso acadêmico e educacional.
-
-© 2026 - AgriSat IA
+| Item | OK |
+|---|---|
+| Projeto compactado em .ZIP com estrutura organizada | ☐ |
+| Dockerfile funcional | ☑ |
+| docker-compose.yml ou arquivos Kubernetes | ☑ |
+| Pipeline com etapas de build, teste e deploy | ☐ |
+| README.md com instruções e prints | ☐ |
+| Documentação técnica com evidências (PDF ou PPT) | ☐ |
+| Deploy realizado nos ambientes staging e produção | ☐ |

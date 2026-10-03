@@ -1,0 +1,181 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 621B 0.6s done
+#1 DONE 0.9s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21
+#3 DONE 3.7s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 DONE 3.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 221B 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#6 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+#6 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e 0.4s done
+#6 DONE 0.4s
+
+#7 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.4s done
+#7 DONE 0.5s
+
+#5 [internal] load build context
+#5 transferring context: 9.99kB 0.0s done
+#5 DONE 0.2s
+
+#8 [build 2/6] WORKDIR /workspace
+#8 CACHED
+
+#9 [build 3/6] COPY pom.xml mvnw mvnw.cmd ./
+#9 CACHED
+
+#10 [build 4/6] COPY .mvn .mvn
+#10 CACHED
+
+#11 [build 5/6] COPY src src
+#11 DONE 0.7s
+
+#12 [build 6/6] RUN chmod +x mvnw && ./mvnw -B -ntp clean package
+#12 17.77 [INFO] Scanning for projects...
+#12 31.82 [INFO] 
+#12 31.82 [INFO] --------------------< br.com.fiap:energia-esg-api >---------------------
+#12 31.82 [INFO] Building energia-esg-api 0.0.1-SNAPSHOT
+#12 31.82 [INFO]   from pom.xml
+#12 31.82 [INFO] --------------------------------[ jar ]---------------------------------
+#12 103.5 [INFO] 
+#12 103.5 [INFO] --- clean:3.4.1:clean (default-clean) @ energia-esg-api ---
+#12 104.0 [INFO] 
+#12 104.0 [INFO] --- resources:3.3.1:resources (default-resources) @ energia-esg-api ---
+#12 105.9 [INFO] Copying 1 resource from src/main/resources to target/classes
+#12 105.9 [INFO] Copying 1 resource from src/main/resources to target/classes
+#12 105.9 [INFO] 
+#12 105.9 [INFO] --- compiler:3.14.1:compile (default-compile) @ energia-esg-api ---
+#12 108.1 [INFO] Recompiling the module because of changed source code.
+#12 108.1 [INFO] Compiling 27 source files with javac [debug parameters release 21] to target/classes
+#12 123.4 [INFO] 
+#12 123.4 [INFO] --- resources:3.3.1:testResources (default-testResources) @ energia-esg-api ---
+#12 123.4 [INFO] Copying 1 resource from src/test/resources to target/test-classes
+#12 123.4 [INFO] 
+#12 123.4 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ energia-esg-api ---
+#12 123.4 [INFO] Recompiling the module because of changed dependency.
+#12 123.4 [INFO] Compiling 3 source files with javac [debug parameters release 21] to target/test-classes
+#12 126.7 [INFO] 
+#12 126.7 [INFO] --- surefire:3.5.5:test (default-test) @ energia-esg-api ---
+#12 130.2 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#12 130.8 [INFO] 
+#12 130.8 [INFO] -------------------------------------------------------
+#12 130.8 [INFO]  T E S T S
+#12 130.8 [INFO] -------------------------------------------------------
+#12 133.6 [INFO] Running br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+#12 134.3 19:28:38.204 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests]: EnergiaEsgApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+#12 134.7 19:28:38.587 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.fiap.energia_esg_api.EnergiaEsgApiApplication for test class br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+#12 137.9 
+#12 137.9   .   ____          _            __ _ _
+#12 137.9  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+#12 137.9 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+#12 137.9  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+#12 137.9   '  |____| .__|_| |_|_| |_\__, | / / / /
+#12 137.9  =========|_|==============|___/=/_/_/_/
+#12 137.9 
+#12 137.9  :: Spring Boot ::               (v3.5.14)
+#12 137.9 
+#12 138.1 2026-10-03T19:28:41.961Z  INFO 200 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : Starting EnergiaEsgApiApplicationTests using Java 21.0.7 with PID 200 (started by root in /workspace)
+#12 138.1 2026-10-03T19:28:41.963Z  INFO 200 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : The following 1 profile is active: "test"
+#12 142.9 2026-10-03T19:28:46.754Z  INFO 200 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+#12 143.5 2026-10-03T19:28:47.352Z  INFO 200 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 540 ms. Found 5 JPA repository interfaces.
+#12 144.7 2026-10-03T19:28:48.597Z  INFO 200 --- [energia-esg-api] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dd847e47-1871-3096-891b-ec9cd0a0051f
+#12 146.3 2026-10-03T19:28:50.178Z  INFO 200 --- [energia-esg-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+#12 146.6 2026-10-03T19:28:50.544Z  INFO 200 --- [energia-esg-api] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+#12 146.8 2026-10-03T19:28:50.675Z  INFO 200 --- [energia-esg-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+#12 147.8 2026-10-03T19:28:51.683Z  INFO 200 --- [energia-esg-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+#12 147.8 2026-10-03T19:28:51.752Z  INFO 200 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+#12 149.4 2026-10-03T19:28:53.308Z  INFO 200 --- [energia-esg-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agrisat_test user=SA
+#12 149.4 2026-10-03T19:28:53.312Z  INFO 200 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+#12 149.7 2026-10-03T19:28:53.557Z  INFO 200 --- [energia-esg-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+#12 149.7 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+#12 149.7 	Database driver: undefined/unknown
+#12 149.7 	Database version: 2.3.232
+#12 149.7 	Autocommit mode: undefined/unknown
+#12 149.7 	Isolation level: undefined/unknown
+#12 149.7 	Minimum pool size: undefined/unknown
+#12 149.7 	Maximum pool size: undefined/unknown
+#12 152.1 2026-10-03T19:28:55.985Z  INFO 200 --- [energia-esg-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+#12 152.2 2026-10-03T19:28:56.118Z  INFO 200 --- [energia-esg-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+#12 153.0 2026-10-03T19:28:56.902Z  WARN 200 --- [energia-esg-api] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+#12 153.2 2026-10-03T19:28:57.129Z  INFO 200 --- [energia-esg-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+#12 155.5 2026-10-03T19:28:59.372Z  INFO 200 --- [energia-esg-api] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+#12 158.6 2026-10-03T19:29:02.517Z  INFO 200 --- [energia-esg-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+#12 158.6 2026-10-03T19:29:02.517Z  INFO 200 --- [energia-esg-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+#12 158.6 2026-10-03T19:29:02.519Z  INFO 200 --- [energia-esg-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+#12 159.6 2026-10-03T19:29:03.567Z  INFO 200 --- [energia-esg-api] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+#12 159.7 2026-10-03T19:29:03.615Z  INFO 200 --- [energia-esg-api] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+#12 159.9 2026-10-03T19:29:03.775Z  WARN 200 --- [energia-esg-api] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+#12 160.2 2026-10-03T19:29:04.149Z  INFO 200 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : Started EnergiaEsgApiApplicationTests in 24.194 seconds (process running for 29.007)
+#12 160.4 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+#12 161.7 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+#12 161.7 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#12 161.7 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#12 161.7 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#12 161.7 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#12 162.6 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.92 s -- in br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+#12 162.6 [INFO] Running br.com.fiap.energia_esg_api.service.AreaServiceTest
+#12 164.0 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.433 s -- in br.com.fiap.energia_esg_api.service.AreaServiceTest
+#12 164.1 [INFO] Running br.com.fiap.energia_esg_api.service.EquipamentoServiceTest
+#12 164.4 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.304 s -- in br.com.fiap.energia_esg_api.service.EquipamentoServiceTest
+#12 164.5 [INFO] 
+#12 164.5 [INFO] Results:
+#12 164.5 [INFO] 
+#12 164.5 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+#12 164.5 [INFO] 
+#12 164.5 [INFO] 
+#12 164.5 [INFO] --- jar:3.4.2:jar (default-jar) @ energia-esg-api ---
+#12 170.9 [INFO] Building jar: /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar
+#12 171.1 [INFO] 
+#12 171.1 [INFO] --- spring-boot:3.5.14:repackage (repackage) @ energia-esg-api ---
+#12 177.3 [INFO] Replacing main artifact /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#12 177.3 [INFO] The original artifact has been renamed to /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar.original
+#12 177.3 [INFO] ------------------------------------------------------------------------
+#12 177.3 [INFO] BUILD SUCCESS
+#12 177.3 [INFO] ------------------------------------------------------------------------
+#12 177.3 [INFO] Total time:  02:39 min
+#12 177.3 [INFO] Finished at: 2026-10-03T19:29:21Z
+#12 177.3 [INFO] ------------------------------------------------------------------------
+#12 DONE 180.3s
+
+#13 [stage-1 2/4] WORKDIR /app
+#13 CACHED
+
+#14 [stage-1 3/4] RUN addgroup -S agrisat && adduser -S agrisat -G agrisat
+#14 CACHED
+
+#15 [stage-1 4/4] COPY --from=build --chown=agrisat:agrisat /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar app.jar
+#15 DONE 0.6s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 10.5s done
+#16 exporting manifest sha256:624bee73591fe839a7df3461ca90ad9e22687688bdcd905c8f14673c55d13de9
+#16 exporting manifest sha256:624bee73591fe839a7df3461ca90ad9e22687688bdcd905c8f14673c55d13de9 0.2s done
+#16 exporting config sha256:7469f3823ae69317422a780c64a6fac8e41291942664cb5ed5329178e600738c
+#16 exporting config sha256:7469f3823ae69317422a780c64a6fac8e41291942664cb5ed5329178e600738c 0.2s done
+#16 exporting attestation manifest sha256:7f000c08d2cbdf387527fd5944eebd05e2472a57c76a722926139b7f10214c18
+#16 exporting attestation manifest sha256:7f000c08d2cbdf387527fd5944eebd05e2472a57c76a722926139b7f10214c18 0.3s done
+#16 exporting manifest list sha256:51de79f7b9117f35e0b458d26c6fa0aef8f87416e8f2200d1e47be6747ddc4d7
+#16 exporting manifest list sha256:51de79f7b9117f35e0b458d26c6fa0aef8f87416e8f2200d1e47be6747ddc4d7 0.2s done
+#16 naming to docker.io/library/agrisat-api:local
+#16 naming to docker.io/library/agrisat-api:local 0.0s done
+#16 unpacking to docker.io/library/agrisat-api:local
+#16 unpacking to docker.io/library/agrisat-api:local 2.4s done
+#16 DONE 14.1s

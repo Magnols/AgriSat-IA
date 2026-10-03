@@ -1,0 +1,6 @@
+ci-cd.yml YAML_OK
+deploy.yml YAML_OK
+DEPENDENCIES_AND_COMPOSE_OK
+INSOMNIA_SENSITIVE_FIELDS [{"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}, {"key": "password", "kind": "TEMPLATE"}]
+SECRET_FORMAT_HITS_FILES []
+STATIC_VALIDATION_PASSED

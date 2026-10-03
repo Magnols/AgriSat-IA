@@ -1,0 +1,13 @@
+GET /actuator/health: HTTP 200, status UP (sem autenticação)
+GET /areas: HTTP 200; resposta [{"idArea":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","descricao":"Registro local criado para comprovar persistência do volume Oracle"}]
+GET /equipamentos: HTTP 200; resposta [{"idEquipamento":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","status":"ATIVO","limiteConsumo":123.45,"area":{"idArea":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","descricao":"Registro local criado para comprovar persistência do volume Oracle"}}]
+GET /alertas: HTTP 200; resposta []
+GET /leituras: HTTP 200; resposta []
+GET /relatorios/consumo-diario: HTTP 200; resposta []
+GET /areas sem autenticação: HTTP 401
+NAME                     IMAGE                        COMMAND                  SERVICE     CREATED          STATUS                        PORTS
+agrisat-ia-api-1         agrisat-api:local            "java -jar app.jar"      api         2 minutes ago    Up 2 minutes (healthy)        0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+agrisat-ia-frontend-1    nginx:stable-alpine          "/docker-entrypoint.…"   frontend    15 minutes ago   Up About a minute (healthy)   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
+agrisat-ia-oracle-db-1   gvenzl/oracle-free:23-slim   "container-entrypoin…"   oracle-db   15 minutes ago   Up 15 minutes (healthy)       127.0.0.1:1521->1521/tcp
+Volume=agrisat-ia_agrisat-oracle-data Driver=local
+Network=agrisat-ia_agrisat-network Driver=bridge Containers=3

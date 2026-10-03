@@ -1,0 +1,66 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:23-slim
+    environment:
+      ORACLE_PASSWORD: ${DB_PASSWORD:?Configure DB_PASSWORD no .env}
+      APP_USER: ${DB_USER:-agrisat_user}
+      APP_USER_PASSWORD: ${DB_PASSWORD:?Configure DB_PASSWORD no .env}
+    ports:
+      - "127.0.0.1:${DB_PORT:-1521}:1521"
+    volumes:
+      - agrisat-oracle-data:/opt/oracle/oradata
+    networks: [agrisat-network]
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 20s
+      timeout: 10s
+      retries: 30
+      start_period: 120s
+  api:
+    build: .
+    image: ${API_IMAGE:-agrisat-api:local}
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+      SPRING_DATASOURCE_USERNAME: ${DB_USER:-agrisat_user}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:?Configure DB_PASSWORD no .env}
+      SPRING_DATASOURCE_DRIVER: oracle.jdbc.OracleDriver
+      API_SECURITY_USER: ${API_SECURITY_USER:-admin}
+      API_SECURITY_PASSWORD: ${API_SECURITY_PASSWORD:?Configure API_SECURITY_PASSWORD no .env}
+      EUREKA_CLIENT_ENABLED: "false"
+      EUREKA_REGISTER_WITH_EUREKA: "false"
+      EUREKA_FETCH_REGISTRY: "false"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_FLYWAY_ENABLED: "true"
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    networks: [agrisat-network]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 120s
+  frontend:
+    image: nginx:stable-alpine
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-8081}:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    networks: [agrisat-network]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/ >/dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+volumes:
+  agrisat-oracle-data:
+networks:
+  agrisat-network:
+    driver: bridge

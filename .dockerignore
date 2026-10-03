@@ -1,0 +1,17 @@
+﻿target/
+build/
+.git/
+.github/
+.idea/
+.vscode/
+.vs/
+*.iml
+*.log
+.env
+.env.*
+!*.env.example
+backup-original/
+entrega/
+documentacao/prints/
+frontend/.git/
+frontend/node_modules/

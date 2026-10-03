@@ -1,0 +1,225 @@
+﻿{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-05-25T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v10.0.0",
+  "resources": [
+    {
+      "_id": "wrk_energia_esg_api",
+      "parentId": null,
+      "_type": "workspace",
+      "name": "Energia ESG API",
+      "description": "Colecao de endpoints da API de monitoramento energetico ESG"
+    },
+    {
+      "_id": "env_energia_esg_api",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      }
+    },
+    {
+      "_id": "fld_areas",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "request_group",
+      "name": "Areas"
+    },
+    {
+      "_id": "fld_equipamentos",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "request_group",
+      "name": "Equipamentos"
+    },
+    {
+      "_id": "fld_leituras",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "request_group",
+      "name": "Leituras"
+    },
+    {
+      "_id": "fld_alertas",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "request_group",
+      "name": "Alertas"
+    },
+    {
+      "_id": "fld_relatorios",
+      "parentId": "wrk_energia_esg_api",
+      "_type": "request_group",
+      "name": "Relatorios"
+    },
+    {
+      "_id": "req_get_areas",
+      "parentId": "fld_areas",
+      "_type": "request",
+      "name": "GET /areas",
+      "method": "GET",
+      "url": "{{ _.base_url }}/areas",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    },
+    {
+      "_id": "req_post_areas",
+      "parentId": "fld_areas",
+      "_type": "request",
+      "name": "POST /areas",
+      "method": "POST",
+      "url": "{{ _.base_url }}/areas",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Data Center\",\n  \"descricao\": \"Area de monitoramento principal\"\n}"
+      }
+    },
+    {
+      "_id": "req_get_equipamentos",
+      "parentId": "fld_equipamentos",
+      "_type": "request",
+      "name": "GET /equipamentos",
+      "method": "GET",
+      "url": "{{ _.base_url }}/equipamentos",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    },
+    {
+      "_id": "req_post_equipamentos",
+      "parentId": "fld_equipamentos",
+      "_type": "request",
+      "name": "POST /equipamentos",
+      "method": "POST",
+      "url": "{{ _.base_url }}/equipamentos",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Servidor Rack 01\",\n  \"status\": \"ATIVO\",\n  \"limiteConsumo\": 450.0,\n  \"idArea\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_put_equipamentos",
+      "parentId": "fld_equipamentos",
+      "_type": "request",
+      "name": "PUT /equipamentos/{id}",
+      "method": "PUT",
+      "url": "{{ _.base_url }}/equipamentos/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Servidor Rack 01\",\n  \"status\": \"MANUTENCAO\",\n  \"limiteConsumo\": 500.0,\n  \"idArea\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_delete_equipamentos",
+      "parentId": "fld_equipamentos",
+      "_type": "request",
+      "name": "DELETE /equipamentos/{id}",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/equipamentos/1",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    },
+    {
+      "_id": "req_get_leituras",
+      "parentId": "fld_leituras",
+      "_type": "request",
+      "name": "GET /leituras",
+      "method": "GET",
+      "url": "{{ _.base_url }}/leituras",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    },
+    {
+      "_id": "req_post_leituras",
+      "parentId": "fld_leituras",
+      "_type": "request",
+      "name": "POST /leituras",
+      "method": "POST",
+      "url": "{{ _.base_url }}/leituras",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"dataHora\": \"2026-05-25T10:00:00\",\n  \"consumo\": 120.5,\n  \"idEquipamento\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_get_alertas",
+      "parentId": "fld_alertas",
+      "_type": "request",
+      "name": "GET /alertas",
+      "method": "GET",
+      "url": "{{ _.base_url }}/alertas",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    },
+    {
+      "_id": "req_get_relatorios_consumo_diario",
+      "parentId": "fld_relatorios",
+      "_type": "request",
+      "name": "GET /relatorios/consumo-diario",
+      "method": "GET",
+      "url": "{{ _.base_url }}/relatorios/consumo-diario",
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.api_user }}",
+        "password": "{{ _.api_password }}"
+      }
+    }
+  ]
+}
+

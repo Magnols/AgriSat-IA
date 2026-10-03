@@ -1,0 +1,82 @@
+name: CI/CD AgriSat IA
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    name: BUILD
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: chmod +x mvnw
+      - run: ./mvnw -B -ntp clean compile
+  test:
+    name: TEST AND PACKAGE
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: chmod +x mvnw
+      - run: ./mvnw -B -ntp clean verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-reports
+          path: target/surefire-reports/
+          if-no-files-found: error
+  docker-build:
+    name: DOCKER BUILD
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          push: false
+          tags: agrisat-api:${{ github.sha }}
+      - name: Preparar release da imagem validada
+        run: |
+          docker save agrisat-api:${{ github.sha }} | gzip > image.tar.gz
+          tar -czf release.tar.gz image.tar.gz docker-compose.yml frontend scripts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: release.tar.gz
+          retention-days: 7
+  deploy-staging:
+    name: STAGING
+    needs: docker-build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment_name: staging
+    secrets: inherit
+  deploy-production:
+    name: PRODUCTION
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment_name: production
+    secrets: inherit
