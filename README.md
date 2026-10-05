@@ -2,9 +2,15 @@
 
 ## AgriSat IA
 
+## Sobre o projeto
+
 AgriSat IA é a aplicação ESG utilizada para implementar práticas DevOps nesta atividade da FIAP. O protótipo agrícola em HTML/CSS/JavaScript acompanha uma API Spring Boot de eficiência energética: áreas, equipamentos, leituras, alertas e relatórios. O frontend ainda é demonstrativo, com dados simulados, e não possui integração funcional com a API. O backend conserva o nome técnico `energia-esg-api`.
 
-**Situação verificável em 03/10/2026:** 7 testes aprovados; Maven package e Docker build aprovados. Compose com Oracle, API e Nginx saudáveis; Flyway V1 aplicada e health público UP. CI remoto e deploys ainda aguardam validação. Não há ZIP final.
+**Situação verificável em 05/10/2026:** resultados locais comprovados nos logs anteriores. GitHub Actions BUILD, TEST AND PACKAGE e DOCKER BUILD aprovados para 0b5dfe2. Staging falhou por DEPLOY_HOST ausente; production não executou. Não há ZIP final.
+
+## Arquitetura
+
+Frontend Nginx independente, API Spring Boot Java 21 e Oracle FREEPDB1. A API usa JDBC/Flyway; serviços Compose compartilham rede bridge, Oracle usa volume persistente. H2 exclusivo dos testes. Staging e produção usam projetos Compose e configurações independentes; podem compartilhar um host x64 com memória suficiente e portas distintas.
 
 ## Como executar localmente com Docker
 
@@ -44,7 +50,7 @@ curl.exe --fail --user admin http://localhost:8080/relatorios/consumo-diario
 
 Sem autenticação, os endpoints de negócio retornam 401. As cinco consultas GET (/areas, /equipamentos, /alertas, /leituras e /relatorios/consumo-diario) responderam HTTP 200 no Oracle real. /areas sem autenticação respondeu 401. Registros EVIDENCIA-PERSISTENCIA são dados criados exclusivamente para validação local.
 
-### Testes e build fora do Docker
+## Testes
 
 ```powershell
 .\mvnw.cmd clean test
@@ -70,7 +76,7 @@ PR executa CI e Docker, mas não deploy. Push/main ou execução manual pode exe
 
 A imagem é transportada como artifact `release`, contendo `image.tar.gz`, Compose, frontend e scripts. Não exige registry externo. Relatórios ficam no artifact `test-reports`.
 
-**Execução no GitHub ainda pendente.** A presença de YAML não comprova pipeline aprovado. Environments e secrets não foram criados nesta sessão. Faltando configuração, staging falhará e production não será executado.
+**CI remoto comprovado:** [execução 37299189626](https://github.com/Magnols/AgriSat-IA/actions/runs/37299189626), commit 0b5dfe2. BUILD, TEST AND PACKAGE e DOCKER BUILD passaram. clean verify: 7 testes, zero falhas/erros/ignorados. Staging falhou na configuração obrigatória DEPLOY_HOST; production foi skipped. Environments staging/Production já existem, mas secrets e variables estavam vazios na consulta de 05/10. O pipeline completo não está aprovado.
 
 ## Containerização
 
@@ -131,7 +137,7 @@ Roteiro completo: [GUIA-EVIDENCIAS](documentacao/evidencias/GUIA-EVIDENCIAS.md).
 
 - Testes/build: logs reais em `documentacao/evidencias/resultados`; prints 01 e 02 pendentes.
 - Docker/Compose: prints 03 a 07 pendentes.
-- GitHub Actions: prints 08 a 10 pendentes.
+- GitHub Actions: [BUILD](documentacao/prints/08-github-actions-build.png), [TEST AND PACKAGE](documentacao/prints/09-github-actions-tests.png), [DOCKER BUILD](documentacao/prints/10-github-actions-docker.png), capturas reais da execução 37299189626.
 - Staging: prints 11 e 12 pendentes.
 - Production: prints 13 e 14 pendentes.
 

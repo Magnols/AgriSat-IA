@@ -1,6 +1,6 @@
 # RELATÓRIO FINAL DA ATIVIDADE DEVOPS — AGRISAT IA
 
-Atualização: 03/10/2026. Substitui o estado histórico do relatório anterior. Parte local aprovada; atividade completa pendente.
+Atualização: 05/10/2026. Parte local aprovada nos logs de 03/10; CI remoto aprovado em 05/10. Atividade completa pendente de deploys reais e entrega final.
 
 ## 1. Aplicação
 
@@ -30,7 +30,7 @@ STATUS: APROVADO LOCALMENTE.
 ## 5. Pipeline
 
 GitHub Actions implementado com BUILD, TEST AND PACKAGE, DOCKER BUILD, STAGING e PRODUCTION. Actionlint/YAML aprovados na inspeção anterior. Production depende de staging. Mesma imagem SHA, SSH, Compose --wait, health público e leitura autenticada.
-Build/Tests/Docker remotos: ainda não comprovados. Resultado Git/publicação em GIT-ACTIONS-RETOMADA.md.
+Build/Tests/Docker remotos: PASS, execução 37299189626 do commit 0b5dfe2 já publicado. clean verify executou 7 testes, zero falhas/erros/ignorados. Logs e três capturas reais preservados. Staging falhou por DEPLOY_HOST ausente e production foi skipped. Environments staging/Production existem, ambos sem secrets/variables. Resultado completo em GIT-ACTIONS-RETOMADA.md.
 
 ## 6. Staging
 
@@ -43,7 +43,7 @@ URL: não obtida. Health/deploy automatizado: não executados, dependem de stagi
 ## 8. Evidências
 
 Logs reais em documentacao/evidencias/resultados: 01-maven-test.txt, 02-maven-package.txt, 05-docker-build.txt, 07-compose-build.txt, 08-compose-up.txt, 09-oracle-flyway.txt, 10-api-persistencia.txt, 11-api-leitura.txt, 12-compose-logs.txt e 14-seguranca.txt. Arquivos anteriores 03/04 registram validação estática/actionlint.
-Screenshots ainda pendentes: captura nativa encontrou timeout/janela minimizada e navegador automatizado bloqueou localhost. Nenhum print foi inventado. Logs não são screenshots.
+Screenshots CI reais obtidos: prints/08-github-actions-build.png, 09-github-actions-tests.png e 10-github-actions-docker.png. Logs CI reais: resultados/15-actions-build.txt, 16-actions-test-package.txt, 17-actions-docker.txt, 18-actions-staging-failure.txt. Capturas locais e dos deploys continuam pendentes. Nenhum print foi inventado. Logs não são screenshots.
 
 ## 9. README
 
@@ -71,15 +71,15 @@ AgriSat-IA-DevOps-FINAL.zip: NÃO GERADO, conforme regra de aguardar deploys com
 
 ## 13. Pendências
 
-CI remoto, servidores/environments/secrets, URLs staging/production, prints reais, PDF final e ZIP.
+Configuração dos secrets/variables nos environments existentes, servidor para duas stacks, URLs staging/production, prints locais/dos deploys, PDF final e ZIP. CI de build/testes/Docker já comprovado; CI/CD completo ainda pendente.
 Ambiente operacional: WSL 3.0.1.0, kernel 6.18.40.1-1, docker-desktop WSL2 running; Desktop 4.80.0; Engine/CLI 29.6.1; Compose 5.1.4.
 Segurança: .env local com senhas aleatórias distintas ignorado; target ignorado; senhas padrão removidas de application.properties. Varredura dos candidatos Git sem credenciais locais ou padrões de chave/token. Nenhum valor real registrado no relatório. Não foram contratados serviços nem criadas contas/VMs.
 
 ## 14. AÇÃO NECESSÁRIA DO USUÁRIO
 
 1. Siga documentacao/ACAO-MANUAL-DEPLOY.md. Use VMs FIAP existentes ou Azure for Students somente se elegível, sem cartão/upgrade/contratação paga.
-2. Prepare dois servidores com Docker e .env protegido. Obtenha IP/DNS e usuário SSH. Não envie senha ou chave privada no chat.
-3. Abra https://github.com/Magnols/AgriSat-IA/settings/environments, clique New environment e crie staging e production.
+2. Prepare um servidor x64 com recursos para duas stacks Compose independentes e .env protegido por ambiente, conforme o guia atualizado. Obtenha IP/DNS e usuário SSH. Não envie senha ou chave privada no chat.
+3. Abra https://github.com/Magnols/AgriSat-IA/settings/environments e configure staging e Production existentes, sem criar duplicados.
 4. Em cada environment crie secrets DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY e DEPLOY_KNOWN_HOSTS. Confirme fingerprint por canal confiável.
 5. Crie Environment variable DEPLOY_URL com URL pública da API de cada ambiente.
 6. Informe somente configuração concluída e URLs públicas para comprovar os deploys.

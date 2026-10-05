@@ -34,7 +34,8 @@ Inspecione somente campos necessários do container. docker inspect completo pod
 
 01/02: comandos aprovados, logs disponíveis; screenshots ainda não obtidos.  
 03/04/05/06/07: comandos Docker, Compose, frontend HTTP 200 e health UP aprovados. Logs reais em resultados/05-docker-build.txt, 07-compose-build.txt, 08-compose-up.txt e 10-api-persistencia.txt. Screenshots ainda pendentes: captura nativa indisponível/timeout e navegador automatizado bloqueou localhost. Não foram criados prints falsos. Persistência aprovada após recriação do container Oracle, preservando volume e área id=2.  
-08 a 14: dependem de push autorizado pelas validações locais e configuração dos ambientes externos.
+08/09/10: screenshots reais salvos como 08-github-actions-build.png, 09-github-actions-tests.png e 10-github-actions-docker.png. Jobs aprovados na execução 37299189626, commit 0b5dfe2. Logs reais 15-actions-build.txt, 16-actions-test-package.txt e 17-actions-docker.txt.
+11 a 14: pendentes. Staging falhou por DEPLOY_HOST ausente; production foi skipped. Log real em 18-actions-staging-failure.txt. Não confundir imagem de falha com evidência de deploy aprovado.
 
 ## Arquivos textuais existentes
 
