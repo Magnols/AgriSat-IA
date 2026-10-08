@@ -63,6 +63,10 @@ Para iniciar o JAR com um Oracle existente, exporte SPRING_DATASOURCE_URL, SPRIN
 
 ## Pipeline CI/CD
 
+### Integração Azure Boards e GitHub
+
+Planejamento informado: organização RM565548, projeto AgriSat-IA, Epic #1 e Issue #2. Commits relacionados ao backend/documentação usam AB#2 para rastreabilidade. A associação deve aparecer no Work Item após publicação, não é presumida apenas pela mensagem. Procedimento e verificação em [AZURE-BOARDS-GITHUB](documentacao/AZURE-BOARDS-GITHUB.md). Azure Boards não substitui a ferramenta CI/CD oficial, GitHub Actions. Não foram recriados Work Items.
+
 Ferramenta: GitHub Actions. Configuração em `.github/workflows/ci-cd.yml` e workflow reutilizável `deploy.yml`.
 
 PUSH/PR em main ou workflow_dispatch executam:
