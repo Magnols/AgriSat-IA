@@ -86,3 +86,7 @@ Segurança: .env local com senhas aleatórias distintas ignorado; target ignorad
 7. Para prints locais, abra PowerShell na raiz e siga GUIA-EVIDENCIAS.md. Capture saídas reais com Win+Shift+S em documentacao/prints. Abra localhost:8081 e localhost:8080/actuator/health para capturas 06/07. Não capture .env nem configuração expandida.
 
 STATUS DA ATIVIDADE: PARTE LOCAL APROVADA / ENTREGA COMPLETA PENDENTE.
+# Atualização vigente - 08/10/2026
+
+Resultados anteriores abaixo preservados como histórico. Consulte [RELATORIO-VALIDACAO-20261008.md](RELATORIO-VALIDACAO-20261008.md): 7 testes locais aprovados, Docker/Compose/API/Flyway/persistência revalidados, AB#2 publicado, novo PDF e ZIP autorizado com bloqueios externos explícitos. CI run 37751748406 passou BUILD/TEST/DOCKER; staging falhou por DEPLOY_HOST, production skipped.
+

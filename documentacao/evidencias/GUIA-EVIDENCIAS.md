@@ -43,3 +43,11 @@ Inspecione somente campos necessários do container. docker inspect completo pod
 - resultados/02-maven-package.txt: saída real do package, incluindo JAR e testes.
 
 Não substituem os prints exigidos na apresentação final.
+# Atualização de evidências - 08/10/2026
+
+Logs atuais 19-maven-verify, 20b-docker-build, 21b-compose-build, 22-compose-up, 23-actions-*, 24-api-persistencia, 26-oracle-migration, 27-api-final e 28-flyway-resumo estão em resultados/. São evidências textuais reais, não screenshots. Logs 20/21 registram tentativas malsucedidas; 25 inclui erros transitórios da recriação do Oracle, recuperados no log 27. Três prints CI históricos reais permanecem em ../prints.
+
+Para repetir Docker neste OneDrive use `./scripts/build-docker-local.ps1` e `./scripts/build-docker-local.ps1 -Compose`; depois `docker compose up -d --no-build --wait --wait-timeout 900`. Nunca capture .env, Authorization, inspect completo ou config expandido.
+
+Evidência adicional Azure Boards: abra https://dev.azure.com/RM565548/AgriSat-IA/_workitems/edit/2, faça login, confira Development/Links com commit 60db9e7 e Parent Epic #1; salve azure-boards-ab2.png nesta pasta. A associação ainda não foi confirmada pelo agente. Abra https://github.com/Magnols/AgriSat-IA/commit/60db9e7030dfc85833ae22c83f7242d30cf62507 para print commit-ab2.png sem dados sensíveis. Capturas locais e de deploy continuam pendentes; não produzir imagens ilustrativas para preenchê-las.
+

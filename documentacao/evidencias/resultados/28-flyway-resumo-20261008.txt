@@ -1,0 +1,7 @@
+
+api-1  | 2026-10-08T08:39:34.330Z  INFO 1 --- [energia-esg-api] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1 (Oracle 23.26)
+api-1  | 2026-10-08T08:39:36.137Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.724s)
+api-1  | 2026-10-08T08:39:36.201Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "AGRISAT_USER": 1
+api-1  | 2026-10-08T08:39:36.217Z  INFO 1 --- [energia-esg-api] [           main] o.f.core.internal.command.DbMigrate      : Schema "AGRISAT_USER" is up to date. No migration necessary.
+api-1  | 2026-10-08T08:39:46.837Z  INFO 1 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplication         : Started EnergiaEsgApiApplication in 30.842 seconds (process running for 35.608)
+

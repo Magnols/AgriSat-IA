@@ -1,0 +1,33 @@
+GET /actuator/health: HTTP 200, status UP (sem autenticação)
+GET /areas: HTTP 200; resposta [{"idArea":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","descricao":"Registro local criado para comprovar persistência do volume Oracle"},{"idArea":2,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163315","descricao":"Registro local criado para comprovar persistência do volume Oracle"}]
+GET /equipamentos: HTTP 200; resposta [{"idEquipamento":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","status":"ATIVO","limiteConsumo":123.45,"area":{"idArea":1,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163147","descricao":"Registro local criado para comprovar persistência do volume Oracle"}},{"idEquipamento":2,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163315","status":"ATIVO","limiteConsumo":123.45,"area":{"idArea":2,"nome":"EVIDENCIA-PERSISTENCIA-20261003-163315","descricao":"Registro local criado para comprovar persistência do volume Oracle"}}]
+GET /alertas: HTTP 200; resposta []
+GET /leituras: HTTP 200; resposta []
+GET /relatorios/consumo-diario: HTTP 200; resposta []
+GET /areas sem autenticação: HTTP 401
+NAME                     IMAGE                        COMMAND                  SERVICE     CREATED         STATUS                    PORTS
+agrisat-ia-api-1         agrisat-api:local            "java -jar app.jar"      api         2 minutes ago   Up 54 seconds (healthy)   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+agrisat-ia-frontend-1    nginx:stable-alpine          "/docker-entrypoint.…"   frontend    4 days ago      Up 17 seconds (healthy)   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
+agrisat-ia-oracle-db-1   gvenzl/oracle-free:23-slim   "container-entrypoin…"   oracle-db   4 days ago      Up 2 minutes (healthy)    127.0.0.1:1521->1521/tcp
+Volume=agrisat-ia_agrisat-oracle-data Driver=local
+Network=agrisat-ia_agrisat-network Driver=bridge Containers=3
+NUMERIC Oracle: equipamento=21, limiteConsumo=123.45 gravado e consultado pela API.
+Antes de recriar Oracle: idArea=21, nome=EVIDENCIA-PERSISTENCIA-20261008-054005
+ Container agrisat-ia-oracle-db-1 Recreate 
+ Container agrisat-ia-oracle-db-1 Recreated 
+ Container agrisat-ia-oracle-db-1 Starting 
+ Container agrisat-ia-oracle-db-1 Started 
+ Container agrisat-ia-oracle-db-1 Running 
+ Container agrisat-ia-api-1 Running 
+ Container agrisat-ia-frontend-1 Running 
+ Container agrisat-ia-oracle-db-1 Waiting 
+ Container agrisat-ia-oracle-db-1 Healthy 
+ Container agrisat-ia-api-1 Waiting 
+ Container agrisat-ia-api-1 Healthy 
+ Container agrisat-ia-api-1 Waiting 
+ Container agrisat-ia-frontend-1 Waiting 
+ Container agrisat-ia-oracle-db-1 Waiting 
+ Container agrisat-ia-frontend-1 Healthy 
+ Container agrisat-ia-oracle-db-1 Healthy 
+ Container agrisat-ia-api-1 Healthy 
+Depois de recriar Oracle: idArea=21, nome=EVIDENCIA-PERSISTENCIA-20261008-054005. PERSISTENCIA APROVADA. Volume preservado.

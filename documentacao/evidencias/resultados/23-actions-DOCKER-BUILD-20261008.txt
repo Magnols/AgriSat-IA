@@ -1,0 +1,1214 @@
+﻿2026-10-08T08:44:33.9044644Z Current runner version: '2.337.0'
+2026-10-08T08:44:33.9070399Z ##[group]Runner Image Provisioner
+2026-10-08T08:44:33.9071251Z Hosted Compute Agent
+2026-10-08T08:44:33.9071863Z Version: 20260901.588
+2026-10-08T08:44:33.9072694Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-08T08:44:33.9073416Z Build Date: 2026-09-01T19:56:44Z
+2026-10-08T08:44:33.9074139Z Worker ID: {bab312d9-5446-4b6d-8cb5-adc5e5ea9330}
+2026-10-08T08:44:33.9074898Z Azure Region: northcentralus
+2026-10-08T08:44:33.9075541Z ##[endgroup]
+2026-10-08T08:44:33.9077426Z ##[group]Operating System
+2026-10-08T08:44:33.9078114Z Ubuntu
+2026-10-08T08:44:33.9078734Z 24.04.5
+2026-10-08T08:44:33.9079274Z LTS
+2026-10-08T08:44:33.9079821Z ##[endgroup]
+2026-10-08T08:44:33.9080423Z ##[group]Runner Image
+2026-10-08T08:44:33.9081023Z Image: ubuntu-24.04
+2026-10-08T08:44:33.9081949Z Version: 20260927.320.1
+2026-10-08T08:44:33.9083360Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-08T08:44:33.9084950Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-08T08:44:33.9085915Z ##[endgroup]
+2026-10-08T08:44:33.9087393Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T08:44:33.9089620Z Contents: read
+2026-10-08T08:44:33.9090209Z Metadata: read
+2026-10-08T08:44:33.9090863Z ##[endgroup]
+2026-10-08T08:44:33.9093355Z Secret source: Actions
+2026-10-08T08:44:33.9094440Z Cache mode: write
+2026-10-08T08:44:33.9095355Z Prepare workflow directory
+2026-10-08T08:44:33.9528629Z Prepare all required actions
+2026-10-08T08:44:33.9600277Z Getting action download info
+2026-10-08T08:44:34.1885846Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-08T08:44:34.2982014Z Download action repository 'docker/setup-buildx-action@v3' (SHA:8d2750c68a42422c14e847fe6c8ac0403b4cbd6f)
+2026-10-08T08:44:34.7298019Z Download action repository 'docker/build-push-action@v6' (SHA:10e90e3645eae34f1e60eeb005ba3a3d33f178e8)
+2026-10-08T08:44:35.1404928Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-08T08:44:35.3733316Z Complete job name: DOCKER BUILD
+2026-10-08T08:44:35.4602628Z ##[group]Run actions/checkout@v6
+2026-10-08T08:44:35.4603988Z with:
+2026-10-08T08:44:35.4604700Z   repository: Magnols/AgriSat-IA
+2026-10-08T08:44:35.4614002Z   token: ***
+2026-10-08T08:44:35.4614791Z   ssh-strict: true
+2026-10-08T08:44:35.4615594Z   ssh-user: git
+2026-10-08T08:44:35.4616462Z   persist-credentials: true
+2026-10-08T08:44:35.4617528Z   clean: true
+2026-10-08T08:44:35.4618368Z   sparse-checkout-cone-mode: true
+2026-10-08T08:44:35.4619295Z   fetch-depth: 1
+2026-10-08T08:44:35.4620037Z   fetch-tags: false
+2026-10-08T08:44:35.4620799Z   show-progress: true
+2026-10-08T08:44:35.4621572Z   lfs: false
+2026-10-08T08:44:35.4622311Z   submodules: false
+2026-10-08T08:44:35.4623099Z   set-safe-directory: true
+2026-10-08T08:44:35.4623948Z   allow-unsafe-pr-checkout: false
+2026-10-08T08:44:35.4625312Z ##[endgroup]
+2026-10-08T08:44:35.5654872Z Syncing repository: Magnols/AgriSat-IA
+2026-10-08T08:44:35.5658796Z ##[group]Getting Git version info
+2026-10-08T08:44:35.5660814Z Working directory is '/home/runner/work/AgriSat-IA/AgriSat-IA'
+2026-10-08T08:44:35.5663523Z [command]/usr/bin/git version
+2026-10-08T08:44:35.5741633Z git version 2.55.0
+2026-10-08T08:44:35.5770456Z ##[endgroup]
+2026-10-08T08:44:35.5790231Z Temporarily overriding HOME='/home/runner/work/_temp/ad2d21c8-c2c9-4031-8d6f-a9fa4bda20d4' before making global git config changes
+2026-10-08T08:44:35.5795229Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T08:44:35.5799375Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/AgriSat-IA/AgriSat-IA
+2026-10-08T08:44:35.5852822Z Deleting the contents of '/home/runner/work/AgriSat-IA/AgriSat-IA'
+2026-10-08T08:44:35.5858639Z ##[group]Determining repository object format
+2026-10-08T08:44:35.5860959Z ##[endgroup]
+2026-10-08T08:44:35.5862804Z ##[group]Initializing the repository
+2026-10-08T08:44:35.5867261Z [command]/usr/bin/git init /home/runner/work/AgriSat-IA/AgriSat-IA
+2026-10-08T08:44:35.6004028Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-08T08:44:35.6007117Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-08T08:44:35.6009687Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-08T08:44:35.6011904Z hint: call:
+2026-10-08T08:44:35.6013092Z hint:
+2026-10-08T08:44:35.6014660Z hint: 	git config --global init.defaultBranch <name>
+2026-10-08T08:44:35.6015811Z hint:
+2026-10-08T08:44:35.6016830Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-08T08:44:35.6019123Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-08T08:44:35.6021140Z hint:
+2026-10-08T08:44:35.6021947Z hint: 	git branch -m <name>
+2026-10-08T08:44:35.6022679Z hint:
+2026-10-08T08:44:35.6023670Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-08T08:44:35.6025500Z Initialized empty Git repository in /home/runner/work/AgriSat-IA/AgriSat-IA/.git/
+2026-10-08T08:44:35.6029791Z [command]/usr/bin/git remote add origin https://github.com/Magnols/AgriSat-IA
+2026-10-08T08:44:35.6075902Z ##[endgroup]
+2026-10-08T08:44:35.6078078Z ##[group]Disabling automatic garbage collection
+2026-10-08T08:44:35.6090647Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-08T08:44:35.6126819Z ##[endgroup]
+2026-10-08T08:44:35.6136052Z ##[group]Setting up auth
+2026-10-08T08:44:35.6137090Z Removing SSH command configuration
+2026-10-08T08:44:35.6143676Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T08:44:35.6179647Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T08:44:35.6631650Z Removing HTTP extra header
+2026-10-08T08:44:35.6639060Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T08:44:35.6678270Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T08:44:35.6900229Z Removing includeIf entries pointing to credentials config files
+2026-10-08T08:44:35.6908042Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T08:44:35.6946059Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T08:44:35.7172968Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-08T08:44:35.7281731Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git.path /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:44:35.7292315Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:44:35.7297571Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:44:35.7340684Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:44:35.7410513Z ##[endgroup]
+2026-10-08T08:44:35.7412231Z ##[group]Fetching the repository
+2026-10-08T08:44:35.7422382Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +60db9e7030dfc85833ae22c83f7242d30cf62507:refs/remotes/origin/main
+2026-10-08T08:44:36.5206363Z From https://github.com/Magnols/AgriSat-IA
+2026-10-08T08:44:36.5209202Z  * [new ref]         60db9e7030dfc85833ae22c83f7242d30cf62507 -> origin/main
+2026-10-08T08:44:36.5219261Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-08T08:44:36.5248177Z   origin/main
+2026-10-08T08:44:36.5256579Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-08T08:44:36.5283523Z 60db9e7030dfc85833ae22c83f7242d30cf62507
+2026-10-08T08:44:36.5289881Z ##[endgroup]
+2026-10-08T08:44:36.5291822Z ##[group]Determining the checkout info
+2026-10-08T08:44:36.5293762Z ##[endgroup]
+2026-10-08T08:44:36.5295525Z [command]/usr/bin/git sparse-checkout disable
+2026-10-08T08:44:36.5351734Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-08T08:44:36.5384407Z ##[group]Checking out the ref
+2026-10-08T08:44:36.5388301Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-08T08:44:36.5633618Z Switched to a new branch 'main'
+2026-10-08T08:44:36.5640091Z branch 'main' set up to track 'origin/main'.
+2026-10-08T08:44:36.5649010Z ##[endgroup]
+2026-10-08T08:44:36.5694492Z [command]/usr/bin/git log -1 --format=%H
+2026-10-08T08:44:36.5722682Z 60db9e7030dfc85833ae22c83f7242d30cf62507
+2026-10-08T08:44:36.6042632Z ##[group]Run docker/setup-buildx-action@v3
+2026-10-08T08:44:36.6043616Z with:
+2026-10-08T08:44:36.6044412Z   driver: docker-container
+2026-10-08T08:44:36.6045268Z   use: true
+2026-10-08T08:44:36.6046047Z   keep-state: false
+2026-10-08T08:44:36.6047060Z   cache-binary: true
+2026-10-08T08:44:36.6047869Z   cleanup: true
+2026-10-08T08:44:36.6048650Z   install: false
+2026-10-08T08:44:36.6049445Z ##[endgroup]
+2026-10-08T08:44:36.8588495Z (node:2301) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T08:44:36.8591712Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T08:44:36.8682157Z ##[group]Docker info
+2026-10-08T08:44:36.8711448Z [command]/usr/bin/docker version
+2026-10-08T08:44:36.9704105Z Client: Docker Engine - Community
+2026-10-08T08:44:36.9729233Z  Version:           28.0.4
+2026-10-08T08:44:36.9731379Z  API version:       1.48
+2026-10-08T08:44:36.9733295Z  Go version:        go1.23.7
+2026-10-08T08:44:36.9735267Z  Git commit:        b8034c0
+2026-10-08T08:44:36.9737587Z  Built:             Tue Mar 25 15:07:16 2025
+2026-10-08T08:44:36.9739548Z  OS/Arch:           linux/amd64
+2026-10-08T08:44:36.9742009Z  Context:           default
+2026-10-08T08:44:36.9743972Z 
+2026-10-08T08:44:36.9745133Z Server: Docker Engine - Community
+2026-10-08T08:44:36.9747301Z  Engine:
+2026-10-08T08:44:36.9749119Z   Version:          28.0.4
+2026-10-08T08:44:36.9750851Z   API version:      1.48 (minimum version 1.24)
+2026-10-08T08:44:36.9752814Z   Go version:       go1.23.7
+2026-10-08T08:44:36.9754683Z   Git commit:       6430e49
+2026-10-08T08:44:36.9756574Z   Built:            Tue Mar 25 15:07:16 2025
+2026-10-08T08:44:36.9758126Z   OS/Arch:          linux/amd64
+2026-10-08T08:44:36.9759000Z   Experimental:     false
+2026-10-08T08:44:36.9759844Z  containerd:
+2026-10-08T08:44:36.9760633Z   Version:          v2.3.6
+2026-10-08T08:44:36.9761562Z   GitCommit:        ee2735368117d2eb259779949d5e75cdafec9761
+2026-10-08T08:44:36.9762544Z  runc:
+2026-10-08T08:44:36.9763345Z   Version:          1.5.1
+2026-10-08T08:44:36.9764213Z   GitCommit:        v1.5.1-0-g8f2685a4
+2026-10-08T08:44:36.9765104Z  docker-init:
+2026-10-08T08:44:36.9765912Z   Version:          0.19.0
+2026-10-08T08:44:36.9766770Z   GitCommit:        de40ad0
+2026-10-08T08:44:36.9781214Z [command]/usr/bin/docker info
+2026-10-08T08:44:37.1791828Z Client: Docker Engine - Community
+2026-10-08T08:44:37.1793831Z  Version:    28.0.4
+2026-10-08T08:44:37.1795539Z  Context:    default
+2026-10-08T08:44:37.1796501Z  Debug Mode: false
+2026-10-08T08:44:37.1797738Z  Plugins:
+2026-10-08T08:44:37.1798709Z   buildx: Docker Buildx (Docker Inc.)
+2026-10-08T08:44:37.1800141Z     Version:  v0.37.1
+2026-10-08T08:44:37.1801244Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-10-08T08:44:37.1802429Z   compose: Docker Compose (Docker Inc.)
+2026-10-08T08:44:37.1803355Z     Version:  v2.38.2
+2026-10-08T08:44:37.1804459Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-10-08T08:44:37.1805112Z 
+2026-10-08T08:44:37.1805488Z Server:
+2026-10-08T08:44:37.1806253Z  Containers: 0
+2026-10-08T08:44:37.1807662Z   Running: 0
+2026-10-08T08:44:37.1808961Z   Paused: 0
+2026-10-08T08:44:37.1810195Z   Stopped: 0
+2026-10-08T08:44:37.1811511Z  Images: 6
+2026-10-08T08:44:37.1812757Z  Server Version: 28.0.4
+2026-10-08T08:44:37.1813983Z  Storage Driver: overlay2
+2026-10-08T08:44:37.1815345Z   Backing Filesystem: extfs
+2026-10-08T08:44:37.1816701Z   Supports d_type: true
+2026-10-08T08:44:37.1818550Z   Using metacopy: false
+2026-10-08T08:44:37.1819993Z   Native Overlay Diff: false
+2026-10-08T08:44:37.1821344Z   userxattr: false
+2026-10-08T08:44:37.1822725Z  Logging Driver: json-file
+2026-10-08T08:44:37.1824217Z  Cgroup Driver: systemd
+2026-10-08T08:44:37.1825636Z  Cgroup Version: 2
+2026-10-08T08:44:37.1827338Z  Plugins:
+2026-10-08T08:44:37.1828663Z   Volume: local
+2026-10-08T08:44:37.1830212Z   Network: bridge host ipvlan macvlan null overlay
+2026-10-08T08:44:37.1832510Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-10-08T08:44:37.1834328Z  Swarm: inactive
+2026-10-08T08:44:37.1835743Z  Runtimes: io.containerd.runc.v2 runc
+2026-10-08T08:44:37.1837718Z  Default Runtime: runc
+2026-10-08T08:44:37.1839172Z  Init Binary: docker-init
+2026-10-08T08:44:37.1840813Z  containerd version: ee2735368117d2eb259779949d5e75cdafec9761
+2026-10-08T08:44:37.1842543Z  runc version: v1.5.1-0-g8f2685a4
+2026-10-08T08:44:37.1844097Z  init version: de40ad0
+2026-10-08T08:44:37.1845546Z  Security Options:
+2026-10-08T08:44:37.1847175Z   apparmor
+2026-10-08T08:44:37.1848454Z   seccomp
+2026-10-08T08:44:37.1849702Z    Profile: builtin
+2026-10-08T08:44:37.1851014Z   cgroupns
+2026-10-08T08:44:37.1852333Z  Kernel Version: 6.17.0-1022-azure
+2026-10-08T08:44:37.1853862Z  Operating System: Ubuntu 24.04.5 LTS
+2026-10-08T08:44:37.1855498Z  OSType: linux
+2026-10-08T08:44:37.1857100Z  Architecture: x86_64
+2026-10-08T08:44:37.1858348Z  CPUs: 4
+2026-10-08T08:44:37.1859566Z  Total Memory: 15.61GiB
+2026-10-08T08:44:37.1860874Z  Name: runnervm8df0l
+2026-10-08T08:44:37.1862197Z  ID: 96bc9d58-7015-4b4a-8357-8e592f0b19b5
+2026-10-08T08:44:37.1863620Z  Docker Root Dir: /var/lib/docker
+2026-10-08T08:44:37.1864993Z  Debug Mode: false
+2026-10-08T08:44:37.1866337Z  Username: githubactions
+2026-10-08T08:44:37.1867442Z  Experimental: false
+2026-10-08T08:44:37.1868293Z  Insecure Registries:
+2026-10-08T08:44:37.1872846Z   ::1/128
+2026-10-08T08:44:37.1873660Z   127.0.0.0/8
+2026-10-08T08:44:37.1874478Z  Live Restore Enabled: false
+2026-10-08T08:44:37.1875083Z 
+2026-10-08T08:44:37.1876728Z ##[endgroup]
+2026-10-08T08:44:37.2451120Z ##[group]Buildx version
+2026-10-08T08:44:37.2480363Z [command]/usr/bin/docker buildx version
+2026-10-08T08:44:37.2982114Z github.com/docker/buildx v0.37.1 0b265a9f62db554fa9aba6dd19e1bd5704bc7d8a
+2026-10-08T08:44:37.3011197Z ##[endgroup]
+2026-10-08T08:44:37.3177844Z ##[group]Inspecting default docker context
+2026-10-08T08:44:37.3325795Z [
+2026-10-08T08:44:37.3326739Z   {
+2026-10-08T08:44:37.3327893Z     "Name": "default",
+2026-10-08T08:44:37.3328964Z     "Metadata": {},
+2026-10-08T08:44:37.3329838Z     "Endpoints": {
+2026-10-08T08:44:37.3330649Z       "docker": {
+2026-10-08T08:44:37.3331564Z         "Host": "unix:///var/run/docker.sock",
+2026-10-08T08:44:37.3332554Z         "SkipTLSVerify": false
+2026-10-08T08:44:37.3333570Z       }
+2026-10-08T08:44:37.3334378Z     },
+2026-10-08T08:44:37.3335215Z     "TLSMaterial": {},
+2026-10-08T08:44:37.3336065Z     "Storage": {
+2026-10-08T08:44:37.3337158Z       "MetadataPath": "<IN MEMORY>",
+2026-10-08T08:44:37.3338325Z       "TLSPath": "<IN MEMORY>"
+2026-10-08T08:44:37.3339189Z     }
+2026-10-08T08:44:37.3339959Z   }
+2026-10-08T08:44:37.3341168Z ]
+2026-10-08T08:44:37.3342566Z ##[endgroup]
+2026-10-08T08:44:37.3343915Z ##[group]Creating a new builder instance
+2026-10-08T08:44:37.4635996Z [command]/usr/bin/docker buildx create --name builder-c785183c-57db-4ee4-9576-1ea60e219e4b --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2026-10-08T08:44:37.5212897Z builder-c785183c-57db-4ee4-9576-1ea60e219e4b
+2026-10-08T08:44:37.5246423Z ##[endgroup]
+2026-10-08T08:44:37.5254606Z ##[group]Booting builder
+2026-10-08T08:44:37.5284283Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-c785183c-57db-4ee4-9576-1ea60e219e4b
+2026-10-08T08:44:37.5803571Z #1 [internal] booting buildkit
+2026-10-08T08:44:37.7311307Z #1 pulling image moby/buildkit:buildx-stable-1
+2026-10-08T08:44:39.9748357Z #1 pulling image moby/buildkit:buildx-stable-1 2.4s done
+2026-10-08T08:44:40.1266340Z #1 creating container buildx_buildkit_builder-c785183c-57db-4ee4-9576-1ea60e219e4b0
+2026-10-08T08:44:40.2373705Z #1 creating container buildx_buildkit_builder-c785183c-57db-4ee4-9576-1ea60e219e4b0 0.3s done
+2026-10-08T08:44:40.2663405Z #1 DONE 2.7s
+2026-10-08T08:44:40.2975357Z Name:          builder-c785183c-57db-4ee4-9576-1ea60e219e4b
+2026-10-08T08:44:40.2976387Z Driver:        docker-container
+2026-10-08T08:44:40.2977947Z Last Activity: 2026-10-08 08:44:37 +0000 UTC
+2026-10-08T08:44:40.2987375Z 
+2026-10-08T08:44:40.2987653Z Nodes:
+2026-10-08T08:44:40.2988107Z Name:                  builder-c785183c-57db-4ee4-9576-1ea60e219e4b0
+2026-10-08T08:44:40.2988690Z Endpoint:              unix:///var/run/docker.sock
+2026-10-08T08:44:40.2989236Z Status:                running
+2026-10-08T08:44:40.2990281Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2026-10-08T08:44:40.2991024Z BuildKit version:      v0.33.1
+2026-10-08T08:44:40.2991501Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+2026-10-08T08:44:40.2992041Z Labels:
+2026-10-08T08:44:40.2992432Z  org.mobyproject.buildkit.worker.executor:         oci
+2026-10-08T08:44:40.2993010Z  org.mobyproject.buildkit.worker.hostname:         c9104dba59d3
+2026-10-08T08:44:40.2993580Z  org.mobyproject.buildkit.worker.network:          host
+2026-10-08T08:44:40.2994117Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2026-10-08T08:44:40.2994662Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2026-10-08T08:44:40.2995195Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2026-10-08T08:44:40.2995653Z GC Policy rule#0:
+2026-10-08T08:44:40.2995982Z  All:            false
+2026-10-08T08:44:40.2996632Z  Filters:        type==source.local type==exec.cachemount type==source.git.checkout
+2026-10-08T08:44:40.2997432Z  Keep Duration:  48h0m0s
+2026-10-08T08:44:40.2997946Z  Max Used Space: 488.3MiB
+2026-10-08T08:44:40.3000112Z GC Policy rule#1:
+2026-10-08T08:44:40.3000388Z  All:            false
+2026-10-08T08:44:40.3001293Z  Keep Duration:  1440h0m0s
+2026-10-08T08:44:40.3001795Z  Reserved Space: 9.313GiB
+2026-10-08T08:44:40.3002262Z  Max Used Space: 93.13GiB
+2026-10-08T08:44:40.3002651Z  Min Free Space: 27.01GiB
+2026-10-08T08:44:40.3003021Z GC Policy rule#2:
+2026-10-08T08:44:40.3003352Z  All:            false
+2026-10-08T08:44:40.3003700Z  Reserved Space: 9.313GiB
+2026-10-08T08:44:40.3004105Z  Max Used Space: 93.13GiB
+2026-10-08T08:44:40.3004516Z  Min Free Space: 27.01GiB
+2026-10-08T08:44:40.3004904Z GC Policy rule#3:
+2026-10-08T08:44:40.3006060Z  All:            true
+2026-10-08T08:44:40.3008000Z  Reserved Space: 9.313GiB
+2026-10-08T08:44:40.3008525Z  Max Used Space: 93.13GiB
+2026-10-08T08:44:40.3009026Z  Min Free Space: 27.01GiB
+2026-10-08T08:44:40.3046701Z ##[endgroup]
+2026-10-08T08:44:40.4060447Z ##[group]Inspect builder
+2026-10-08T08:44:40.4062539Z {
+2026-10-08T08:44:40.4062855Z   "nodes": [
+2026-10-08T08:44:40.4063181Z     {
+2026-10-08T08:44:40.4063622Z       "name": "builder-c785183c-57db-4ee4-9576-1ea60e219e4b0",
+2026-10-08T08:44:40.4064271Z       "endpoint": "unix:///var/run/docker.sock",
+2026-10-08T08:44:40.4064936Z       "status": "running",
+2026-10-08T08:44:40.4065697Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2026-10-08T08:44:40.4066407Z       "buildkit": "v0.33.1",
+2026-10-08T08:44:40.4067121Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2026-10-08T08:44:40.4067535Z       "features": {
+2026-10-08T08:44:40.4067858Z         "Automatically load images to the Docker Engine image store": true,
+2026-10-08T08:44:40.4068235Z         "Cache export": true,
+2026-10-08T08:44:40.4068478Z         "Direct push": true,
+2026-10-08T08:44:40.4068769Z         "Docker exporter": true,
+2026-10-08T08:44:40.4069153Z         "Multi-platform build": true,
+2026-10-08T08:44:40.4069419Z         "OCI exporter": true
+2026-10-08T08:44:40.4069636Z       },
+2026-10-08T08:44:40.4069813Z       "labels": {
+2026-10-08T08:44:40.4070077Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2026-10-08T08:44:40.4070493Z         "org.mobyproject.buildkit.worker.hostname": "c9104dba59d3",
+2026-10-08T08:44:40.4070895Z         "org.mobyproject.buildkit.worker.network": "host",
+2026-10-08T08:44:40.4071310Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2026-10-08T08:44:40.4071935Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2026-10-08T08:44:40.4072375Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2026-10-08T08:44:40.4072727Z       },
+2026-10-08T08:44:40.4072906Z       "gcPolicy": [
+2026-10-08T08:44:40.4073101Z         {
+2026-10-08T08:44:40.4073328Z           "all": false,
+2026-10-08T08:44:40.4073563Z           "filter": [
+2026-10-08T08:44:40.4073882Z             "type==source.local type==exec.cachemount type==source.git.checkout"
+2026-10-08T08:44:40.4074268Z           ],
+2026-10-08T08:44:40.4074466Z           "keepDuration": "48h0m0s",
+2026-10-08T08:44:40.4074719Z           "maxUsedSpace": "488.3MiB"
+2026-10-08T08:44:40.4074951Z         },
+2026-10-08T08:44:40.4075131Z         {
+2026-10-08T08:44:40.4075322Z           "all": false,
+2026-10-08T08:44:40.4075539Z           "keepDuration": "1440h0m0s",
+2026-10-08T08:44:40.4075819Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.4076120Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.4076430Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.4076666Z         },
+2026-10-08T08:44:40.4076833Z         {
+2026-10-08T08:44:40.4077281Z           "all": false,
+2026-10-08T08:44:40.4077500Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.4077751Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.4078025Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.4078296Z         },
+2026-10-08T08:44:40.4078492Z         {
+2026-10-08T08:44:40.4078690Z           "all": true,
+2026-10-08T08:44:40.4078923Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.4079193Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.4079466Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.4079757Z         }
+2026-10-08T08:44:40.4079928Z       ]
+2026-10-08T08:44:40.4080119Z     }
+2026-10-08T08:44:40.4080287Z   ],
+2026-10-08T08:44:40.4080547Z   "name": "builder-c785183c-57db-4ee4-9576-1ea60e219e4b",
+2026-10-08T08:44:40.4080894Z   "driver": "docker-container",
+2026-10-08T08:44:40.4081232Z   "lastActivity": "2026-10-08T08:44:37.000Z"
+2026-10-08T08:44:40.4081529Z }
+2026-10-08T08:44:40.4081995Z ##[endgroup]
+2026-10-08T08:44:40.4082398Z ##[group]BuildKit version
+2026-10-08T08:44:40.4082715Z builder-c785183c-57db-4ee4-9576-1ea60e219e4b0: v0.33.1
+2026-10-08T08:44:40.4083159Z ##[endgroup]
+2026-10-08T08:44:40.4309807Z ##[group]Run docker/build-push-action@v6
+2026-10-08T08:44:40.4310109Z with:
+2026-10-08T08:44:40.4310297Z   context: .
+2026-10-08T08:44:40.4310485Z   load: true
+2026-10-08T08:44:40.4310668Z   push: false
+2026-10-08T08:44:40.4310930Z   tags: agrisat-api:60db9e7030dfc85833ae22c83f7242d30cf62507
+2026-10-08T08:44:40.4311257Z   no-cache: false
+2026-10-08T08:44:40.4311624Z   pull: false
+2026-10-08T08:44:40.4314068Z   github-token: ***
+2026-10-08T08:44:40.4314289Z ##[endgroup]
+2026-10-08T08:44:40.6741252Z (node:2779) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T08:44:40.6742129Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T08:44:40.6762253Z ##[group]GitHub Actions runtime token ACs
+2026-10-08T08:44:40.6770383Z refs/heads/main: read/write
+2026-10-08T08:44:40.6771496Z ##[endgroup]
+2026-10-08T08:44:40.6771984Z ##[group]Docker info
+2026-10-08T08:44:40.6816292Z [command]/usr/bin/docker version
+2026-10-08T08:44:40.7029322Z Client: Docker Engine - Community
+2026-10-08T08:44:40.7030088Z  Version:           28.0.4
+2026-10-08T08:44:40.7030891Z  API version:       1.48
+2026-10-08T08:44:40.7031522Z  Go version:        go1.23.7
+2026-10-08T08:44:40.7032101Z  Git commit:        b8034c0
+2026-10-08T08:44:40.7032687Z  Built:             Tue Mar 25 15:07:16 2025
+2026-10-08T08:44:40.7033381Z  OS/Arch:           linux/amd64
+2026-10-08T08:44:40.7033964Z  Context:           default
+2026-10-08T08:44:40.7034455Z 
+2026-10-08T08:44:40.7034838Z Server: Docker Engine - Community
+2026-10-08T08:44:40.7069881Z  Engine:
+2026-10-08T08:44:40.7070423Z   Version:          28.0.4
+2026-10-08T08:44:40.7070902Z   API version:      1.48 (minimum version 1.24)
+2026-10-08T08:44:40.7071429Z   Go version:       go1.23.7
+2026-10-08T08:44:40.7071849Z   Git commit:       6430e49
+2026-10-08T08:44:40.7072280Z   Built:            Tue Mar 25 15:07:16 2025
+2026-10-08T08:44:40.7072769Z   OS/Arch:          linux/amd64
+2026-10-08T08:44:40.7073223Z   Experimental:     false
+2026-10-08T08:44:40.7073628Z  containerd:
+2026-10-08T08:44:40.7073970Z   Version:          v2.3.6
+2026-10-08T08:44:40.7074470Z   GitCommit:        ee2735368117d2eb259779949d5e75cdafec9761
+2026-10-08T08:44:40.7075008Z  runc:
+2026-10-08T08:44:40.7075339Z   Version:          1.5.1
+2026-10-08T08:44:40.7075736Z   GitCommit:        v1.5.1-0-g8f2685a4
+2026-10-08T08:44:40.7076179Z  docker-init:
+2026-10-08T08:44:40.7076501Z   Version:          0.19.0
+2026-10-08T08:44:40.7077881Z   GitCommit:        de40ad0
+2026-10-08T08:44:40.7093261Z [command]/usr/bin/docker info
+2026-10-08T08:44:40.7631216Z Client: Docker Engine - Community
+2026-10-08T08:44:40.7642882Z  Version:    28.0.4
+2026-10-08T08:44:40.7643484Z  Context:    default
+2026-10-08T08:44:40.7643931Z  Debug Mode: false
+2026-10-08T08:44:40.7644327Z  Plugins:
+2026-10-08T08:44:40.7644720Z   buildx: Docker Buildx (Docker Inc.)
+2026-10-08T08:44:40.7645211Z     Version:  v0.37.1
+2026-10-08T08:44:40.7645787Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-10-08T08:44:40.7646454Z   compose: Docker Compose (Docker Inc.)
+2026-10-08T08:44:40.7647234Z     Version:  v2.38.2
+2026-10-08T08:44:40.7647784Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-10-08T08:44:40.7648226Z 
+2026-10-08T08:44:40.7648506Z Server:
+2026-10-08T08:44:40.7648794Z  Containers: 1
+2026-10-08T08:44:40.7649098Z   Running: 1
+2026-10-08T08:44:40.7649436Z   Paused: 0
+2026-10-08T08:44:40.7649759Z   Stopped: 0
+2026-10-08T08:44:40.7650052Z  Images: 7
+2026-10-08T08:44:40.7650357Z  Server Version: 28.0.4
+2026-10-08T08:44:40.7650724Z  Storage Driver: overlay2
+2026-10-08T08:44:40.7651141Z   Backing Filesystem: extfs
+2026-10-08T08:44:40.7651539Z   Supports d_type: true
+2026-10-08T08:44:40.7651915Z   Using metacopy: false
+2026-10-08T08:44:40.7652299Z   Native Overlay Diff: false
+2026-10-08T08:44:40.7652678Z   userxattr: false
+2026-10-08T08:44:40.7653023Z  Logging Driver: json-file
+2026-10-08T08:44:40.7653398Z  Cgroup Driver: systemd
+2026-10-08T08:44:40.7654164Z  Cgroup Version: 2
+2026-10-08T08:44:40.7654503Z  Plugins:
+2026-10-08T08:44:40.7654795Z   Volume: local
+2026-10-08T08:44:40.7655301Z   Network: bridge host ipvlan macvlan null overlay
+2026-10-08T08:44:40.7656113Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-10-08T08:44:40.7656850Z  Swarm: inactive
+2026-10-08T08:44:40.7657569Z  Runtimes: io.containerd.runc.v2 runc
+2026-10-08T08:44:40.7658378Z  Default Runtime: runc
+2026-10-08T08:44:40.7658950Z  Init Binary: docker-init
+2026-10-08T08:44:40.7659682Z  containerd version: ee2735368117d2eb259779949d5e75cdafec9761
+2026-10-08T08:44:40.7661320Z  runc version: v1.5.1-0-g8f2685a4
+2026-10-08T08:44:40.7662703Z  init version: de40ad0
+2026-10-08T08:44:40.7663735Z  Security Options:
+2026-10-08T08:44:40.7664594Z   apparmor
+2026-10-08T08:44:40.7665037Z   seccomp
+2026-10-08T08:44:40.7665466Z    Profile: builtin
+2026-10-08T08:44:40.7665937Z   cgroupns
+2026-10-08T08:44:40.7666423Z  Kernel Version: 6.17.0-1022-azure
+2026-10-08T08:44:40.7667220Z  Operating System: Ubuntu 24.04.5 LTS
+2026-10-08T08:44:40.7667738Z  OSType: linux
+2026-10-08T08:44:40.7668204Z  Architecture: x86_64
+2026-10-08T08:44:40.7668720Z  CPUs: 4
+2026-10-08T08:44:40.7669150Z  Total Memory: 15.61GiB
+2026-10-08T08:44:40.7669679Z  Name: runnervm8df0l
+2026-10-08T08:44:40.7670061Z  ID: 96bc9d58-7015-4b4a-8357-8e592f0b19b5
+2026-10-08T08:44:40.7670353Z  Docker Root Dir: /var/lib/docker
+2026-10-08T08:44:40.7670632Z  Debug Mode: false
+2026-10-08T08:44:40.7670858Z  Username: githubactions
+2026-10-08T08:44:40.7671090Z  Experimental: false
+2026-10-08T08:44:40.7671301Z  Insecure Registries:
+2026-10-08T08:44:40.7671554Z   ::1/128
+2026-10-08T08:44:40.7671728Z   127.0.0.0/8
+2026-10-08T08:44:40.7671932Z  Live Restore Enabled: false
+2026-10-08T08:44:40.7672102Z 
+2026-10-08T08:44:40.7672461Z ##[endgroup]
+2026-10-08T08:44:40.7672828Z ##[group]Proxy configuration
+2026-10-08T08:44:40.7673076Z No proxy configuration found
+2026-10-08T08:44:40.7673437Z ##[endgroup]
+2026-10-08T08:44:40.8296063Z ##[group]Buildx version
+2026-10-08T08:44:40.8321994Z [command]/usr/bin/docker buildx version
+2026-10-08T08:44:40.8879957Z github.com/docker/buildx v0.37.1 0b265a9f62db554fa9aba6dd19e1bd5704bc7d8a
+2026-10-08T08:44:40.8919943Z ##[endgroup]
+2026-10-08T08:44:40.8920380Z ##[group]Builder info
+2026-10-08T08:44:40.9932738Z {
+2026-10-08T08:44:40.9933150Z   "nodes": [
+2026-10-08T08:44:40.9933518Z     {
+2026-10-08T08:44:40.9934022Z       "name": "builder-c785183c-57db-4ee4-9576-1ea60e219e4b0",
+2026-10-08T08:44:40.9934772Z       "endpoint": "unix:///var/run/docker.sock",
+2026-10-08T08:44:40.9935355Z       "status": "running",
+2026-10-08T08:44:40.9936298Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2026-10-08T08:44:40.9937592Z       "buildkit": "v0.33.1",
+2026-10-08T08:44:40.9938200Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2026-10-08T08:44:40.9938804Z       "features": {
+2026-10-08T08:44:40.9939392Z         "Automatically load images to the Docker Engine image store": true,
+2026-10-08T08:44:40.9940107Z         "Cache export": true,
+2026-10-08T08:44:40.9940560Z         "Direct push": true,
+2026-10-08T08:44:40.9941033Z         "Docker exporter": true,
+2026-10-08T08:44:40.9941500Z         "Multi-platform build": true,
+2026-10-08T08:44:40.9941977Z         "OCI exporter": true
+2026-10-08T08:44:40.9942381Z       },
+2026-10-08T08:44:40.9942723Z       "labels": {
+2026-10-08T08:44:40.9943167Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2026-10-08T08:44:40.9943870Z         "org.mobyproject.buildkit.worker.hostname": "c9104dba59d3",
+2026-10-08T08:44:40.9944597Z         "org.mobyproject.buildkit.worker.network": "host",
+2026-10-08T08:44:40.9945393Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2026-10-08T08:44:40.9946205Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2026-10-08T08:44:40.9947707Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2026-10-08T08:44:40.9948665Z       },
+2026-10-08T08:44:40.9949018Z       "gcPolicy": [
+2026-10-08T08:44:40.9949374Z         {
+2026-10-08T08:44:40.9949698Z           "all": false,
+2026-10-08T08:44:40.9950124Z           "filter": [
+2026-10-08T08:44:40.9950713Z             "type==source.local type==exec.cachemount type==source.git.checkout"
+2026-10-08T08:44:40.9951395Z           ],
+2026-10-08T08:44:40.9952146Z           "keepDuration": "48h0m0s",
+2026-10-08T08:44:40.9952631Z           "maxUsedSpace": "488.3MiB"
+2026-10-08T08:44:40.9953072Z         },
+2026-10-08T08:44:40.9953438Z         {
+2026-10-08T08:44:40.9953773Z           "all": false,
+2026-10-08T08:44:40.9954205Z           "keepDuration": "1440h0m0s",
+2026-10-08T08:44:40.9954680Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.9955145Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.9955609Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.9956118Z         },
+2026-10-08T08:44:40.9956448Z         {
+2026-10-08T08:44:40.9956789Z           "all": false,
+2026-10-08T08:44:40.9957773Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.9958236Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.9958699Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.9959132Z         },
+2026-10-08T08:44:40.9959482Z         {
+2026-10-08T08:44:40.9959838Z           "all": true,
+2026-10-08T08:44:40.9960246Z           "reservedSpace": "9.313GiB",
+2026-10-08T08:44:40.9960765Z           "maxUsedSpace": "93.13GiB",
+2026-10-08T08:44:40.9961237Z           "minFreeSpace": "27.01GiB"
+2026-10-08T08:44:40.9961672Z         }
+2026-10-08T08:44:40.9961986Z       ]
+2026-10-08T08:44:40.9962303Z     }
+2026-10-08T08:44:40.9962645Z   ],
+2026-10-08T08:44:40.9963077Z   "name": "builder-c785183c-57db-4ee4-9576-1ea60e219e4b",
+2026-10-08T08:44:40.9963676Z   "driver": "docker-container",
+2026-10-08T08:44:40.9964200Z   "lastActivity": "2026-10-08T08:44:37.000Z"
+2026-10-08T08:44:40.9964758Z }
+2026-10-08T08:44:40.9965549Z ##[endgroup]
+2026-10-08T08:44:41.1544352Z [command]/usr/bin/docker buildx build --iidfile /home/runner/work/_temp/docker-actions-toolkit-999LHL/build-iidfile-bbb2f8e5f8.txt --tag agrisat-api:60db9e7030dfc85833ae22c83f7242d30cf62507 --load --metadata-file /home/runner/work/_temp/docker-actions-toolkit-999LHL/build-metadata-59b45435c5.json .
+2026-10-08T08:44:41.4999247Z #0 building with "builder-c785183c-57db-4ee4-9576-1ea60e219e4b" instance using docker-container driver
+2026-10-08T08:44:41.5000292Z 
+2026-10-08T08:44:41.5000584Z #1 [internal] load build definition from Dockerfile
+2026-10-08T08:44:41.5001317Z #1 transferring dockerfile: 621B done
+2026-10-08T08:44:41.5001908Z #1 DONE 0.0s
+2026-10-08T08:44:41.5002161Z 
+2026-10-08T08:44:41.5002505Z #2 [auth] library/maven:pull token for registry-1.docker.io
+2026-10-08T08:44:41.5003147Z #2 DONE 0.0s
+2026-10-08T08:44:41.5003302Z 
+2026-10-08T08:44:41.5003575Z #3 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
+2026-10-08T08:44:41.5004103Z #3 DONE 0.0s
+2026-10-08T08:44:41.5004262Z 
+2026-10-08T08:44:41.5004585Z #4 [internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-21
+2026-10-08T08:44:41.7545878Z #4 DONE 0.5s
+2026-10-08T08:44:41.7546632Z 
+2026-10-08T08:44:41.7547610Z #5 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+2026-10-08T08:44:41.8572650Z #5 DONE 0.5s
+2026-10-08T08:44:41.8573016Z 
+2026-10-08T08:44:41.8574673Z #6 [internal] load .dockerignore
+2026-10-08T08:44:41.8575691Z #6 transferring context: 220B done
+2026-10-08T08:44:41.8575974Z #6 DONE 0.0s
+2026-10-08T08:44:41.8576091Z 
+2026-10-08T08:44:41.8576196Z #7 [internal] load build context
+2026-10-08T08:44:41.8576558Z #7 transferring context: 62.94kB 0.0s done
+2026-10-08T08:44:41.8580084Z #7 DONE 0.0s
+2026-10-08T08:44:41.8580479Z 
+2026-10-08T08:44:41.8581578Z #8 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+2026-10-08T08:44:41.8583875Z #8 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 done
+2026-10-08T08:44:41.8585352Z #8 sha256:5abc2579d091ef7359d2654aa76115280a45a0c81c04e644017e6cb1ef45295b 2.46kB / 2.46kB 0.0s done
+2026-10-08T08:44:41.9742679Z #8 sha256:b3405c83ad56324f504856a713a1a5d6c28d82a78170a4dd4097c209f8517c18 128B / 128B 0.0s done
+2026-10-08T08:44:41.9744134Z #8 sha256:e2de96513ba9eb53b431787ec8a65cdde380ac4772a3e4c4b714dcfde2a102b5 3.85MB / 3.85MB 0.1s done
+2026-10-08T08:44:41.9745761Z #8 extracting sha256:e2de96513ba9eb53b431787ec8a65cdde380ac4772a3e4c4b714dcfde2a102b5
+2026-10-08T08:44:41.9747824Z #8 sha256:8d3daccf082f0d6dd742c035c3462b3d39cf08cfd1ab9f511c1d592fa15d8d96 16.97MB / 16.97MB 0.1s done
+2026-10-08T08:44:41.9749111Z #8 sha256:2242b49db9769393ae8d0d9f9742407ad40a7611accc1c189f0ffac0a0530221 31.46MB / 53.26MB 0.2s
+2026-10-08T08:44:42.1754455Z #8 extracting sha256:e2de96513ba9eb53b431787ec8a65cdde380ac4772a3e4c4b714dcfde2a102b5 0.2s done
+2026-10-08T08:44:42.1757394Z #8 sha256:2242b49db9769393ae8d0d9f9742407ad40a7611accc1c189f0ffac0a0530221 53.26MB / 53.26MB 0.2s done
+2026-10-08T08:44:42.1761437Z #8 extracting sha256:8d3daccf082f0d6dd742c035c3462b3d39cf08cfd1ab9f511c1d592fa15d8d96
+2026-10-08T08:44:42.6087933Z #8 extracting sha256:8d3daccf082f0d6dd742c035c3462b3d39cf08cfd1ab9f511c1d592fa15d8d96 0.5s done
+2026-10-08T08:44:42.6089203Z #8 DONE 0.8s
+2026-10-08T08:44:42.6089599Z 
+2026-10-08T08:44:42.6090602Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:42.6092443Z #9 resolve docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e done
+2026-10-08T08:44:42.6093827Z #9 sha256:ac08ec036c80487483481b8b4099c337b9f50c5a6fa61a916e0714fd6a25808b 153B / 153B 0.1s done
+2026-10-08T08:44:42.6094914Z #9 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 0.0s done
+2026-10-08T08:44:42.6096024Z #9 sha256:100a2f749ec88b1edeb1a262140d5ff15deb223ddb60db02b007fbd02e430c01 850B / 850B 0.0s done
+2026-10-08T08:44:42.6097340Z #9 sha256:99f05f209f6fd19181ffd50612236193ad46991100ff9ffc79e5b5d7f15f0e06 2.28kB / 2.28kB 0.0s done
+2026-10-08T08:44:42.6098454Z #9 sha256:14ea0157e6cfd88563f52f3de2252f96d1de76755323a4e666dc06bfdc169362 157B / 157B 0.0s done
+2026-10-08T08:44:42.6099594Z #9 sha256:52fd01a09145cd9d4a6b5a5e02abea836a1e0b59167645cb4945260b39389858 22.54MB / 22.54MB 0.1s done
+2026-10-08T08:44:42.6100746Z #9 sha256:903243de14d5324cd69215ac4e249070a8a95725e01db0e0a8a7a91e819842a2 9.17MB / 9.17MB 0.1s done
+2026-10-08T08:44:42.6101881Z #9 sha256:380ab39b4f9f66f5491f1e6c6e1b00af781c9e67017d5194267c1eb1b1ea9d61 22.95MB / 22.95MB 0.1s done
+2026-10-08T08:44:42.6103075Z #9 sha256:fdf9441e6dddb8defe5d23ab009dd1a3d91ad4f953b4d53d9e904e1adcae03de 157.65MB / 157.65MB 0.5s done
+2026-10-08T08:44:42.6104918Z #9 sha256:d9d352c11bbd3880007953ed6eec1cbace76898828f3434984a0ca60672fdf5a 29.72MB / 29.72MB 0.2s done
+2026-10-08T08:44:42.6106085Z #9 extracting sha256:d9d352c11bbd3880007953ed6eec1cbace76898828f3434984a0ca60672fdf5a
+2026-10-08T08:44:43.1301076Z #9 extracting sha256:d9d352c11bbd3880007953ed6eec1cbace76898828f3434984a0ca60672fdf5a 0.9s done
+2026-10-08T08:44:43.1304258Z #9 DONE 1.4s
+2026-10-08T08:44:43.1304854Z 
+2026-10-08T08:44:43.1305871Z #8 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+2026-10-08T08:44:43.1307621Z #8 extracting sha256:2242b49db9769393ae8d0d9f9742407ad40a7611accc1c189f0ffac0a0530221
+2026-10-08T08:44:43.4370422Z #8 extracting sha256:2242b49db9769393ae8d0d9f9742407ad40a7611accc1c189f0ffac0a0530221 0.8s done
+2026-10-08T08:44:43.4371268Z #8 DONE 1.7s
+2026-10-08T08:44:43.4371469Z 
+2026-10-08T08:44:43.4372203Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:43.4373484Z #9 extracting sha256:380ab39b4f9f66f5491f1e6c6e1b00af781c9e67017d5194267c1eb1b1ea9d61
+2026-10-08T08:44:43.5958895Z #9 ...
+2026-10-08T08:44:43.5959115Z 
+2026-10-08T08:44:43.5959897Z #8 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+2026-10-08T08:44:43.5961118Z #8 extracting sha256:b3405c83ad56324f504856a713a1a5d6c28d82a78170a4dd4097c209f8517c18 done
+2026-10-08T08:44:43.5961977Z #8 extracting sha256:5abc2579d091ef7359d2654aa76115280a45a0c81c04e644017e6cb1ef45295b done
+2026-10-08T08:44:43.5963100Z #8 DONE 1.7s
+2026-10-08T08:44:43.7460459Z 
+2026-10-08T08:44:43.7460984Z #10 [stage-1 2/4] WORKDIR /app
+2026-10-08T08:44:43.7636240Z #10 ...
+2026-10-08T08:44:43.7636671Z 
+2026-10-08T08:44:43.7638647Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:43.7640447Z #9 extracting sha256:380ab39b4f9f66f5491f1e6c6e1b00af781c9e67017d5194267c1eb1b1ea9d61 0.6s done
+2026-10-08T08:44:43.7641587Z #9 DONE 2.0s
+2026-10-08T08:44:43.9137491Z 
+2026-10-08T08:44:43.9138958Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:43.9140793Z #9 extracting sha256:fdf9441e6dddb8defe5d23ab009dd1a3d91ad4f953b4d53d9e904e1adcae03de
+2026-10-08T08:44:44.0189815Z #9 ...
+2026-10-08T08:44:44.0190301Z 
+2026-10-08T08:44:44.0190552Z #10 [stage-1 2/4] WORKDIR /app
+2026-10-08T08:44:44.0191039Z #10 DONE 0.6s
+2026-10-08T08:44:44.1703899Z 
+2026-10-08T08:44:44.1705726Z #11 [stage-1 3/4] RUN addgroup -S agrisat && adduser -S agrisat -G agrisat
+2026-10-08T08:44:44.2691456Z #11 DONE 0.2s
+2026-10-08T08:44:44.2691994Z 
+2026-10-08T08:44:44.2693066Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:45.0905820Z #9 extracting sha256:fdf9441e6dddb8defe5d23ab009dd1a3d91ad4f953b4d53d9e904e1adcae03de 1.3s done
+2026-10-08T08:44:45.0906780Z #9 DONE 3.3s
+2026-10-08T08:44:45.2494535Z 
+2026-10-08T08:44:45.2495542Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:45.2496436Z #9 extracting sha256:14ea0157e6cfd88563f52f3de2252f96d1de76755323a4e666dc06bfdc169362 done
+2026-10-08T08:44:45.2497956Z #9 extracting sha256:99f05f209f6fd19181ffd50612236193ad46991100ff9ffc79e5b5d7f15f0e06 done
+2026-10-08T08:44:45.2500108Z #9 extracting sha256:52fd01a09145cd9d4a6b5a5e02abea836a1e0b59167645cb4945260b39389858
+2026-10-08T08:44:45.6585731Z #9 extracting sha256:52fd01a09145cd9d4a6b5a5e02abea836a1e0b59167645cb4945260b39389858 0.6s done
+2026-10-08T08:44:45.6587204Z #9 DONE 3.9s
+2026-10-08T08:44:45.8772317Z 
+2026-10-08T08:44:45.8773276Z #9 [build 1/6] FROM docker.io/library/maven:3.9.9-eclipse-temurin-21@sha256:3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e
+2026-10-08T08:44:45.8774550Z #9 extracting sha256:903243de14d5324cd69215ac4e249070a8a95725e01db0e0a8a7a91e819842a2 0.1s done
+2026-10-08T08:44:45.8775318Z #9 extracting sha256:100a2f749ec88b1edeb1a262140d5ff15deb223ddb60db02b007fbd02e430c01 done
+2026-10-08T08:44:45.8776066Z #9 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+2026-10-08T08:44:45.8776777Z #9 extracting sha256:ac08ec036c80487483481b8b4099c337b9f50c5a6fa61a916e0714fd6a25808b done
+2026-10-08T08:44:45.8777623Z #9 DONE 4.0s
+2026-10-08T08:44:45.8777756Z 
+2026-10-08T08:44:45.8777876Z #12 [build 2/6] WORKDIR /workspace
+2026-10-08T08:44:46.2073399Z #12 DONE 0.5s
+2026-10-08T08:44:46.3932298Z 
+2026-10-08T08:44:46.3932861Z #13 [build 3/6] COPY pom.xml mvnw mvnw.cmd ./
+2026-10-08T08:44:46.3933559Z #13 DONE 0.0s
+2026-10-08T08:44:46.3933752Z 
+2026-10-08T08:44:46.3933953Z #14 [build 4/6] COPY .mvn .mvn
+2026-10-08T08:44:46.3934425Z #14 DONE 0.0s
+2026-10-08T08:44:46.3934581Z 
+2026-10-08T08:44:46.3934714Z #15 [build 5/6] COPY src src
+2026-10-08T08:44:46.3935039Z #15 DONE 0.0s
+2026-10-08T08:44:46.3935195Z 
+2026-10-08T08:44:46.3936188Z #16 [build 6/6] RUN chmod +x mvnw && ./mvnw -B -ntp clean package
+2026-10-08T08:44:47.7411234Z #16 1.498 [INFO] Scanning for projects...
+2026-10-08T08:44:49.9066227Z #16 3.664 [INFO] 
+2026-10-08T08:44:50.0570233Z #16 3.664 [INFO] --------------------< br.com.fiap:energia-esg-api >---------------------
+2026-10-08T08:44:50.0570902Z #16 3.664 [INFO] Building energia-esg-api 0.0.1-SNAPSHOT
+2026-10-08T08:44:50.0571597Z #16 3.664 [INFO]   from pom.xml
+2026-10-08T08:44:50.0572006Z #16 3.664 [INFO] --------------------------------[ jar ]---------------------------------
+2026-10-08T08:44:56.7108082Z #16 10.47 [INFO] 
+2026-10-08T08:44:56.8133676Z #16 10.47 [INFO] --- clean:3.4.1:clean (default-clean) @ energia-esg-api ---
+2026-10-08T08:44:56.8137082Z #16 10.57 [INFO] 
+2026-10-08T08:44:56.8138710Z #16 10.57 [INFO] --- resources:3.3.1:resources (default-resources) @ energia-esg-api ---
+2026-10-08T08:44:57.2860531Z #16 11.04 [INFO] Copying 1 resource from src/main/resources to target/classes
+2026-10-08T08:44:57.4521689Z #16 11.06 [INFO] Copying 1 resource from src/main/resources to target/classes
+2026-10-08T08:44:57.4522383Z #16 11.06 [INFO] 
+2026-10-08T08:44:57.4522948Z #16 11.06 [INFO] --- compiler:3.14.1:compile (default-compile) @ energia-esg-api ---
+2026-10-08T08:44:57.7298798Z #16 11.49 [INFO] Recompiling the module because of changed source code.
+2026-10-08T08:44:57.8871142Z #16 11.49 [INFO] Compiling 27 source files with javac [debug parameters release 21] to target/classes
+2026-10-08T08:44:59.3669332Z #16 13.12 [INFO] 
+2026-10-08T08:44:59.5323380Z #16 13.12 [INFO] --- resources:3.3.1:testResources (default-testResources) @ energia-esg-api ---
+2026-10-08T08:44:59.5324574Z #16 13.13 [INFO] Copying 1 resource from src/test/resources to target/test-classes
+2026-10-08T08:44:59.5325433Z #16 13.13 [INFO] 
+2026-10-08T08:44:59.5326174Z #16 13.13 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ energia-esg-api ---
+2026-10-08T08:44:59.5327401Z #16 13.14 [INFO] Recompiling the module because of changed dependency.
+2026-10-08T08:44:59.5328495Z #16 13.14 [INFO] Compiling 3 source files with javac [debug parameters release 21] to target/test-classes
+2026-10-08T08:45:00.0571689Z #16 13.81 [INFO] 
+2026-10-08T08:45:00.2088550Z #16 13.82 [INFO] --- surefire:3.5.5:test (default-test) @ energia-esg-api ---
+2026-10-08T08:45:00.5342628Z #16 14.29 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+2026-10-08T08:45:00.6648437Z #16 14.42 [INFO] 
+2026-10-08T08:45:00.6649478Z #16 14.42 [INFO] -------------------------------------------------------
+2026-10-08T08:45:00.8168224Z #16 14.42 [INFO]  T E S T S
+2026-10-08T08:45:00.8169496Z #16 14.42 [INFO] -------------------------------------------------------
+2026-10-08T08:45:01.2953387Z #16 15.05 [INFO] Running br.com.fiap.energia_esg_api.service.EquipamentoServiceTest
+2026-10-08T08:45:01.5157297Z #16 15.12 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+2026-10-08T08:45:01.8129348Z #16 15.38 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-08T08:45:01.8131131Z #16 15.42 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+2026-10-08T08:45:01.8132811Z #16 15.42 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+2026-10-08T08:45:01.8134169Z #16 15.42 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+2026-10-08T08:45:01.8135369Z #16 15.42 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-08T08:45:02.5649448Z #16 16.19 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.085 s -- in br.com.fiap.energia_esg_api.service.EquipamentoServiceTest
+2026-10-08T08:45:02.5650588Z #16 16.20 [INFO] Running br.com.fiap.energia_esg_api.service.AreaServiceTest
+2026-10-08T08:45:02.5651482Z #16 16.22 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in br.com.fiap.energia_esg_api.service.AreaServiceTest
+2026-10-08T08:45:02.5652394Z #16 16.22 [INFO] Running br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+2026-10-08T08:45:02.5653973Z #16 16.32 08:45:02.558 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests]: EnergiaEsgApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-08T08:45:02.7658563Z #16 16.52 08:45:02.664 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.fiap.energia_esg_api.EnergiaEsgApiApplication for test class br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+2026-10-08T08:45:03.2684348Z #16 17.03 
+2026-10-08T08:45:03.4224168Z #16 17.03   .   ____          _            __ _ _
+2026-10-08T08:45:03.4226276Z #16 17.03  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2026-10-08T08:45:03.4227440Z #16 17.03 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2026-10-08T08:45:03.4228294Z #16 17.03  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2026-10-08T08:45:03.4228982Z #16 17.03   '  |____| .__|_| |_|_| |_\__, | / / / /
+2026-10-08T08:45:03.4229662Z #16 17.03  =========|_|==============|___/=/_/_/_/
+2026-10-08T08:45:03.4230487Z #16 17.03 
+2026-10-08T08:45:03.4231099Z #16 17.03  :: Spring Boot ::               (v3.5.14)
+2026-10-08T08:45:03.4231778Z #16 17.03 
+2026-10-08T08:45:03.4233454Z #16 17.03 2026-10-08T08:45:03.263Z  INFO 203 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : Starting EnergiaEsgApiApplicationTests using Java 21.0.7 with PID 203 (started by root in /workspace)
+2026-10-08T08:45:03.4235901Z #16 17.03 2026-10-08T08:45:03.264Z  INFO 203 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : The following 1 profile is active: "test"
+2026-10-08T08:45:04.3751546Z #16 18.13 2026-10-08T08:45:04.299Z  INFO 203 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-08T08:45:04.4770983Z #16 18.23 2026-10-08T08:45:04.407Z  INFO 203 --- [energia-esg-api] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 5 JPA repository interfaces.
+2026-10-08T08:45:04.6759727Z #16 18.43 2026-10-08T08:45:04.619Z  INFO 203 --- [energia-esg-api] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dd847e47-1871-3096-891b-ec9cd0a0051f
+2026-10-08T08:45:04.9798050Z #16 18.74 2026-10-08T08:45:04.896Z  INFO 203 --- [energia-esg-api] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-08T08:45:05.2302472Z #16 18.74 2026-10-08T08:45:04.933Z  INFO 203 --- [energia-esg-api] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-10-08T08:45:05.2304635Z #16 18.74 2026-10-08T08:45:04.964Z  INFO 203 --- [energia-esg-api] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-08T08:45:05.2307310Z #16 18.84 2026-10-08T08:45:05.053Z  INFO 203 --- [energia-esg-api] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-08T08:45:05.2309438Z #16 18.84 2026-10-08T08:45:05.074Z  INFO 203 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-08T08:45:05.3808223Z #16 19.14 2026-10-08T08:45:05.332Z  INFO 203 --- [energia-esg-api] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:agrisat_test user=SA
+2026-10-08T08:45:05.3812367Z #16 19.14 2026-10-08T08:45:05.334Z  INFO 203 --- [energia-esg-api] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-08T08:45:05.6306550Z #16 19.24 2026-10-08T08:45:05.389Z  INFO 203 --- [energia-esg-api] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-10-08T08:45:05.6310440Z #16 19.24 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+2026-10-08T08:45:05.6311756Z #16 19.24 	Database driver: undefined/unknown
+2026-10-08T08:45:05.6312554Z #16 19.24 	Database version: 2.3.232
+2026-10-08T08:45:05.6313337Z #16 19.24 	Autocommit mode: undefined/unknown
+2026-10-08T08:45:05.6314165Z #16 19.24 	Isolation level: undefined/unknown
+2026-10-08T08:45:05.6315210Z #16 19.24 	Minimum pool size: undefined/unknown
+2026-10-08T08:45:05.6316066Z #16 19.24 	Maximum pool size: undefined/unknown
+2026-10-08T08:45:06.0833562Z #16 19.84 2026-10-08T08:45:06.035Z  INFO 203 --- [energia-esg-api] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-08T08:45:06.2353937Z #16 19.84 2026-10-08T08:45:06.079Z  INFO 203 --- [energia-esg-api] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-08T08:45:06.3836701Z #16 20.14 2026-10-08T08:45:06.330Z  WARN 203 --- [energia-esg-api] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-08T08:45:06.3848550Z #16 20.14 2026-10-08T08:45:06.375Z  INFO 203 --- [energia-esg-api] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-08T08:45:06.7840710Z #16 20.54 2026-10-08T08:45:06.771Z  INFO 203 --- [energia-esg-api] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-08T08:45:07.2883410Z #16 21.04 2026-10-08T08:45:07.212Z  INFO 203 --- [energia-esg-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-08T08:45:07.4054480Z #16 21.04 2026-10-08T08:45:07.212Z  INFO 203 --- [energia-esg-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-08T08:45:07.4059341Z #16 21.05 2026-10-08T08:45:07.214Z  INFO 203 --- [energia-esg-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-08T08:45:07.4061476Z #16 21.05 2026-10-08T08:45:07.242Z  INFO 203 --- [energia-esg-api] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-10-08T08:45:07.4067732Z #16 21.14 2026-10-08T08:45:07.291Z  WARN 203 --- [energia-esg-api] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-08T08:45:07.4073069Z #16 21.16 2026-10-08T08:45:07.384Z  INFO 203 --- [energia-esg-api] [           main] b.c.f.e.EnergiaEsgApiApplicationTests    : Started EnergiaEsgApiApplicationTests in 4.434 seconds (process running for 6.666)
+2026-10-08T08:45:07.6270987Z #16 21.38 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.196 s -- in br.com.fiap.energia_esg_api.EnergiaEsgApiApplicationTests
+2026-10-08T08:45:07.8408243Z #16 21.44 [INFO] 
+2026-10-08T08:45:07.8408592Z #16 21.44 [INFO] Results:
+2026-10-08T08:45:07.8408887Z #16 21.44 [INFO] 
+2026-10-08T08:45:07.8409225Z #16 21.45 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+2026-10-08T08:45:07.8409621Z #16 21.45 [INFO] 
+2026-10-08T08:45:07.8409849Z #16 21.45 [INFO] 
+2026-10-08T08:45:07.8410185Z #16 21.45 [INFO] --- jar:3.4.2:jar (default-jar) @ energia-esg-api ---
+2026-10-08T08:45:08.5997567Z #16 22.36 [INFO] Building jar: /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar
+2026-10-08T08:45:08.7994498Z #16 22.41 [INFO] 
+2026-10-08T08:45:08.7995170Z #16 22.41 [INFO] --- spring-boot:3.5.14:repackage (repackage) @ energia-esg-api ---
+2026-10-08T08:45:09.5640119Z #16 23.32 [INFO] Replacing main artifact /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+2026-10-08T08:45:09.7170862Z #16 23.32 [INFO] The original artifact has been renamed to /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar.original
+2026-10-08T08:45:09.7171740Z #16 23.32 [INFO] ------------------------------------------------------------------------
+2026-10-08T08:45:09.7172233Z #16 23.32 [INFO] BUILD SUCCESS
+2026-10-08T08:45:09.7172671Z #16 23.32 [INFO] ------------------------------------------------------------------------
+2026-10-08T08:45:09.7173170Z #16 23.32 [INFO] Total time:  21.848 s
+2026-10-08T08:45:09.7173558Z #16 23.32 [INFO] Finished at: 2026-10-08T08:45:09Z
+2026-10-08T08:45:09.7174047Z #16 23.32 [INFO] ------------------------------------------------------------------------
+2026-10-08T08:45:09.9587125Z #16 DONE 23.7s
+2026-10-08T08:45:10.1803101Z 
+2026-10-08T08:45:10.1804195Z #17 [stage-1 4/4] COPY --from=build --chown=agrisat:agrisat /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar app.jar
+2026-10-08T08:45:10.2055891Z #17 DONE 0.2s
+2026-10-08T08:45:10.3579544Z 
+2026-10-08T08:45:10.3580131Z #18 exporting to docker image format
+2026-10-08T08:45:10.3580672Z #18 exporting layers
+2026-10-08T08:45:12.3024027Z #18 exporting layers 2.1s done
+2026-10-08T08:45:12.4599343Z #18 exporting manifest sha256:e73ca924cd851cfe494b75d24ed82e7c420f18160be55bd52792e7fd7031df7b done
+2026-10-08T08:45:12.4606958Z #18 exporting config sha256:be4a26baaac77bba1f6a3438a50340ca2d640fc440027c58ef3d5d7d4c204438 done
+2026-10-08T08:45:12.4609807Z #18 sending tarball
+2026-10-08T08:45:15.0383674Z #18 sending tarball 2.7s done
+2026-10-08T08:45:15.0384370Z #18 DONE 4.8s
+2026-10-08T08:45:15.0384622Z 
+2026-10-08T08:45:15.0384793Z #19 importing to docker
+2026-10-08T08:45:15.0385373Z #19 loading layer baf1a350e0e1 16.97MB / 16.97MB 2.0s done
+2026-10-08T08:45:15.0386048Z #19 loading layer d87dbc49b44c 53.26MB / 53.26MB 1.3s done
+2026-10-08T08:45:15.0386668Z #19 loading layer 9248f3d0047d 128B / 128B 0.5s done
+2026-10-08T08:45:15.0387603Z #19 loading layer d2abfe9c8331 2.46kB / 2.46kB 0.5s done
+2026-10-08T08:45:15.0388327Z #19 loading layer 9934445635b1 93B / 93B 0.5s done
+2026-10-08T08:45:15.0388998Z #19 loading layer d67f2946a481 953B / 953B 0.5s done
+2026-10-08T08:45:15.0389387Z #19 loading layer 2d86e1086607 82.52MB / 82.52MB 0.4s done
+2026-10-08T08:45:15.0389701Z #19 DONE 2.0s
+2026-10-08T08:45:15.0389814Z 
+2026-10-08T08:45:15.0389931Z #20 resolving provenance for metadata file
+2026-10-08T08:45:15.0390411Z #20 DONE 0.0s
+2026-10-08T08:45:15.0465954Z ##[group]ImageID
+2026-10-08T08:45:15.0466549Z sha256:be4a26baaac77bba1f6a3438a50340ca2d640fc440027c58ef3d5d7d4c204438
+2026-10-08T08:45:15.0475462Z ##[endgroup]
+2026-10-08T08:45:15.0475865Z ##[group]Digest
+2026-10-08T08:45:15.0476241Z sha256:e73ca924cd851cfe494b75d24ed82e7c420f18160be55bd52792e7fd7031df7b
+2026-10-08T08:45:15.0476790Z ##[endgroup]
+2026-10-08T08:45:15.0477567Z ##[group]Metadata
+2026-10-08T08:45:15.0477769Z {
+2026-10-08T08:45:15.0477966Z   "buildx.build.provenance": {
+2026-10-08T08:45:15.0478212Z     "builder": {
+2026-10-08T08:45:15.0478407Z       "id": ""
+2026-10-08T08:45:15.0478591Z     },
+2026-10-08T08:45:15.0478858Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2026-10-08T08:45:15.0479456Z     "materials": [
+2026-10-08T08:45:15.0479686Z       {
+2026-10-08T08:45:15.0480043Z         "uri": "pkg:docker/eclipse-temurin@21-jre-alpine?platform=linux%2Famd64",
+2026-10-08T08:45:15.0480442Z         "digest": {
+2026-10-08T08:45:15.0480796Z           "sha256": "51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555"
+2026-10-08T08:45:15.0481187Z         }
+2026-10-08T08:45:15.0481564Z       },
+2026-10-08T08:45:15.0481736Z       {
+2026-10-08T08:45:15.0482057Z         "uri": "pkg:docker/maven@3.9.9-eclipse-temurin-21?platform=linux%2Famd64",
+2026-10-08T08:45:15.0482459Z         "digest": {
+2026-10-08T08:45:15.0482795Z           "sha256": "3a4ab3276a087bf276f79cae96b1af04f53731bec53fb2e651aca79e4b10211e"
+2026-10-08T08:45:15.0483177Z         }
+2026-10-08T08:45:15.0483349Z       }
+2026-10-08T08:45:15.0483634Z     ],
+2026-10-08T08:45:15.0483952Z     "invocation": {
+2026-10-08T08:45:15.0484319Z       "configSource": {
+2026-10-08T08:45:15.0484727Z         "entryPoint": "Dockerfile"
+2026-10-08T08:45:15.0485004Z       },
+2026-10-08T08:45:15.0485190Z       "parameters": {
+2026-10-08T08:45:15.0485425Z         "frontend": "dockerfile.v0",
+2026-10-08T08:45:15.0485672Z         "locals": [
+2026-10-08T08:45:15.0485866Z           {
+2026-10-08T08:45:15.0486060Z             "name": "context"
+2026-10-08T08:45:15.0486284Z           },
+2026-10-08T08:45:15.0486462Z           {
+2026-10-08T08:45:15.0486650Z             "name": "dockerfile"
+2026-10-08T08:45:15.0487546Z           }
+2026-10-08T08:45:15.0487907Z         ],
+2026-10-08T08:45:15.0488208Z         "root": {
+2026-10-08T08:45:15.0488546Z           "configSource": {
+2026-10-08T08:45:15.0488995Z             "path": "Dockerfile"
+2026-10-08T08:45:15.0489276Z           },
+2026-10-08T08:45:15.0489470Z           "request": {
+2026-10-08T08:45:15.0489673Z             "args": {
+2026-10-08T08:45:15.0489891Z               "vcs:localdir:context": ".",
+2026-10-08T08:45:15.0490207Z               "vcs:localdir:dockerfile": ".",
+2026-10-08T08:45:15.0490569Z               "vcs:revision": "60db9e7030dfc85833ae22c83f7242d30cf62507",
+2026-10-08T08:45:15.0490981Z               "vcs:source": "https://github.com/Magnols/AgriSat-IA"
+2026-10-08T08:45:15.0491310Z             }
+2026-10-08T08:45:15.0491493Z           }
+2026-10-08T08:45:15.0491670Z         },
+2026-10-08T08:45:15.0491874Z         "compatibilityVersion": 30
+2026-10-08T08:45:15.0492126Z       },
+2026-10-08T08:45:15.0492345Z       "environment": {
+2026-10-08T08:45:15.0492594Z         "dockerfileVersion": "1.27.0",
+2026-10-08T08:45:15.0492883Z         "github_actor": "Magnols",
+2026-10-08T08:45:15.0493158Z         "github_actor_id": "131492865",
+2026-10-08T08:45:15.0493422Z         "github_event_name": "push",
+2026-10-08T08:45:15.0493681Z         "github_event_payload": {
+2026-10-08T08:45:15.0493979Z           "after": "60db9e7030dfc85833ae22c83f7242d30cf62507",
+2026-10-08T08:45:15.0494310Z           "base_ref": null,
+2026-10-08T08:45:15.0494638Z           "before": "0b5dfe2cfeaff4d68ded9007f032a5d73748c3ae",
+2026-10-08T08:45:15.0494999Z           "commits": [
+2026-10-08T08:45:15.0495232Z             {
+2026-10-08T08:45:15.0495448Z               "author": {
+2026-10-08T08:45:15.0495760Z                 "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0496115Z                 "name": "Magno Silva",
+2026-10-08T08:45:15.0496370Z                 "username": "Magnols"
+2026-10-08T08:45:15.0496613Z               },
+2026-10-08T08:45:15.0497148Z               "committer": {
+2026-10-08T08:45:15.0497642Z                 "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0498000Z                 "name": "Magno Silva",
+2026-10-08T08:45:15.0498272Z                 "username": "Magnols"
+2026-10-08T08:45:15.0498537Z               },
+2026-10-08T08:45:15.0498752Z               "distinct": true,
+2026-10-08T08:45:15.0499049Z               "id": "3f36f024f259ad9abb7ace0e9c5be6643765ef64",
+2026-10-08T08:45:15.0499533Z               "message": "docs: record verified CI evidence and deployment prerequisites",
+2026-10-08T08:45:15.0500210Z               "timestamp": "2026-10-05T07:52:01-03:00",
+2026-10-08T08:45:15.0500564Z               "tree_id": "5260b5e122b94f47872d233c1daff3a64b1e430c",
+2026-10-08T08:45:15.0501107Z               "url": "https://github.com/Magnols/AgriSat-IA/commit/3f36f024f259ad9abb7ace0e9c5be6643765ef64"
+2026-10-08T08:45:15.0501559Z             },
+2026-10-08T08:45:15.0501765Z             {
+2026-10-08T08:45:15.0502181Z               "author": {
+2026-10-08T08:45:15.0502537Z                 "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0502946Z                 "name": "Magno Silva",
+2026-10-08T08:45:15.0503242Z                 "username": "Magnols"
+2026-10-08T08:45:15.0503518Z               },
+2026-10-08T08:45:15.0503734Z               "committer": {
+2026-10-08T08:45:15.0504044Z                 "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0504392Z                 "name": "Magno Silva",
+2026-10-08T08:45:15.0504678Z                 "username": "Magnols"
+2026-10-08T08:45:15.0504941Z               },
+2026-10-08T08:45:15.0505157Z               "distinct": true,
+2026-10-08T08:45:15.0505460Z               "id": "60db9e7030dfc85833ae22c83f7242d30cf62507",
+2026-10-08T08:45:15.0505922Z               "message": "docs: registra integracao do AgriSat IA com Azure Boards AB#2",
+2026-10-08T08:45:15.0506362Z               "timestamp": "2026-10-08T05:32:44-03:00",
+2026-10-08T08:45:15.0506746Z               "tree_id": "1c475ac7eddbd21d274c465f933ff89d1698c9a9",
+2026-10-08T08:45:15.0507634Z               "url": "https://github.com/Magnols/AgriSat-IA/commit/60db9e7030dfc85833ae22c83f7242d30cf62507"
+2026-10-08T08:45:15.0508178Z             }
+2026-10-08T08:45:15.0508420Z           ],
+2026-10-08T08:45:15.0508823Z           "compare": "https://github.com/Magnols/AgriSat-IA/compare/0b5dfe2cfeaf...60db9e7030df",
+2026-10-08T08:45:15.0509279Z           "created": false,
+2026-10-08T08:45:15.0509534Z           "deleted": false,
+2026-10-08T08:45:15.0509779Z           "forced": false,
+2026-10-08T08:45:15.0510030Z           "head_commit": {
+2026-10-08T08:45:15.0510269Z             "author": {
+2026-10-08T08:45:15.0510584Z               "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0510932Z               "name": "Magno Silva",
+2026-10-08T08:45:15.0511204Z               "username": "Magnols"
+2026-10-08T08:45:15.0511466Z             },
+2026-10-08T08:45:15.0511689Z             "committer": {
+2026-10-08T08:45:15.0512009Z               "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0512377Z               "name": "Magno Silva",
+2026-10-08T08:45:15.0512726Z               "username": "Magnols"
+2026-10-08T08:45:15.0512982Z             },
+2026-10-08T08:45:15.0513199Z             "distinct": true,
+2026-10-08T08:45:15.0513528Z             "id": "60db9e7030dfc85833ae22c83f7242d30cf62507",
+2026-10-08T08:45:15.0514005Z             "message": "docs: registra integracao do AgriSat IA com Azure Boards AB#2",
+2026-10-08T08:45:15.0514468Z             "timestamp": "2026-10-08T05:32:44-03:00",
+2026-10-08T08:45:15.0514841Z             "tree_id": "1c475ac7eddbd21d274c465f933ff89d1698c9a9",
+2026-10-08T08:45:15.0515394Z             "url": "https://github.com/Magnols/AgriSat-IA/commit/60db9e7030dfc85833ae22c83f7242d30cf62507"
+2026-10-08T08:45:15.0515880Z           },
+2026-10-08T08:45:15.0516088Z           "pusher": {
+2026-10-08T08:45:15.0516380Z             "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0516743Z             "name": "Magnols"
+2026-10-08T08:45:15.0517206Z           },
+2026-10-08T08:45:15.0517578Z           "ref": "refs/heads/main",
+2026-10-08T08:45:15.0517867Z           "repository": {
+2026-10-08T08:45:15.0518120Z             "allow_forking": true,
+2026-10-08T08:45:15.0518559Z             "archive_url": "https://api.github.com/repos/Magnols/AgriSat-IA/{archive_format}{/ref}",
+2026-10-08T08:45:15.0519033Z             "archived": false,
+2026-10-08T08:45:15.0519659Z             "assignees_url": "https://api.github.com/repos/Magnols/AgriSat-IA/assignees{/user}",
+2026-10-08T08:45:15.0520290Z             "blobs_url": "https://api.github.com/repos/Magnols/AgriSat-IA/git/blobs{/sha}",
+2026-10-08T08:45:15.0520905Z             "branches_url": "https://api.github.com/repos/Magnols/AgriSat-IA/branches{/branch}",
+2026-10-08T08:45:15.0521436Z             "clone_url": "https://github.com/Magnols/AgriSat-IA.git",
+2026-10-08T08:45:15.0522215Z             "collaborators_url": "https://api.github.com/repos/Magnols/AgriSat-IA/collaborators{/collaborator}",
+2026-10-08T08:45:15.0522908Z             "comments_url": "https://api.github.com/repos/Magnols/AgriSat-IA/comments{/number}",
+2026-10-08T08:45:15.0523514Z             "commits_url": "https://api.github.com/repos/Magnols/AgriSat-IA/commits{/sha}",
+2026-10-08T08:45:15.0524120Z             "compare_url": "https://api.github.com/repos/Magnols/AgriSat-IA/compare/{base}...{head}",
+2026-10-08T08:45:15.0524760Z             "contents_url": "https://api.github.com/repos/Magnols/AgriSat-IA/contents/{+path}",
+2026-10-08T08:45:15.0525383Z             "contributors_url": "https://api.github.com/repos/Magnols/AgriSat-IA/contributors",
+2026-10-08T08:45:15.0525850Z             "created_at": 1781004126,
+2026-10-08T08:45:15.0526132Z             "default_branch": "main",
+2026-10-08T08:45:15.0526577Z             "deployments_url": "https://api.github.com/repos/Magnols/AgriSat-IA/deployments",
+2026-10-08T08:45:15.0528824Z             "description": "O AgriSat IA é um protótipo web mobile para apoio à agricultura inteligente. O app simula o uso de dados de satélite e inteligência artificial para acompanhar clima, umidade do solo, alertas da propriedade e recomendações agrícolas personalizadas.",
+2026-10-08T08:45:15.0529933Z             "disabled": false,
+2026-10-08T08:45:15.0530350Z             "downloads_url": "https://api.github.com/repos/Magnols/AgriSat-IA/downloads",
+2026-10-08T08:45:15.0530874Z             "events_url": "https://api.github.com/repos/Magnols/AgriSat-IA/events",
+2026-10-08T08:45:15.0531269Z             "fork": false,
+2026-10-08T08:45:15.0531493Z             "forks": 0,
+2026-10-08T08:45:15.0531721Z             "forks_count": 0,
+2026-10-08T08:45:15.0532080Z             "forks_url": "https://api.github.com/repos/Magnols/AgriSat-IA/forks",
+2026-10-08T08:45:15.0532474Z             "full_name": "Magnols/AgriSat-IA",
+2026-10-08T08:45:15.0532935Z             "git_commits_url": "https://api.github.com/repos/Magnols/AgriSat-IA/git/commits{/sha}",
+2026-10-08T08:45:15.0533894Z             "git_refs_url": "https://api.github.com/repos/Magnols/AgriSat-IA/git/refs{/sha}",
+2026-10-08T08:45:15.0534665Z             "git_tags_url": "https://api.github.com/repos/Magnols/AgriSat-IA/git/tags{/sha}",
+2026-10-08T08:45:15.0535133Z             "git_url": "git://github.com/Magnols/AgriSat-IA.git",
+2026-10-08T08:45:15.0535465Z             "has_discussions": false,
+2026-10-08T08:45:15.0535730Z             "has_downloads": true,
+2026-10-08T08:45:15.0536093Z             "has_issues": true,
+2026-10-08T08:45:15.0536336Z             "has_pages": false,
+2026-10-08T08:45:15.0536574Z             "has_projects": true,
+2026-10-08T08:45:15.0536824Z             "has_pull_requests": true,
+2026-10-08T08:45:15.0537695Z             "has_wiki": true,
+2026-10-08T08:45:15.0538213Z             "homepage": "https://agri-sat-ia-mu.vercel.app",
+2026-10-08T08:45:15.0538772Z             "hooks_url": "https://api.github.com/repos/Magnols/AgriSat-IA/hooks",
+2026-10-08T08:45:15.0539277Z             "html_url": "https://github.com/Magnols/AgriSat-IA",
+2026-10-08T08:45:15.0539729Z             "id": 1263899991,
+2026-10-08T08:45:15.0539967Z             "is_template": false,
+2026-10-08T08:45:15.0540412Z             "issue_comment_url": "https://api.github.com/repos/Magnols/AgriSat-IA/issues/comments{/number}",
+2026-10-08T08:45:15.0541054Z             "issue_events_url": "https://api.github.com/repos/Magnols/AgriSat-IA/issues/events{/number}",
+2026-10-08T08:45:15.0541637Z             "issues_url": "https://api.github.com/repos/Magnols/AgriSat-IA/issues{/number}",
+2026-10-08T08:45:15.0542360Z             "keys_url": "https://api.github.com/repos/Magnols/AgriSat-IA/keys{/key_id}",
+2026-10-08T08:45:15.0542891Z             "labels_url": "https://api.github.com/repos/Magnols/AgriSat-IA/labels{/name}",
+2026-10-08T08:45:15.0543315Z             "language": "CSS",
+2026-10-08T08:45:15.0543696Z             "languages_url": "https://api.github.com/repos/Magnols/AgriSat-IA/languages",
+2026-10-08T08:45:15.0544240Z             "license": null,
+2026-10-08T08:45:15.0544492Z             "master_branch": "main",
+2026-10-08T08:45:15.0544863Z             "merges_url": "https://api.github.com/repos/Magnols/AgriSat-IA/merges",
+2026-10-08T08:45:15.0545413Z             "milestones_url": "https://api.github.com/repos/Magnols/AgriSat-IA/milestones{/number}",
+2026-10-08T08:45:15.0545854Z             "mirror_url": null,
+2026-10-08T08:45:15.0546100Z             "name": "AgriSat-IA",
+2026-10-08T08:45:15.0546354Z             "node_id": "R_kgDOS1WVVw",
+2026-10-08T08:45:15.0547136Z             "notifications_url": "https://api.github.com/repos/Magnols/AgriSat-IA/notifications{?since,all,participating}",
+2026-10-08T08:45:15.0547819Z             "open_issues": 0,
+2026-10-08T08:45:15.0548069Z             "open_issues_count": 0,
+2026-10-08T08:45:15.0548324Z             "owner": {
+2026-10-08T08:45:15.0548663Z               "avatar_url": "https://avatars.githubusercontent.com/u/131492865?v=4",
+2026-10-08T08:45:15.0549122Z               "email": "131492865+Magnols@users.noreply.github.com",
+2026-10-08T08:45:15.0549559Z               "events_url": "https://api.github.com/users/Magnols/events{/privacy}",
+2026-10-08T08:45:15.0550040Z               "followers_url": "https://api.github.com/users/Magnols/followers",
+2026-10-08T08:45:15.0558762Z               "following_url": "https://api.github.com/users/Magnols/following{/other_user}",
+2026-10-08T08:45:15.0559295Z               "gists_url": "https://api.github.com/users/Magnols/gists{/gist_id}",
+2026-10-08T08:45:15.0559667Z               "gravatar_id": "",
+2026-10-08T08:45:15.0559964Z               "html_url": "https://github.com/Magnols",
+2026-10-08T08:45:15.0560261Z               "id": 131492865,
+2026-10-08T08:45:15.0560499Z               "login": "Magnols",
+2026-10-08T08:45:15.0560739Z               "name": "Magnols",
+2026-10-08T08:45:15.0560986Z               "node_id": "U_kgDOB9ZsAQ",
+2026-10-08T08:45:15.0561519Z               "organizations_url": "https://api.github.com/users/Magnols/orgs",
+2026-10-08T08:45:15.0562498Z               "received_events_url": "https://api.github.com/users/Magnols/received_events",
+2026-10-08T08:45:15.0563374Z               "repos_url": "https://api.github.com/users/Magnols/repos",
+2026-10-08T08:45:15.0563781Z               "site_admin": false,
+2026-10-08T08:45:15.0564164Z               "starred_url": "https://api.github.com/users/Magnols/starred{/owner}{/repo}",
+2026-10-08T08:45:15.0564693Z               "subscriptions_url": "https://api.github.com/users/Magnols/subscriptions",
+2026-10-08T08:45:15.0565089Z               "type": "User",
+2026-10-08T08:45:15.0565371Z               "url": "https://api.github.com/users/Magnols",
+2026-10-08T08:45:15.0565687Z               "user_view_type": "public"
+2026-10-08T08:45:15.0565939Z             },
+2026-10-08T08:45:15.0566152Z             "private": false,
+2026-10-08T08:45:15.0566415Z             "pull_request_creation_policy": "all",
+2026-10-08T08:45:15.0566833Z             "pulls_url": "https://api.github.com/repos/Magnols/AgriSat-IA/pulls{/number}",
+2026-10-08T08:45:15.0567790Z             "pushed_at": 1791449013,
+2026-10-08T08:45:15.0568197Z             "releases_url": "https://api.github.com/repos/Magnols/AgriSat-IA/releases{/id}",
+2026-10-08T08:45:15.0568608Z             "size": 2471,
+2026-10-08T08:45:15.0568883Z             "ssh_url": "git@github.com:Magnols/AgriSat-IA.git",
+2026-10-08T08:45:15.0569201Z             "stargazers": 0,
+2026-10-08T08:45:15.0569443Z             "stargazers_count": 0,
+2026-10-08T08:45:15.0570022Z             "stargazers_url": "https://api.github.com/repos/Magnols/AgriSat-IA/stargazers",
+2026-10-08T08:45:15.0570577Z             "statuses_url": "https://api.github.com/repos/Magnols/AgriSat-IA/statuses/{sha}",
+2026-10-08T08:45:15.0571130Z             "subscribers_url": "https://api.github.com/repos/Magnols/AgriSat-IA/subscribers",
+2026-10-08T08:45:15.0571696Z             "subscription_url": "https://api.github.com/repos/Magnols/AgriSat-IA/subscription",
+2026-10-08T08:45:15.0572287Z             "svn_url": "https://github.com/Magnols/AgriSat-IA",
+2026-10-08T08:45:15.0572690Z             "tags_url": "https://api.github.com/repos/Magnols/AgriSat-IA/tags",
+2026-10-08T08:45:15.0573153Z             "teams_url": "https://api.github.com/repos/Magnols/AgriSat-IA/teams",
+2026-10-08T08:45:15.0573516Z             "topics": [],
+2026-10-08T08:45:15.0573872Z             "trees_url": "https://api.github.com/repos/Magnols/AgriSat-IA/git/trees{/sha}",
+2026-10-08T08:45:15.0574302Z             "updated_at": "2026-10-05T10:51:04Z",
+2026-10-08T08:45:15.0574681Z             "url": "https://api.github.com/repos/Magnols/AgriSat-IA",
+2026-10-08T08:45:15.0575021Z             "visibility": "public",
+2026-10-08T08:45:15.0575272Z             "watchers": 0,
+2026-10-08T08:45:15.0575501Z             "watchers_count": 0,
+2026-10-08T08:45:15.0575761Z             "web_commit_signoff_required": false
+2026-10-08T08:45:15.0576033Z           },
+2026-10-08T08:45:15.0576220Z           "sender": {
+2026-10-08T08:45:15.0576555Z             "avatar_url": "https://avatars.githubusercontent.com/u/131492865?v=4",
+2026-10-08T08:45:15.0577420Z             "events_url": "https://api.github.com/users/Magnols/events{/privacy}",
+2026-10-08T08:45:15.0578020Z             "followers_url": "https://api.github.com/users/Magnols/followers",
+2026-10-08T08:45:15.0578521Z             "following_url": "https://api.github.com/users/Magnols/following{/other_user}",
+2026-10-08T08:45:15.0579018Z             "gists_url": "https://api.github.com/users/Magnols/gists{/gist_id}",
+2026-10-08T08:45:15.0579377Z             "gravatar_id": "",
+2026-10-08T08:45:15.0579661Z             "html_url": "https://github.com/Magnols",
+2026-10-08T08:45:15.0579952Z             "id": 131492865,
+2026-10-08T08:45:15.0580178Z             "login": "Magnols",
+2026-10-08T08:45:15.0580424Z             "node_id": "U_kgDOB9ZsAQ",
+2026-10-08T08:45:15.0580788Z             "organizations_url": "https://api.github.com/users/Magnols/orgs",
+2026-10-08T08:45:15.0581281Z             "received_events_url": "https://api.github.com/users/Magnols/received_events",
+2026-10-08T08:45:15.0581757Z             "repos_url": "https://api.github.com/users/Magnols/repos",
+2026-10-08T08:45:15.0582093Z             "site_admin": false,
+2026-10-08T08:45:15.0582452Z             "starred_url": "https://api.github.com/users/Magnols/starred{/owner}{/repo}",
+2026-10-08T08:45:15.0582959Z             "subscriptions_url": "https://api.github.com/users/Magnols/subscriptions",
+2026-10-08T08:45:15.0583345Z             "type": "User",
+2026-10-08T08:45:15.0583641Z             "url": "https://api.github.com/users/Magnols",
+2026-10-08T08:45:15.0583951Z             "user_view_type": "public"
+2026-10-08T08:45:15.0584196Z           }
+2026-10-08T08:45:15.0584374Z         },
+2026-10-08T08:45:15.0584573Z         "github_job": "docker-build",
+2026-10-08T08:45:15.0584837Z         "github_ref": "refs/heads/main",
+2026-10-08T08:45:15.0585101Z         "github_ref_name": "main",
+2026-10-08T08:45:15.0585359Z         "github_ref_protected": "false",
+2026-10-08T08:45:15.0585628Z         "github_ref_type": "branch",
+2026-10-08T08:45:15.0585908Z         "github_repository": "Magnols/AgriSat-IA",
+2026-10-08T08:45:15.0586214Z         "github_repository_id": "1263899991",
+2026-10-08T08:45:15.0586499Z         "github_repository_owner": "Magnols",
+2026-10-08T08:45:15.0586797Z         "github_repository_owner_id": "131492865",
+2026-10-08T08:45:15.0587302Z         "github_run_attempt": "1",
+2026-10-08T08:45:15.0587554Z         "github_run_id": "37751748406",
+2026-10-08T08:45:15.0587812Z         "github_run_number": "2",
+2026-10-08T08:45:15.0588213Z         "github_runner_arch": "X64",
+2026-10-08T08:45:15.0588515Z         "github_runner_environment": "github-hosted",
+2026-10-08T08:45:15.0588821Z         "github_runner_image_os": "ubuntu24",
+2026-10-08T08:45:15.0589124Z         "github_runner_image_version": "20260927.320.1",
+2026-10-08T08:45:15.0589454Z         "github_runner_name": "GitHub Actions 1000000006",
+2026-10-08T08:45:15.0589757Z         "github_runner_os": "Linux",
+2026-10-08T08:45:15.0590240Z         "github_runner_tracking_id": "github_b345e805-d68c-4d6f-90da-37fbd398e721",
+2026-10-08T08:45:15.0590710Z         "github_server_url": "https://github.com",
+2026-10-08T08:45:15.0591056Z         "github_triggering_actor": "Magnols",
+2026-10-08T08:45:15.0591354Z         "github_workflow": "CI/CD AgriSat IA",
+2026-10-08T08:45:15.0591937Z         "github_workflow_ref": "Magnols/AgriSat-IA/.github/workflows/ci-cd.yml@refs/heads/main",
+2026-10-08T08:45:15.0592961Z         "github_workflow_sha": "60db9e7030dfc85833ae22c83f7242d30cf62507",
+2026-10-08T08:45:15.0593447Z         "platform": "linux/amd64"
+2026-10-08T08:45:15.0593691Z       }
+2026-10-08T08:45:15.0593866Z     }
+2026-10-08T08:45:15.0594035Z   },
+2026-10-08T08:45:15.0594590Z   "buildx.build.ref": "builder-c785183c-57db-4ee4-9576-1ea60e219e4b/builder-c785183c-57db-4ee4-9576-1ea60e219e4b0/gkox8d4zggt9shylxfqonnaej",
+2026-10-08T08:45:15.0595465Z   "containerimage.config.digest": "sha256:be4a26baaac77bba1f6a3438a50340ca2d640fc440027c58ef3d5d7d4c204438",
+2026-10-08T08:45:15.0595991Z   "containerimage.descriptor": {
+2026-10-08T08:45:15.0596325Z     "mediaType": "application/vnd.oci.image.manifest.v1+json",
+2026-10-08T08:45:15.0596811Z     "digest": "sha256:e73ca924cd851cfe494b75d24ed82e7c420f18160be55bd52792e7fd7031df7b",
+2026-10-08T08:45:15.0597577Z     "size": 1812,
+2026-10-08T08:45:15.0597782Z     "annotations": {
+2026-10-08T08:45:15.0598074Z       "org.opencontainers.image.created": "2026-10-08T08:45:12Z"
+2026-10-08T08:45:15.0598393Z     },
+2026-10-08T08:45:15.0598589Z     "platform": {
+2026-10-08T08:45:15.0598804Z       "architecture": "amd64",
+2026-10-08T08:45:15.0599040Z       "os": "linux"
+2026-10-08T08:45:15.0599236Z     }
+2026-10-08T08:45:15.0599405Z   },
+2026-10-08T08:45:15.0599803Z   "containerimage.digest": "sha256:e73ca924cd851cfe494b75d24ed82e7c420f18160be55bd52792e7fd7031df7b",
+2026-10-08T08:45:15.0600423Z   "image.name": "docker.io/library/agrisat-api:60db9e7030dfc85833ae22c83f7242d30cf62507"
+2026-10-08T08:45:15.0600827Z }
+2026-10-08T08:45:15.0601173Z ##[endgroup]
+2026-10-08T08:45:15.0601518Z ##[group]Reference
+2026-10-08T08:45:15.0602007Z builder-c785183c-57db-4ee4-9576-1ea60e219e4b/builder-c785183c-57db-4ee4-9576-1ea60e219e4b0/gkox8d4zggt9shylxfqonnaej
+2026-10-08T08:45:15.0602676Z ##[endgroup]
+2026-10-08T08:45:15.0603026Z ##[group]Check build summary support
+2026-10-08T08:45:15.0603441Z Build summary supported!
+2026-10-08T08:45:15.0603802Z ##[endgroup]
+2026-10-08T08:45:15.0651083Z ##[group]Run docker save agrisat-api:60db9e7030dfc85833ae22c83f7242d30cf62507 | gzip > image.tar.gz
+2026-10-08T08:45:15.0651872Z [36;1mdocker save agrisat-api:60db9e7030dfc85833ae22c83f7242d30cf62507 | gzip > image.tar.gz[0m
+2026-10-08T08:45:15.0652486Z [36;1mtar -czf release.tar.gz image.tar.gz docker-compose.yml frontend scripts[0m
+2026-10-08T08:45:15.0931530Z shell: /usr/bin/bash -e {0}
+2026-10-08T08:45:15.0931873Z ##[endgroup]
+2026-10-08T08:45:31.8500555Z ##[group]Run actions/upload-artifact@v4
+2026-10-08T08:45:31.8500868Z with:
+2026-10-08T08:45:31.8501057Z   name: release
+2026-10-08T08:45:31.8501451Z   path: release.tar.gz
+2026-10-08T08:45:31.8501703Z   retention-days: 7
+2026-10-08T08:45:31.8501917Z   if-no-files-found: warn
+2026-10-08T08:45:31.8502148Z   compression-level: 6
+2026-10-08T08:45:31.8502366Z   overwrite: false
+2026-10-08T08:45:31.8502579Z   include-hidden-files: false
+2026-10-08T08:45:31.8502819Z ##[endgroup]
+2026-10-08T08:45:32.0129026Z (node:3602) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T08:45:32.0129935Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T08:45:32.0177749Z With the provided path, there will be 1 file uploaded
+2026-10-08T08:45:32.0183631Z Artifact name is valid!
+2026-10-08T08:45:32.0184596Z Root directory input is valid!
+2026-10-08T08:45:32.2483984Z Beginning upload of artifact content to blob storage
+2026-10-08T08:45:32.5181310Z (node:3602) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-08T08:45:32.9363924Z Uploaded bytes 8388608
+2026-10-08T08:45:33.1749622Z Uploaded bytes 16777216
+2026-10-08T08:45:33.1825528Z Uploaded bytes 25165824
+2026-10-08T08:45:33.4754071Z Uploaded bytes 33554432
+2026-10-08T08:45:33.7315042Z Uploaded bytes 41943040
+2026-10-08T08:45:33.9666410Z Uploaded bytes 50331648
+2026-10-08T08:45:34.2024527Z Uploaded bytes 58720256
+2026-10-08T08:45:34.4353883Z Uploaded bytes 67108864
+2026-10-08T08:45:34.6891345Z Uploaded bytes 75497472
+2026-10-08T08:45:34.9421055Z Uploaded bytes 83886080
+2026-10-08T08:45:35.2167965Z Uploaded bytes 92274688
+2026-10-08T08:45:35.3698591Z Uploaded bytes 100663296
+2026-10-08T08:45:35.6134672Z Uploaded bytes 109051904
+2026-10-08T08:45:35.8798447Z Uploaded bytes 117440512
+2026-10-08T08:45:36.0953613Z Uploaded bytes 125829120
+2026-10-08T08:45:36.2926536Z Uploaded bytes 134217728
+2026-10-08T08:45:36.6114510Z Uploaded bytes 142606336
+2026-10-08T08:45:36.8659343Z Uploaded bytes 150994944
+2026-10-08T08:45:36.9930226Z Uploaded bytes 155192288
+2026-10-08T08:45:37.0269796Z Finished uploading artifact content to blob storage!
+2026-10-08T08:45:37.0273428Z SHA256 digest of uploaded artifact zip is 044c2f60ac2d0e6654e592fa2717987c7fbe8695bd4c42db31741c548cda8018
+2026-10-08T08:45:37.0275638Z Finalizing artifact upload
+2026-10-08T08:45:37.2842375Z Artifact release.zip successfully finalized. Artifact ID 11537813391
+2026-10-08T08:45:37.2843890Z Artifact release has been successfully uploaded! Final size is 155192288 bytes. Artifact ID is 11537813391
+2026-10-08T08:45:37.2860475Z Artifact download URL: https://github.com/Magnols/AgriSat-IA/actions/runs/37751748406/artifacts/11537813391
+2026-10-08T08:45:37.3101072Z Post job cleanup.
+2026-10-08T08:45:37.5563497Z ##[group]Generating build summary
+2026-10-08T08:45:37.5568865Z exporting build record to /home/runner/work/_temp/docker-actions-toolkit-VdARsQ/export
+2026-10-08T08:45:37.5582356Z (node:3616) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T08:45:37.5583556Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T08:45:37.7377644Z [command]/usr/bin/docker buildx history export --builder builder-c785183c-57db-4ee4-9576-1ea60e219e4b --output /home/runner/work/_temp/docker-actions-toolkit-VdARsQ/export/Magnols~AgriSat-IA~GKOX8D.dockerbuild gkox8d4zggt9shylxfqonnaej --finalize
+2026-10-08T08:45:37.9246375Z Build record written to /home/runner/work/_temp/docker-actions-toolkit-VdARsQ/export/Magnols~AgriSat-IA~GKOX8D.dockerbuild (51.26 KB)
+2026-10-08T08:45:37.9271414Z Uploading Magnols~AgriSat-IA~GKOX8D.dockerbuild to blob storage
+2026-10-08T08:45:38.1443045Z (node:3616) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-08T08:45:38.1444786Z Beginning upload of artifact content to blob storage
+2026-10-08T08:45:38.1451686Z Uploaded bytes 52488
+2026-10-08T08:45:38.2844099Z Finished uploading artifact content to blob storage!
+2026-10-08T08:45:38.2848721Z SHA256 hash of uploaded artifact is 86da7bccaac1df043368c3b3a177f7352618fa336cd1d24e0f54e0ab138029f2
+2026-10-08T08:45:38.2850094Z Finalizing artifact upload
+2026-10-08T08:45:38.5843274Z Artifact successfully finalized (11537808219)
+2026-10-08T08:45:38.5844852Z Artifact download URL: https://github.com/Magnols/AgriSat-IA/actions/runs/37751748406/artifacts/11537808219
+2026-10-08T08:45:38.5869646Z Writing summary
+2026-10-08T08:45:38.5882295Z ##[endgroup]
+2026-10-08T08:45:38.5883077Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-999LHL
+2026-10-08T08:45:38.5886883Z ##[endgroup]
+2026-10-08T08:45:38.5887818Z ##[group]Post cache
+2026-10-08T08:45:38.5889481Z State not set
+2026-10-08T08:45:38.5890191Z ##[endgroup]
+2026-10-08T08:45:38.6061623Z Post job cleanup.
+2026-10-08T08:45:38.8587815Z ##[group]Removing builder
+2026-10-08T08:45:38.8595076Z (node:3768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T08:45:38.8596153Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T08:45:38.9680995Z [command]/usr/bin/docker buildx rm builder-c785183c-57db-4ee4-9576-1ea60e219e4b
+2026-10-08T08:45:40.4107768Z builder-c785183c-57db-4ee4-9576-1ea60e219e4b removed
+2026-10-08T08:45:40.4141646Z ##[endgroup]
+2026-10-08T08:45:40.4142322Z ##[group]Cleaning up certificates
+2026-10-08T08:45:40.4152516Z ##[endgroup]
+2026-10-08T08:45:40.4153141Z ##[group]Post cache
+2026-10-08T08:45:40.4153513Z State not set
+2026-10-08T08:45:40.4154155Z ##[endgroup]
+2026-10-08T08:45:40.4373859Z Post job cleanup.
+2026-10-08T08:45:40.5245398Z [command]/usr/bin/git version
+2026-10-08T08:45:40.5287482Z git version 2.55.0
+2026-10-08T08:45:40.5330753Z Temporarily overriding HOME='/home/runner/work/_temp/b61f84ac-54c0-465d-9d7f-76d901daefbe' before making global git config changes
+2026-10-08T08:45:40.5332258Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T08:45:40.5336089Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/AgriSat-IA/AgriSat-IA
+2026-10-08T08:45:40.5370679Z Removing SSH command configuration
+2026-10-08T08:45:40.5377482Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T08:45:40.5414919Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T08:45:40.5664281Z Removing HTTP extra header
+2026-10-08T08:45:40.5670803Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T08:45:40.5708706Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T08:45:40.5977489Z Removing includeIf entries pointing to credentials config files
+2026-10-08T08:45:40.5988430Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T08:45:40.6019208Z includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git.path
+2026-10-08T08:45:40.6020309Z includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git/worktrees/*.path
+2026-10-08T08:45:40.6021288Z includeif.gitdir:/github/workspace/.git.path
+2026-10-08T08:45:40.6022152Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-08T08:45:40.6031392Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git.path
+2026-10-08T08:45:40.6058391Z /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6079993Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git.path /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6121781Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git/worktrees/*.path
+2026-10-08T08:45:40.6149899Z /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6162900Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/AgriSat-IA/AgriSat-IA/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6203820Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-08T08:45:40.6236099Z /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6245536Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6292043Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-08T08:45:40.6320505Z /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6330915Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config
+2026-10-08T08:45:40.6376259Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T08:45:40.6599479Z Removing credentials config '/home/runner/work/_temp/git-credentials-551a793f-4386-49bf-825f-0e906b9e6217.config'
+2026-10-08T08:45:40.6753522Z Cleaning up orphan processes
+2026-10-08T08:45:40.7591251Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4, docker/build-push-action@v6, docker/setup-buildx-action@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

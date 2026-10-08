@@ -1,5 +1,9 @@
 # AÇÃO MANUAL NECESSÁRIA - STAGING/PRODUCTION
 
+## Revalidação em 08/10/2026
+
+Run 37751748406 confirmou novamente CI aprovado e staging bloqueado por DEPLOY_HOST. Ambos os environments existentes continuam sem secrets/variables. Nenhum servidor autorizado foi identificado. **O primeiro deploy de produção requer autorização humana explícita**, antes de habilitar secrets/execução, com proteção/aprovação adequada. Não preencha produção e execute o workflow automaticamente sem essa autorização. Não criar serviços pagos.
+
 ## Diagnóstico real em 05/10/2026
 
 CI BUILD/TEST/DOCKER passou. Staging falhou com Configure DEPLOY_HOST no GitHub Environment. staging e Production existem, mas ambos sem secrets/variables. Autenticação GitHub operacional. Não criar environments duplicados. As orientações abaixo substituem a sugestão anterior de criar duas VMs obrigatoriamente.

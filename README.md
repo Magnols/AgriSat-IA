@@ -6,7 +6,7 @@
 
 AgriSat IA é a aplicação ESG utilizada para implementar práticas DevOps nesta atividade da FIAP. O protótipo agrícola em HTML/CSS/JavaScript acompanha uma API Spring Boot de eficiência energética: áreas, equipamentos, leituras, alertas e relatórios. O frontend ainda é demonstrativo, com dados simulados, e não possui integração funcional com a API. O backend conserva o nome técnico `energia-esg-api`.
 
-**Situação verificável em 05/10/2026:** resultados locais comprovados nos logs anteriores. GitHub Actions BUILD, TEST AND PACKAGE e DOCKER BUILD aprovados para 0b5dfe2. Staging falhou por DEPLOY_HOST ausente; production não executou. Não há ZIP final.
+**Situação verificável em 08/10/2026:** Maven validado novamente (7 testes aprovados, nenhum ignorado). Docker/WSL operacionais; imagem e Compose construídos. GitHub Actions BUILD, TEST AND PACKAGE e DOCKER BUILD aprovados no run [37751748406](https://github.com/Magnols/AgriSat-IA/actions/runs/37751748406), commit 60db9e7 com AB#2. Staging falhou por DEPLOY_HOST ausente; production não executou. A entrega possui pendências externas explícitas: [Relatório de validação](documentacao/RELATORIO-VALIDACAO-20261008.md).
 
 ## Arquitetura
 
@@ -192,7 +192,21 @@ O frontend permanece também na raiz para preservar caminhos da publicação est
 
 Cada GitHub Environment utiliza quatro secrets: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY e DEPLOY_KNOWN_HOSTS. DEPLOY_URL é uma variável do Environment. Host keys devem ser verificadas por canal confiável. O workflow usa StrictHostKeyChecking, não expõe chaves nos logs e remove a chave temporária ao terminar.
 
-API exige Basic Auth e health é público. Use HTTPS para acesso autenticado em ambientes públicos. Não haverá deploy enquanto faltar a infraestrutura. A validação Docker local passou; acompanhe publicação e CI em documentacao/GIT-ACTIONS-RETOMADA.md. Resultados atuais em documentacao/RELATORIO-RETOMADA.md. O PDF existente é uma versão parcial histórica e precisa atualizar resultados/prints antes da entrega.
+API exige Basic Auth e health é público. Use HTTPS para acesso autenticado em ambientes públicos. Não haverá deploy enquanto faltar a infraestrutura e autorização. Resultados atuais em documentacao/RELATORIO-VALIDACAO-20261008.md. O PDF original foi preservado como histórico; a nova apresentação de 08/10 registra resultados revalidados e pendências.
+
+## Troubleshooting
+
+- `permission denied` no pipe Docker ou `WSL E_ACCESSDENIED` dentro de um sandbox não prova falha do daemon. Verifique `docker info` e `wsl -l -v` no PowerShell autorizado do computador.
+- `invalid file request Dockerfile` na pasta OneDrive: execute `./scripts/build-docker-local.ps1` e `./scripts/build-docker-local.ps1 -Compose`. O script copia somente os fontes necessários para um diretório temporário, sem .env. Depois use `docker compose up -d --no-build --wait --wait-timeout 900`. Não altere o Dockerfile para contornar reparse points.
+- Oracle pode levar minutos para ficar saudável. Consulte `docker compose ps` e logs; não apague o volume. Flyway deve indicar migração validada e schema atualizado.
+- `Configure DEPLOY_HOST`: falta infraestrutura/configuração do GitHub Environment. Siga [ação manual](documentacao/ACAO-MANUAL-DEPLOY.md). Não substitua deploy por echo nem esconda a falha.
+- Não habilite o primeiro deploy de produção sem autorização humana; configure aprovação/proteção adequada antes de preencher os secrets de produção.
+
+## Entrega auditada em 08/10/2026
+
+Nova apresentação: `documentacao/apresentacao/AgriSat-IA-DevOps-20261008.pdf`, preservando a versão histórica. Logs atuais em `documentacao/evidencias/resultados/19-*` a `28-*`. Prints existentes são reais e históricos, não representam deploys.
+
+O ZIP `AgriSat-IA-DevOps-FIAP-Entrega-Final.zip` é preparado em `../entrega`, conforme a autorização mais recente, **mesmo com pendências externas**. Consulte `documentacao/VALIDACAO-PACOTE-20261008.md` para conferir conteúdo e exclusões. O nome do pacote não significa que a atividade inteira esteja concluída. Nenhum deploy ou URL pública foi comprovado.
 
 ## Integrante
 
@@ -207,10 +221,10 @@ Marcar somente após execução/evidência. Dockerfile e Compose passaram na exe
 
 | Item | OK |
 |---|---|
-| Projeto compactado em .ZIP com estrutura organizada | ☐ |
+| Projeto compactado em .ZIP com estrutura organizada | ☑ |
 | Dockerfile funcional | ☑ |
 | docker-compose.yml ou arquivos Kubernetes | ☑ |
 | Pipeline com etapas de build, teste e deploy | ☐ |
-| README.md com instruções e prints | ☐ |
-| Documentação técnica com evidências (PDF ou PPT) | ☐ |
+| README.md com instruções e prints | ☑ |
+| Documentação técnica com evidências (PDF ou PPT) | ☑ |
 | Deploy realizado nos ambientes staging e produção | ☐ |

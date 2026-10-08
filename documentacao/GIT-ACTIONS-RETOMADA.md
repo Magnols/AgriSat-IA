@@ -42,3 +42,7 @@ Build remoto: PENDENTE. Tests remoto: PENDENTE. Docker remoto: PENDENTE. Staging
 Sem os environments/secrets descritos em ACAO-MANUAL-DEPLOY.md, o deploy staging falhará explicitamente e production não será executado. Isso não representa deploy aprovado.
 
 O ZIP final não foi gerado. Prints ainda pendentes; logs textuais reais estão preservados. O PDF existente é parcial histórico e precisa atualizar resultados/prints antes da entrega.
+# Atualização vigente - 08/10/2026
+
+Commit útil 60db9e7030dfc85833ae22c83f7242d30cf62507 publicado com AB#2, sem force push. Run https://github.com/Magnols/AgriSat-IA/actions/runs/37751748406: BUILD/TEST AND PACKAGE/DOCKER BUILD success; STAGING failure por DEPLOY_HOST ausente; PRODUCTION skipped. staging/Production continuam com zero secrets/variables. Logs atuais 23-actions-*.txt. Azure Boards requer login para confirmar associação. Relato anterior abaixo é histórico; auditoria completa em RELATORIO-VALIDACAO-20261008.md.
+
