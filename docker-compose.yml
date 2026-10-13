@@ -1,3 +1,4 @@
+name: agrisat-ia
 services:
   oracle-db:
     image: gvenzl/oracle-free:23-slim

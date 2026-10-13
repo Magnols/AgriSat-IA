@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
-$files = @(git -c core.quotepath=false ls-files --cached --others --exclude-standard)
+$files = @(git -c core.quotepath=false ls-files --cached --others --exclude-standard | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf })
 $prohibited = @($files | Where-Object { $_ -match '(^|/)(\.env|target|node_modules|\.git)(/|$)' })
 if ($prohibited.Count) { throw ('Arquivos locais indevidos: ' + ($prohibited -join ', ')) }
 $secrets = @()
@@ -11,7 +11,7 @@ if (Test-Path .env) {
 }
 $hits = @()
 foreach ($file in $files) {
-    if ($file -match '\.(png|jpe?g|pdf|ico|woff2?|ttf|gif|jar|zip)$') { continue }
+    if ($file -match '\.(png|jpe?g|pdf|docx|ico|woff2?|ttf|gif|jar|zip)$') { continue }
     $content = Get-Content -LiteralPath $file -Raw
     foreach ($secret in $secrets) {
         if ($content.Contains($secret)) { $hits += $file; break }

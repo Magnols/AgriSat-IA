@@ -13,5 +13,7 @@ build/
 backup-original/
 entrega/
 documentacao/prints/
+documentacao/
+.build-documentacao/
 frontend/.git/
 frontend/node_modules/

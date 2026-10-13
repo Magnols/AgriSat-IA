@@ -1,230 +1,144 @@
-# Projeto - Cidades ESG Inteligentes
+# AgriSat IA — Cidades ESG Inteligentes
 
-## AgriSat IA
+## Visão geral da solução
 
-## Sobre o projeto
+AgriSat IA reúne um protótipo agrícola em HTML/CSS/JavaScript e uma API Spring Boot de gestão energética. O backend conserva o identificador energia-esg-api e oferece áreas, equipamentos, leituras, alertas e relatórios de consumo diário.
 
-AgriSat IA é a aplicação ESG utilizada para implementar práticas DevOps nesta atividade da FIAP. O protótipo agrícola em HTML/CSS/JavaScript acompanha uma API Spring Boot de eficiência energética: áreas, equipamentos, leituras, alertas e relatórios. O frontend ainda é demonstrativo, com dados simulados, e não possui integração funcional com a API. O backend conserva o nome técnico `energia-esg-api`.
+O frontend utiliza dados simulados e navegação demonstrativa. Não estão implementados autenticação Google, SMS, integração com satélites ou modelos de IA; o protótipo ainda não consome a API. A publicação estática existente não comprova deploy público do backend.
 
-**Situação verificável em 08/10/2026:** Maven validado novamente (7 testes aprovados, nenhum ignorado). Docker/WSL operacionais; imagem e Compose construídos. GitHub Actions BUILD, TEST AND PACKAGE e DOCKER BUILD aprovados no run [37751748406](https://github.com/Magnols/AgriSat-IA/actions/runs/37751748406), commit 60db9e7 com AB#2. Staging falhou por DEPLOY_HOST ausente; production não executou. A entrega possui pendências externas explícitas: [Relatório de validação](documentacao/RELATORIO-VALIDACAO-20261008.md).
+Diretório local de trabalho: C:\ESD\AgriSat. A cópia original no OneDrive foi preservada. Resultados atuais e pendências: [validação técnica](documentacao/VALIDACAO.md).
 
-## Arquitetura
+## Arquitetura do sistema
 
-Frontend Nginx independente, API Spring Boot Java 21 e Oracle FREEPDB1. A API usa JDBC/Flyway; serviços Compose compartilham rede bridge, Oracle usa volume persistente. H2 exclusivo dos testes. Staging e produção usam projetos Compose e configurações independentes; podem compartilhar um host x64 com memória suficiente e portas distintas.
+Nginx serve o frontend na porta 8081. A API Java executa na porta 8080 e acessa Oracle pelo DNS interno oracle-db, porta 1521, service FREEPDB1. Flyway versiona o schema; Hibernate valida sua estrutura. H2 é exclusivo do perfil de testes.
+
+Compose conecta os três serviços pela rede bridge agrisat-network. Oracle persiste em agrisat-oracle-data, montado em /opt/oracle/oradata. Sua porta publicada é restrita a 127.0.0.1.
+
+O projeto Compose local mantém o nome agrisat-ia após a mudança de diretório, preservando o volume anterior. Deploys usam nomes agrisat-staging e agrisat-production e configurações isoladas.
+
+## Tecnologias utilizadas
+
+Java 21, Spring Boot 3.5.14, Maven Wrapper 3.9.15, Spring Web, Security, Validation, Actuator, JPA/Hibernate, Flyway, Oracle JDBC, JUnit, Mockito, H2, Docker, Docker Compose, Nginx, GitHub Actions, HTML, CSS e JavaScript. As dependências Spring Cloud existentes foram preservadas; Eureka permanece desabilitado por padrão.
+
+## Pré-requisitos
+
+Docker Engine Linux e Docker Compose operacionais, memória disponível para Oracle/JVM e Git. Java 21/JAVA_HOME são necessários para testes Maven fora dos containers. O Maven Wrapper baixa dependências quando necessário.
 
 ## Como executar localmente com Docker
 
-Pré-requisitos: Git e Docker Desktop com engine Linux operacional. Java 21 é necessário para comandos Maven fora de Docker. O Oracle requer memória disponível e pode levar vários minutos na primeira inicialização.
-
-No PowerShell:
-
-```powershell
-git clone https://github.com/Magnols/AgriSat-IA.git
-cd AgriSat-IA
+~~~powershell
+cd C:\ESD\AgriSat
+# Somente se .env não existir:
 Copy-Item .env.example .env
-notepad .env
-# Substitua DB_PASSWORD e API_SECURITY_PASSWORD por senhas locais fortes e distintas.
+# Configure senhas fortes e distintas no .env, sem publicá-las.
 docker info
 docker compose config --quiet
 docker build -t agrisat-api:local .
 docker compose build
-docker compose up -d --wait --wait-timeout 900
+docker compose up -d --no-build --wait --wait-timeout 900
 docker compose ps
-docker compose logs --tail=100
 curl.exe --fail http://localhost:8080/actuator/health
-```
+~~~
 
-Health deve retornar HTTP 200 e `{"status":"UP"}`. Frontend: `http://localhost:8081`. Porta do banco: 1521, vinculada somente a localhost. Para outra porta pública da API, altere SERVER_PORT no .env; a porta interna permanece 8080.
+Health público deve retornar HTTP 200 e status UP. Frontend local: http://localhost:8081. Para instalar uma nova cópia, copie .env.example apenas quando não houver .env; nunca sobrescreva credenciais ou volumes existentes.
 
-Não compartilhe `docker compose config` sem redigir valores: o comando completo expande senhas. Use `--quiet` para validar.
+Para consultas autenticadas sem colocar senha no histórico:
 
-Para validar a API sem alterar dados:
-
-```powershell
-# Informe a senha quando o curl solicitar. Não coloque a senha no histórico.
+~~~powershell
 curl.exe --fail --user admin http://localhost:8080/areas
 curl.exe --fail --user admin http://localhost:8080/equipamentos
-curl.exe --fail --user admin http://localhost:8080/alertas
-curl.exe --fail --user admin http://localhost:8080/relatorios/consumo-diario
-```
+./scripts/validar-local.ps1
+~~~
 
-Sem autenticação, os endpoints de negócio retornam 401. As cinco consultas GET (/areas, /equipamentos, /alertas, /leituras e /relatorios/consumo-diario) responderam HTTP 200 no Oracle real. /areas sem autenticação respondeu 401. Registros EVIDENCIA-PERSISTENCIA são dados criados exclusivamente para validação local.
+O curl solicita a senha. O script lê .env internamente e não imprime credenciais. Sem autenticação, rotas de negócio retornam 401. JSON malformado e parâmetros incompatíveis retornam 400.
 
-## Testes
+## Variáveis de ambiente
 
-```powershell
-.\mvnw.cmd clean test
-.\mvnw.cmd clean package
-```
+| Variável | Finalidade |
+|---|---|
+| DB_USER | Usuário Oracle criado pelo container |
+| DB_PASSWORD | Senha Oracle obrigatória |
+| API_SECURITY_USER | Usuário Basic Auth |
+| API_SECURITY_PASSWORD | Senha da API obrigatória e distinta da senha Oracle |
+| SERVER_PORT | Porta publicada da API; interna 8080 |
+| FRONTEND_PORT | Porta publicada do Nginx |
+| DB_PORT | Porta Oracle publicada somente em localhost |
+| API_IMAGE | Imagem/tag usada na implantação |
 
-JAR: `target/energia-esg-api-0.0.1-SNAPSHOT.jar` (92.311.659 bytes). Última execução após correção NUMERIC: 7 passaram, zero falhas/erros/ignorados. Maven clean test: 1min40s; clean package: 1min29s, também com os 7 testes. H2 em modo Oracle é exclusivo dos testes. A compatibilidade Oracle foi verificada separadamente no Compose.
+.env.example contém apenas placeholders. .env real é ignorado. No servidor, mantenha .env com permissão 600. Não compartilhe docker compose config expandido nem docker inspect completo: podem revelar senhas.
 
-Para iniciar o JAR com um Oracle existente, exporte SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD, API_SECURITY_USER e API_SECURITY_PASSWORD no terminal. Copiar .env sozinho não exporta variáveis para Java.
-
-## Pipeline CI/CD
-
-### Integração Azure Boards e GitHub
-
-Planejamento informado: organização RM565548, projeto AgriSat-IA, Epic #1 e Issue #2. Commits relacionados ao backend/documentação usam AB#2 para rastreabilidade. A associação deve aparecer no Work Item após publicação, não é presumida apenas pela mensagem. Procedimento e verificação em [AZURE-BOARDS-GITHUB](documentacao/AZURE-BOARDS-GITHUB.md). Azure Boards não substitui a ferramenta CI/CD oficial, GitHub Actions. Não foram recriados Work Items.
-
-Ferramenta: GitHub Actions. Configuração em `.github/workflows/ci-cd.yml` e workflow reutilizável `deploy.yml`.
-
-PUSH/PR em main ou workflow_dispatch executam:
-1. BUILD: Maven clean compile com Java 21 e cache Maven.
-2. TEST AND PACKAGE: Maven clean verify, testes ativos e relatório Surefire.
-3. DOCKER BUILD: build multi-stage com testes ativos e imagem identificada pelo SHA do commit.
-4. STAGING: transferência SSH da mesma imagem construída, Docker Compose e verificação pública de health.
-5. PRODUCTION: mesma operação após sucesso de staging, usando configuração isolada.
-
-PR executa CI e Docker, mas não deploy. Push/main ou execução manual pode executar deploy. Jobs falham se testes, health ou configuração obrigatória falharem. Não há bypass de testes nem deploy baseado apenas em echo.
-
-A imagem é transportada como artifact `release`, contendo `image.tar.gz`, Compose, frontend e scripts. Não exige registry externo. Relatórios ficam no artifact `test-reports`.
-
-**CI remoto comprovado:** [execução 37299189626](https://github.com/Magnols/AgriSat-IA/actions/runs/37299189626), commit 0b5dfe2. BUILD, TEST AND PACKAGE e DOCKER BUILD passaram. clean verify: 7 testes, zero falhas/erros/ignorados. Staging falhou na configuração obrigatória DEPLOY_HOST; production foi skipped. Environments staging/Production já existem, mas secrets e variables estavam vazios na consulta de 05/10. O pipeline completo não está aprovado.
+Para executar o JAR fora do Compose, exporte SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD, API_SECURITY_USER e API_SECURITY_PASSWORD. Copiar .env não exporta variáveis para Java. O padrão Oracle é FREEPDB1 e ddl-auto=validate.
 
 ## Containerização
 
-O Dockerfile usa dois estágios: Maven/Temurin Java 21 para executar Maven Wrapper clean package, e Temurin JRE 21 Alpine para executar o JAR. O usuário de runtime não é root. Porta interna: 8080. Healthcheck: actuator/health. Build aprovado com os 7 testes ativos. Conteúdo da imagem: aproximadamente 157 MB; Docker informa cerca de 461 MB de uso em disco incluindo camadas descompactadas.
+O Dockerfile multi-stage usa Maven/Temurin 21 para executar ./mvnw -B -ntp clean package, com todos os testes. O runtime Temurin JRE 21 Alpine contém somente o JAR e executa como usuário agrisat, não root. WORKDIR /app, EXPOSE 8080, ENTRYPOINT java -jar app.jar e healthcheck wget em /actuator/health.
 
-Trechos principais:
+.dockerignore exclui Git, credenciais locais, builds, IDEs, documentação e entregas do contexto. No diretório C:\ESD\AgriSat, o build lê os arquivos locais diretamente, sem o contorno temporário usado no OneDrive.
 
-```dockerfile
-FROM maven:3.9.9-eclipse-temurin-21 AS build
-WORKDIR /workspace
-COPY pom.xml mvnw mvnw.cmd ./
-COPY .mvn .mvn
-COPY src src
-RUN chmod +x mvnw && ./mvnw -B -ntp clean package
+Compose aguarda o Oracle saudável antes de iniciar a API e a API saudável antes do Nginx. Volumes, rede, dependências e variáveis estão no arquivo docker-compose.yml.
 
-FROM eclipse-temurin:21-jre-alpine
-WORKDIR /app
-RUN addgroup -S agrisat && adduser -S agrisat -G agrisat
-COPY --from=build --chown=agrisat:agrisat /workspace/target/energia-esg-api-0.0.1-SNAPSHOT.jar app.jar
-USER agrisat
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
-```
+## Pipeline CI/CD
 
-O arquivo completo inclui HEALTHCHECK. .dockerignore exclui Git, segredos locais, builds, IDEs e logs do contexto.
+GitHub Actions executa em push/PR de main e workflow_dispatch:
 
-## Docker Compose
+1. BUILD: Java21, checkout, cache Maven e clean compile.
+2. TEST AND PACKAGE: clean verify, testes e relatórios Surefire.
+3. DOCKER BUILD: imagem multi-stage com testes e release identificada pelo SHA.
+4. STAGING: transporte SSH da mesma imagem, Compose e health público.
+5. PRODUCTION: implantação após sucesso de staging e nova validação.
 
-- Aplicação: API Spring Boot e frontend Nginx.
-- Banco: `gvenzl/oracle-free:23-slim`, service name `FREEPDB1`, usuário de aplicação `agrisat_user`.
-- Variáveis: DB_PASSWORD e API_SECURITY_PASSWORD obrigatórias, demais parâmetros em .env.example.
-- Volume: `agrisat-oracle-data` em `/opt/oracle/oradata`.
-- Rede: `agrisat-network`, driver bridge. JDBC usa o DNS interno `oracle-db`.
-- Inicialização: API aguarda health do Oracle. Frontend aguarda health da API.
-- Flyway: `V1__create_tables.sql`; Hibernate configurado para validar o schema.
-- Isolamento: nomes de containers gerenciados por projeto Compose, permitindo ambientes separados.
+PR não realiza deploy. Não há skipTests. Release inclui imagem, Compose, frontend e scripts; staging e produção reutilizam a imagem validada.
 
-A sintaxe, build e inicialização passaram. Os três serviços ficaram healthy. Flyway V1 aplicada com success=1, schema validado pelo Hibernate e comunicação API/Oracle comprovada por GETs e gravação/leitura de limiteConsumo=123.45. Os campos Double usam mapeamento JDBC NUMERIC com precisão 10 e escala 2, alinhado ao schema existente. A V1 aplicada foi preservada.
+A última execução remota comprovada é [37753337819](https://github.com/Magnols/AgriSat-IA/actions/runs/37753337819), commit 325c180: build/testes/Docker passaram; staging falhou por DEPLOY_HOST e produção não executou. Isso não valida automaticamente alterações locais posteriores.
 
-A imagem Oracle baixada informa versão 23.26.3 (tag 23-slim). Flyway emite aviso de versão Oracle mais nova que a cobertura testada, mas validou/aplicou V1 e não bloqueou o startup. Esse aviso permanece documentado.
+## Ambientes staging e produção
 
-### Persistência
+Não há URL pública da API validada em nenhum dos ambientes. Ambos dependem de infraestrutura autorizada e configuração externa. Procedimento: [operação dos ambientes](documentacao/ACAO-MANUAL-DEPLOY.md).
 
-Depois de validar Oracle/Flyway, registre as mesmas linhas e o histórico Flyway antes/depois de reiniciar serviços:
+Secrets por environment: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY e DEPLOY_KNOWN_HOSTS. Variable: DEPLOY_URL. Valide a fingerprint SSH por canal confiável; o workflow usa StrictHostKeyChecking. Production depende de staging e o primeiro deploy exige autorização humana explícita. Configure proteção/aprovação antes de habilitar a execução.
 
-```powershell
-docker compose exec oracle-db sh -c 'printf "select \"version\", \"success\" from \"flyway_schema_history\";\nselect count(*) from AREA;\nexit;\n" | sqlplus -s "$APP_USER/$APP_USER_PASSWORD@//localhost/FREEPDB1"'
-docker compose restart oracle-db
-docker compose up -d --wait --wait-timeout 900
-# Repita a consulta e compare o resultado.
-```
+Use HTTPS antes de transmitir Basic Auth publicamente. Não exponha Oracle à internet. Uma abertura de portal Azure não comprova servidor ou deploy.
 
-Persistência comprovada em 03/10/2026: o container Oracle foi recriado sem remover volume; a área id=2, EVIDENCIA-PERSISTENCIA-20261003-163315, permaneceu acessível pela API. O valor NUMERIC 123.45 também foi gravado/lido. Reprodução: `./scripts/validar-local.ps1 -TestarPersistencia`. Esse comando cria registros de evidência locais. Não use `down -v`, pois remove dados.
+## Testes automatizados
 
-## Prints do funcionamento
+~~~powershell
+.\mvnw.cmd clean verify
+~~~
 
-Roteiro completo: [GUIA-EVIDENCIAS](documentacao/evidencias/GUIA-EVIDENCIAS.md). Salvar capturas reais em `documentacao/prints` e inserir links abaixo somente depois de existirem.
+Os sete testes existentes foram preservados. Três novos testes verificam nome inválido, JSON malformado e identificador não numérico. A execução local registrou 10 testes, zero falhas, erros e ignorados, com BUILD SUCCESS. O JAR é target/energia-esg-api-0.0.1-SNAPSHOT.jar.
 
-- Testes/build: logs reais em `documentacao/evidencias/resultados`; prints 01 e 02 pendentes.
-- Docker/Compose: prints 03 a 07 pendentes.
-- GitHub Actions: [BUILD](documentacao/prints/08-github-actions-build.png), [TEST AND PACKAGE](documentacao/prints/09-github-actions-tests.png), [DOCKER BUILD](documentacao/prints/10-github-actions-docker.png), capturas reais da execução 37299189626.
-- Staging: prints 11 e 12 pendentes.
-- Production: prints 13 e 14 pendentes.
+Testes Spring usam H2; integração Oracle/Flyway é verificada separadamente na stack real. Não remova dados para repetir persistência. O script -TestarPersistencia cria registros e recria o container Oracle preservando o volume; execute somente quando essa intervenção for desejada e autorizada.
 
-Logs e trechos transcritos são evidências textuais, não capturas de tela. Não há imagens inventadas.
+## Evidências de funcionamento
 
-## Staging
+[Índice das evidências](documentacao/evidencias/INDICE.md) identifica origem, data, commit, resultados e limitações. Os logs atuais em documentacao/evidencias/resultados comprovam comandos reais. Capturas anteriores de CI foram preservadas, inclusive staging reprovado e produção skipped; não são prints de deploy bem-sucedido.
 
-URL: pendente de deploy real. Ambiente GitHub previsto: `staging`.
-Preparação manual detalhada em [ACAO-MANUAL-DEPLOY](documentacao/ACAO-MANUAL-DEPLOY.md).
-Deploy só é aprovado se Compose estiver healthy, GET autenticado /areas responder e a URL pública de health indicar UP.
+A captura contextual enviada pelo responsável mostra interfaces abertas, mas não confirma vínculo AB#2, servidor ou deploy. As telas do diretório novo e do terminal dependem de captura gráfica disponível.
 
-## Produção
+Azure Boards registra planejamento e rastreabilidade. Commit 60db9e7 contém AB#2; o vínculo efetivo no Issue #2 e Parent Epic #1 precisa ser confirmado em sessão autenticada.
 
-URL: pendente de deploy real. Ambiente GitHub previsto: `production`.
-Production depende do sucesso de staging, com banco/volume, diretório e credenciais independentes. Servidores devem usar HTTPS antes de transmitir Basic Auth publicamente.
+## Estrutura do repositório
 
-## Tecnologias utilizadas
-
-Java 21, Spring Boot 3.5.14, Spring Web, JPA/Hibernate, Security, Validation, Actuator, Spring Cloud, Flyway, Oracle JDBC, Maven Wrapper 3.9.15, H2 para testes, JUnit, Mockito, Docker, Docker Compose, GitHub Actions, HTML, CSS, JavaScript e Nginx. Oracle e Nginx executados e saudáveis neste PC.
-
-## Estrutura do projeto
-
-```text
-AgriSat-IA/
-├── .github/workflows/  # CI/CD e deploy reutilizável
+~~~text
+AgriSat/
+├── .github/workflows/
 ├── .mvn/wrapper/
-├── src/main/           # Java, configurações e Flyway
-├── src/test/           # Serviços, health e autenticação
-├── frontend/           # Protótipo atual
-├── scripts/deploy.sh
-├── documentacao/       # Evidências e apresentação
+├── src/main/                 # API e migração Flyway
+├── src/test/                 # Testes existentes e validação HTTP
+├── frontend/                 # Protótipo demonstrativo
+├── documentacao/             # Operação, validação e evidências
+├── scripts/                  # Deploy e consultas de validação
 ├── Dockerfile
 ├── docker-compose.yml
-├── .env.example
 ├── .dockerignore
+├── .env.example
 ├── .gitignore
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
 └── README.md
-```
+~~~
 
-O frontend permanece também na raiz para preservar caminhos da publicação estática existente. Essas duas cópias devem ser mantidas sincronizadas até que a configuração de hospedagem permita consolidá-las.
+A cópia estática do frontend na raiz foi mantida para compatibilidade com a hospedagem anterior. Não houve mudança desses caminhos remotos. Relatórios antigos foram arquivados em documentacao/historico, ignorada no Git e excluída do pacote atual.
 
-## Segurança
-
-.env.example contém placeholders. .env, chaves e builds são ignorados. Credenciais da API/banco ficam no .env local ou no servidor, com acesso restrito. Nunca publique sua saída completa de configuração ou inspeção de containers.
-
-Cada GitHub Environment utiliza quatro secrets: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY e DEPLOY_KNOWN_HOSTS. DEPLOY_URL é uma variável do Environment. Host keys devem ser verificadas por canal confiável. O workflow usa StrictHostKeyChecking, não expõe chaves nos logs e remove a chave temporária ao terminar.
-
-API exige Basic Auth e health é público. Use HTTPS para acesso autenticado em ambientes públicos. Não haverá deploy enquanto faltar a infraestrutura e autorização. Resultados atuais em documentacao/RELATORIO-VALIDACAO-20261008.md. O PDF original foi preservado como histórico; a nova apresentação de 08/10 registra resultados revalidados e pendências.
-
-## Troubleshooting
-
-- `permission denied` no pipe Docker ou `WSL E_ACCESSDENIED` dentro de um sandbox não prova falha do daemon. Verifique `docker info` e `wsl -l -v` no PowerShell autorizado do computador.
-- `invalid file request Dockerfile` na pasta OneDrive: execute `./scripts/build-docker-local.ps1` e `./scripts/build-docker-local.ps1 -Compose`. O script copia somente os fontes necessários para um diretório temporário, sem .env. Depois use `docker compose up -d --no-build --wait --wait-timeout 900`. Não altere o Dockerfile para contornar reparse points.
-- Oracle pode levar minutos para ficar saudável. Consulte `docker compose ps` e logs; não apague o volume. Flyway deve indicar migração validada e schema atualizado.
-- `Configure DEPLOY_HOST`: falta infraestrutura/configuração do GitHub Environment. Siga [ação manual](documentacao/ACAO-MANUAL-DEPLOY.md). Não substitua deploy por echo nem esconda a falha.
-- Não habilite o primeiro deploy de produção sem autorização humana; configure aprovação/proteção adequada antes de preencher os secrets de produção.
-
-## Entrega auditada em 08/10/2026
-
-Nova apresentação: `documentacao/apresentacao/AgriSat-IA-DevOps-20261008.pdf`, preservando a versão histórica. Logs atuais em `documentacao/evidencias/resultados/19-*` a `28-*`. Prints existentes são reais e históricos, não representam deploys.
-
-O ZIP `AgriSat-IA-DevOps-FIAP-Entrega-Final.zip` é preparado em `../entrega`, conforme a autorização mais recente, **mesmo com pendências externas**. Consulte `documentacao/VALIDACAO-PACOTE-20261008.md` para conferir conteúdo e exclusões. O nome do pacote não significa que a atividade inteira esteja concluída. Nenhum deploy ou URL pública foi comprovado.
-
-## Integrante
-
-Magno Pereira da Silva
-RM 565548
-Análise e Desenvolvimento de Sistemas
-FIAP
-
-## Checklist da entrega
-
-Marcar somente após execução/evidência. Dockerfile e Compose passaram na execução local; os requisitos de CI/deploy e documentação final permanecem pendentes.
-
-| Item | OK |
-|---|---|
-| Projeto compactado em .ZIP com estrutura organizada | ☑ |
-| Dockerfile funcional | ☑ |
-| docker-compose.yml ou arquivos Kubernetes | ☑ |
-| Pipeline com etapas de build, teste e deploy | ☐ |
-| README.md com instruções e prints | ☑ |
-| Documentação técnica com evidências (PDF ou PPT) | ☑ |
-| Deploy realizado nos ambientes staging e produção | ☐ |
+Responsável: Magno Pereira da Silva, RM 565548, Análise e Desenvolvimento de Sistemas, FIAP. Avisos de uso acadêmico e copyright existentes foram preservados no frontend.

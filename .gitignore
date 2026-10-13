@@ -59,4 +59,6 @@ Desktop.ini
 ### Entrega local ###
 entrega/
 backup-original/
+documentacao/historico/
+.build-documentacao/
 
